@@ -39,7 +39,7 @@ const projetos = {
   guia360: {
     titulo: "Guia360",
     descricao: "​O site Guia360 é uma plataforma educacional desenvolvida para auxiliar estudantes na preparação para o ENEM e outros vestibulares. Ele oferece uma variedade de recursos gratuitos, incluindo apostilas em PDF, provas anteriores, simulados, cronogramas de estudo, materiais de revisão e informações sobre notas de corte. Além disso, o site promove uma comunidade colaborativa, incentivando a interação entre estudantes e mentores para um aprendizado mais eficaz.​ A interface do Guia360 é organizada e intuitiva, facilitando o acesso aos materiais e ferramentas disponíveis. Com uma abordagem motivacional e estratégica, a plataforma visa transformar a jornada de estudos em uma experiência produtiva e enriquecedora, proporcionando suporte contínuo aos usuários.​",
-    imagem: "imagens/Foto-3.png"
+    imagem: "Imagens/Foto-3.png"
   }
 };
 

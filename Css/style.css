@@ -186,6 +186,10 @@
       align-items: flex-start;
       gap: 1rem;
     }
+
+    .section-1 {
+        padding-top: 6rem;
+    }
   
     .section-2,
     .section-3 {
