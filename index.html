@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./Css/style.css" />
+  <title>Portfólio | Gustavo</title>
+</head>
+<body>
+  <header>
+    <nav class="nav-bar">
+      <div class="container-nav">
+        <h1>Gustavo.dev</h1>
+    
+        <button id="tema-toggle" class="tema-button">🌙</button>
+      </div>
+    </nav>
+    
+  </header>
+
+  <section id="home" class="section-1">
+    <div class="container">
+      <h2>Olá! Eu sou <span>Gustavo</span></h2>
+      <p>Desenvolvedor Web & Técnico em Eletrônica</p>
+      <a href="#projetos" class="button-section-1">Ver Projetos</a>
+    </div>
+  </section>
+
+  <section id="sobre" class="section-2">
+    <div class="container">
+      <h2>Sobre mim</h2>
+      <p style="margin-bottom: 10px; text-align: justify;">Sou estudante de Análise e Desenvolvimento de Sistemas na Fatec Carapicuíba, dando continuidade à formação iniciada na ETEC de Carapicuíba (2022–2025), onde adquiri experiência em programação, banco de dados, desenvolvimento web/mobile e integração com IoT. Participei de projetos práticos, como um e-commerce voltado a pequenos agricultores e soluções com Arduino e sensores.</p>
+
+      <p p style="text-align: justify;">Atualmente, também curso Eletricista de Manutenção Eletroeletrônica no SENAI Barueri, desenvolvendo habilidades em comandos elétricos, automação industrial e manutenção de sistemas eletroeletrônicos. Busco unir tecnologia e eletricidade para criar soluções inovadoras, com foco em qualidade, segurança e eficiência.</p>
+    </div>
+  </section>
+
+  <section id="projetos" class="section-3">
+    <div class="container">
+      <h2>Projetos</h2>
+      <div class="cards">
+
+              <div class="card">
+                <div class="card-content">
+                  <h3>Regador Automático</h3>
+                  <p>Projeto com ESP32 e sensores para umidade do solo.</p>
+                </div>
+                
+                <button class="saber-mais-button" data-projeto="regador">Saber mais</button>
+              </div>
+
+              <div class="card">
+
+                  <div class="card-content">
+                    <h3>CultivaMais</h3>
+                    <p>Loja Virtual onde pequenos agricultores podem vender seus produtos.</p>
+                  </div>
+
+                <button class="saber-mais-button" data-projeto="cultivamais">Saber mais</button>
+              </div>
+
+              <div class="card">
+
+                  <div class="card-content">
+                    <h3>Guia360</h3>
+                    <p>Site que auxilia estudantes a se prepararem para um vestibular ou concurso.</p>
+                  </div>
+
+                <button class="saber-mais-button" data-projeto="guia360">Saber mais</button>
+              </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <p>© 2025 Gustavo Rodrigues - Todos os direitos reservados.</p>
+    <div class="redes">
+      <a href="https://github.com/duguzin" target="_blank">GitHub</a>
+      <a href="www.linkedin.com/in/gustavo-rodrigues-2288852aa" target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/duguzin?igsh=Y2U4MzB1OXdxZzM0" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modal-img" src="" alt="Imagem do Projeto" />
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+  
+
+  <script src="./Js/script.js"></script>
+
+</body>
+</html>
