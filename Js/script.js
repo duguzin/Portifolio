@@ -287,7 +287,7 @@ const projetos = {
     features: [
       "Catálogo de produtos com filtros",
       "Carrinho de compras",
-      "Checkou",
+      "Checkout",
       "Painel administrativo"
     ]
   },
@@ -911,3 +911,4 @@ function updateVisitCount() {
 // Executar ao carregar
 
 updateVisitCount();
+
