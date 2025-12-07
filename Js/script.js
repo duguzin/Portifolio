@@ -969,3 +969,498 @@ function animateFooterElements() {
 document.addEventListener('DOMContentLoaded', () => {
   animateFooterElements();
 });
+
+
+
+
+
+
+
+
+// ===== DUOFLOW GAME - ATUALIZADO =====
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🎮 DuoFlow Game carregando...');
+  
+  // Elementos principais
+  const startScreen = document.getElementById('duoflowStart');
+  const gameScreen = document.getElementById('duoflowGame');
+  const completeScreen = document.getElementById('duoflowComplete');
+  
+  const startBtn = document.getElementById('startDuoflow');
+  const resetBtn = document.getElementById('resetDuoflow');
+  const runBothBtn = document.getElementById('runBoth');
+  const playAgainBtn = document.getElementById('playAgainDuo');
+  const learnBtn = document.getElementById('learnMore');
+  
+  // Elementos elétricos
+  const startElectricBtn = document.getElementById('startElectric');
+  const electron = document.getElementById('movingElectron');
+  const electricLamp = document.getElementById('electricLamp');
+  const electricWire = document.getElementById('electricWire');
+  const electricStatus = document.getElementById('electricStatus');
+  const wireVisual = document.querySelector('.wire-visual');
+  
+  // Elementos de código
+  const helloBlock = document.getElementById('helloBlock');
+  const codeTerminal = document.getElementById('codeTerminal');
+  const terminalOutput = document.getElementById('terminalOutput');
+  const runCodeBtn = document.getElementById('runCode');
+  const codeStatus = document.getElementById('codeStatus');
+  
+  // Progresso
+  const progressSteps = document.querySelectorAll('.progress-step');
+  
+  // Estado do jogo
+  let electricActive = false;
+  let codeActive = false;
+  let blockUsed = false;
+  let electronParticles = [];
+  let electronInterval = null;
+  
+  // ===== FUNÇÕES PRINCIPAIS =====
+  
+  // Mudar tela
+  function showScreen(screenName) {
+    document.querySelectorAll('.duoflow-screen').forEach(screen => {
+      screen.classList.remove('active');
+    });
+    
+    switch(screenName) {
+      case 'start': startScreen.classList.add('active'); break;
+      case 'game': gameScreen.classList.add('active'); resetGame(); break;
+      case 'complete': completeScreen.classList.add('active'); break;
+    }
+  }
+  
+  // Resetar jogo
+  function resetGame() {
+    console.log('🔄 Resetando jogo...');
+    
+    // Resetar estado
+    electricActive = false;
+    codeActive = false;
+    blockUsed = false;
+    
+    // Limpar partículas
+    clearElectronParticles();
+    
+    // Resetar elementos elétricos
+    electron.style.left = '-20px';
+    electricLamp.classList.remove('lit');
+    electricWire.classList.remove('wire-active');
+    electricStatus.textContent = 'Aguardando...';
+    electricStatus.style.color = '';
+    startElectricBtn.disabled = false;
+    startElectricBtn.innerHTML = '<i class="fas fa-play"></i> Iniciar Fluxo';
+    
+    // Resetar elementos de código
+    helloBlock.classList.remove('used');
+    helloBlock.style.opacity = '1';
+    helloBlock.style.transform = '';
+    helloBlock.style.transition = '';
+    helloBlock.style.display = 'block';
+    terminalOutput.innerHTML = `
+      <div class="terminal-line">&gt; Sistema pronto...</div>
+      <div class="terminal-line">&gt; Aguardando comando...</div>
+    `;
+    codeTerminal.classList.remove('terminal-active');
+    codeStatus.textContent = 'Aguardando código...';
+    codeStatus.style.color = '';
+    runCodeBtn.disabled = true;
+    
+    // Resetar progresso
+    progressSteps.forEach(step => step.classList.remove('active'));
+    progressSteps[0].classList.add('active');
+  }
+  
+  // Criar múltiplas partículas de elétrons
+  function createElectronParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'electron-particle';
+    particle.innerHTML = '⚡';
+    
+    // Posição aleatória no eixo Y
+    const randomY = Math.random() * 20 - 10;
+    particle.style.top = `calc(50% + ${randomY}px)`;
+    particle.style.left = '-20px';
+    
+    // Tamanho aleatório
+    const size = 0.7 + Math.random() * 0.6;
+    particle.style.fontSize = `${size}rem`;
+    
+    // Opacidade aleatória
+    particle.style.opacity = (0.5 + Math.random() * 0.5).toString();
+    
+    // Atraso aleatório para animação
+    const delay = Math.random() * 0.5;
+    
+    wireVisual.appendChild(particle);
+    electronParticles.push(particle);
+    
+    // Animar partícula
+    animateElectronParticle(particle, delay);
+    
+    return particle;
+  }
+  
+  // Animar partícula de elétron
+  function animateElectronParticle(particle, delay = 0) {
+    setTimeout(() => {
+      const duration = 2000 + Math.random() * 2000; // 2-4 segundos
+      const startTime = Date.now();
+      const wireWidth = wireVisual.offsetWidth;
+      
+      function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Movimento com easing
+        const easedProgress = 1 - Math.pow(1 - progress, 2);
+        const position = -20 + easedProgress * (wireWidth + 40);
+        
+        // Efeito de oscilação
+        const oscillation = Math.sin(progress * Math.PI * 8) * 3;
+        
+        particle.style.left = `${position}px`;
+        particle.style.transform = `translateY(-50%) translateY(${oscillation}px)`;
+        particle.style.opacity = (0.8 * (1 - progress * 0.7)).toString();
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          // Remover partícula
+          particle.remove();
+          electronParticles = electronParticles.filter(p => p !== particle);
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    }, delay * 1000);
+  }
+  
+  // Limpar partículas
+  function clearElectronParticles() {
+    electronParticles.forEach(particle => particle.remove());
+    electronParticles = [];
+    if (electronInterval) {
+      clearInterval(electronInterval);
+      electronInterval = null;
+    }
+  }
+  
+  // Iniciar fluxo elétrico com MÚLTIPLOS elétrons
+  function startElectricFlow() {
+    if (electricActive) return;
+    
+    console.log('⚡ Iniciando fluxo elétrico...');
+    electricActive = true;
+    startElectricBtn.disabled = true;
+    startElectricBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fluindo...';
+    electricStatus.textContent = 'Elétrons fluindo...';
+    electricStatus.style.color = '#4CAF50';
+    
+    // Ativar visual do fio
+    electricWire.classList.add('wire-active');
+    
+    // Criar MUITAS partículas de elétrons
+    electronInterval = setInterval(() => {
+      // Criar 3-5 partículas por ciclo
+      const count = 3 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < count; i++) {
+        createElectronParticle();
+      }
+    }, 300); // Novos elétrons a cada 300ms
+    
+    // Parar criação após 4 segundos e acender lâmpada
+    setTimeout(() => {
+      clearInterval(electronInterval);
+      electronInterval = null;
+      
+      // Esperar últimas partículas chegarem
+      setTimeout(() => {
+        // Acender lâmpada
+        electricLamp.classList.add('lit');
+        
+        // Efeito de brilho
+        const lampIcon = electricLamp.querySelector('.part-icon');
+        lampIcon.style.animation = 'lampPulse 1s infinite alternate';
+        
+        electricStatus.textContent = 'Lâmpada acesa!';
+        startElectricBtn.innerHTML = '<i class="fas fa-check"></i> Concluído';
+        
+        // Atualizar progresso
+        updateProgress(1);
+        checkBothComplete();
+      }, 2000);
+    }, 4000);
+  }
+  
+  // Executar código
+  function executeCode() {
+    if (!blockUsed) return;
+    
+    console.log('💻 Executando código...');
+    codeActive = true;
+    runCodeBtn.disabled = true;
+    runCodeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
+    codeStatus.textContent = 'Processando...';
+    codeStatus.style.color = '#2196F3';
+    codeTerminal.classList.add('terminal-active');
+    
+    const steps = [
+      { delay: 1000, text: '&gt; Compilando código...' },
+      { delay: 1200, text: '&gt; Inicializando runtime...' },
+      { delay: 800, text: '&gt; Executando print()...' },
+      { delay: 1000, text: '&gt; Hello World!' }
+    ];
+    
+    let stepIndex = 0;
+    
+    function executeNextStep() {
+      if (stepIndex >= steps.length) {
+        setTimeout(() => {
+          codeStatus.textContent = 'Hello World impresso!';
+          runCodeBtn.innerHTML = '<i class="fas fa-check"></i> Concluído';
+          
+          // Atualizar progresso
+          updateProgress(2);
+          checkBothComplete();
+        }, 500);
+        return;
+      }
+      
+      const step = steps[stepIndex];
+      
+      setTimeout(() => {
+        const newLine = document.createElement('div');
+        newLine.className = 'terminal-line';
+        
+        if (stepIndex === steps.length - 1) {
+          // Animar "Hello World!" letra por letra
+          newLine.textContent = '&gt; ';
+          terminalOutput.appendChild(newLine);
+          typeText(newLine, 'Hello World!', 120, () => {
+            stepIndex++;
+            executeNextStep();
+          });
+        } else {
+          newLine.textContent = step.text;
+          newLine.style.animation = 'typing 1.2s steps(20, end)';
+          terminalOutput.appendChild(newLine);
+          stepIndex++;
+          executeNextStep();
+        }
+        
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      }, step.delay);
+    }
+    
+    executeNextStep();
+  }
+  
+  // Efeito de digitação
+  function typeText(element, text, speed, callback) {
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      if (i < text.length) {
+        element.textContent = '&gt; ' + text.substring(0, i + 1);
+        i++;
+      } else {
+        clearInterval(typeInterval);
+        if (callback) callback();
+      }
+    }, speed);
+  }
+  
+  // Executar ambos
+  function executeBoth() {
+    console.log('🎯 Executando ambos...');
+    
+    startElectricFlow();
+    
+    if (!blockUsed) {
+      useCodeBlock();
+      setTimeout(() => {
+        executeCode();
+      }, 2000);
+    } else {
+      executeCode();
+    }
+  }
+  
+  // Usar bloco de código - AGORA DESAPARECE
+  function useCodeBlock() {
+    console.log('📦 Usando bloco de código...');
+    blockUsed = true;
+    helloBlock.classList.add('used');
+    
+    const terminalRect = codeTerminal.getBoundingClientRect();
+    const blockRect = helloBlock.getBoundingClientRect();
+    
+    // Calcular posição (centro do terminal)
+    const finalX = terminalRect.left - blockRect.left + (terminalRect.width / 2) - (blockRect.width / 2);
+    const finalY = terminalRect.top - blockRect.top + 30;
+    
+    // Animação de voo e desaparecimento
+    helloBlock.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+    helloBlock.style.transform = `translate(${finalX}px, ${finalY}px) scale(0.5)`;
+    helloBlock.style.opacity = '0';
+    
+    // Esconder completamente após animação
+    setTimeout(() => {
+      helloBlock.style.display = 'none';
+      codeStatus.textContent = 'Bloco carregado no terminal';
+      runCodeBtn.disabled = false;
+      
+      // Feedback visual no terminal
+      codeTerminal.style.animation = 'successFlash 0.5s';
+      setTimeout(() => {
+        codeTerminal.style.animation = '';
+      }, 500);
+    }, 800);
+  }
+  
+  // Atualizar progresso
+  function updateProgress(stepIndex) {
+    progressSteps.forEach(step => step.classList.remove('active'));
+    for (let i = 0; i <= stepIndex; i++) {
+      if (progressSteps[i]) progressSteps[i].classList.add('active');
+    }
+  }
+  
+  // Verificar conclusão
+  function checkBothComplete() {
+    if (electricActive && codeActive) {
+      setTimeout(() => {
+        showScreen('complete');
+      }, 2000);
+    }
+  }
+  
+  // ===== EVENT LISTENERS =====
+  startBtn.addEventListener('click', () => showScreen('game'));
+  resetBtn.addEventListener('click', resetGame);
+  runBothBtn.addEventListener('click', executeBoth);
+  playAgainBtn.addEventListener('click', () => showScreen('game'));
+  
+  // No início do JS, adicione:
+const learnModal = document.getElementById('learnModal');
+const closeLearnModal = document.getElementById('closeLearnModal');
+const closeLearnModalBtn = document.getElementById('closeLearnModalBtn');
+
+// Substitua o evento do botão "Aprender Mais":
+learnBtn.addEventListener('click', () => {
+  learnModal.classList.add('active');
+});
+
+// Adicione eventos para fechar o modal:
+closeLearnModal.addEventListener('click', () => {
+  learnModal.classList.remove('active');
+});
+
+closeLearnModalBtn.addEventListener('click', () => {
+  learnModal.classList.remove('active');
+});
+
+// Fechar modal ao clicar fora
+learnModal.addEventListener('click', (e) => {
+  if (e.target === learnModal) {
+    learnModal.classList.remove('active');
+  }
+});
+
+// Fechar modal com ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && learnModal.classList.contains('active')) {
+    learnModal.classList.remove('active');
+  }
+});
+  
+  startElectricBtn.addEventListener('click', startElectricFlow);
+  runCodeBtn.addEventListener('click', executeCode);
+  
+  // ===== DRAG AND DROP =====
+  helloBlock.addEventListener('dragstart', (e) => {
+    if (!blockUsed) {
+      e.dataTransfer.setData('text/plain', 'hello');
+    }
+  });
+  
+  // Mobile touch
+  let isDragging = false;
+  let touchStartX, touchStartY;
+  
+  helloBlock.addEventListener('touchstart', (e) => {
+    if (blockUsed) return;
+    e.preventDefault();
+    isDragging = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  });
+  
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging || blockUsed) return;
+    e.preventDefault();
+    
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    
+    helloBlock.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    helloBlock.style.transition = 'none';
+  });
+  
+  document.addEventListener('touchend', (e) => {
+    if (!isDragging || blockUsed) return;
+    
+    const touch = e.changedTouches[0];
+    const terminalRect = codeTerminal.getBoundingClientRect();
+    
+    if (touch.clientX >= terminalRect.left &&
+        touch.clientX <= terminalRect.right &&
+        touch.clientY >= terminalRect.top &&
+        touch.clientY <= terminalRect.bottom) {
+      useCodeBlock();
+    } else {
+      helloBlock.style.transition = 'transform 0.3s';
+      helloBlock.style.transform = '';
+    }
+    
+    isDragging = false;
+  });
+  
+  // Desktop drag and drop
+  codeTerminal.addEventListener('dragover', (e) => {
+    if (!blockUsed) {
+      e.preventDefault();
+      codeTerminal.style.boxShadow = '0 0 15px rgba(33, 150, 243, 0.4)';
+    }
+  });
+  
+  codeTerminal.addEventListener('dragleave', () => {
+    codeTerminal.style.boxShadow = '';
+  });
+  
+  codeTerminal.addEventListener('drop', (e) => {
+    e.preventDefault();
+    codeTerminal.style.boxShadow = '';
+    if (!blockUsed) {
+      useCodeBlock();
+    }
+  });
+  
+  // ===== INICIALIZAÇÃO =====
+  console.log('✅ DuoFlow Game configurado com sucesso!');
+  
+  // Adicionar estilos dinâmicos
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes successFlash {
+      0%, 100% { box-shadow: 0 0 0 rgba(33, 150, 243, 0); }
+      50% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.5); }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  showScreen('start');
+});

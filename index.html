@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Gustavo Rodrigues - Técnico em Desenvimento de Sistemas e Eletricista de Manutenção Eletroeletrônica">
+  <meta name="keywords" content="desenvolvedor, portfolio, web, eletrônica, projetos">
+  <meta property="og:title" content="Portfólio | Gustavo Rodrigues">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./Css/style.css" />
@@ -301,7 +304,375 @@
       </div>
     </section>
 
-    <section id="contato" class="contact">
+    <!-- Adicione esta seção ANTES do </main> -->
+<section id="duoFlow" class="duoflow-game">
+  <div class="section-header">
+    <h2><i class="fas fa-code-branch"></i> DuoFlow</h2>
+    <div class="section-line"></div>
+    <p class="section-subtitle">Veja como eletricidade e programação funcionam em paralelo!</p>
+  </div>
+  
+  <div class="duoflow-container">
+    
+    <!-- Tela Inicial -->
+    <div id="duoflowStart" class="duoflow-screen active">
+      <div class="duoflow-intro">
+        <div class="parallel-concept">
+          <div class="flow-side electric-flow">
+            <div class="flow-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Eletricidade</h3>
+            <p>Fluxo de elétrons através de fios</p>
+          </div>
+          
+          <div class="flow-divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">
+              <i class="fas fa-equals"></i>
+            </div>
+            <div class="divider-line"></div>
+          </div>
+          
+          <div class="flow-side code-flow">
+            <div class="flow-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Programação</h3>
+            <p>Fluxo de dados através de código</p>
+          </div>
+        </div>
+        
+        <div class="intro-explanation">
+          <h4>Duas Linguagens, Mesmo Conceito</h4>
+          <p>Assim como <strong>elétrons fluem por fios</strong> para acender uma lâmpada, <strong>dados fluem por código</strong> para produzir resultados.</p>
+          <p>Arraste os componentes para ver a mágica acontecer em ambos os lados!</p>
+        </div>
+        
+        <button id="startDuoflow" class="duoflow-start-btn">
+          <i class="fas fa-play"></i> Ver Paralelo
+        </button>
+      </div>
+    </div>
+    
+    <!-- Tela do Jogo -->
+    <div id="duoflowGame" class="duoflow-screen">
+      
+      <!-- Header -->
+      <div class="duoflow-header">
+        <h3><i class="fas fa-random"></i> Paralelo: Fluxo vs Código</h3>
+        <div class="duoflow-progress">
+          <div class="progress-step" data-step="1">Conectar</div>
+          <div class="progress-step" data-step="2">Transmitir</div>
+          <div class="progress-step" data-step="3">Resultado</div>
+        </div>
+      </div>
+      
+      <!-- Container Duplo -->
+      <div class="duoflow-main">
+        
+        <!-- Lado ESQUERDO: Eletricidade -->
+        <div class="flow-container electric-side">
+          <div class="flow-header">
+            <i class="fas fa-bolt"></i>
+            <h4>Fluxo Elétrico</h4>
+            <span class="flow-subtitle">Elétrons → Lâmpada</span>
+          </div>
+          
+          <div class="circuit-simple">
+            <!-- Fonte -->
+            <div class="circuit-part source">
+              <div class="part-icon">
+                <i class="fas fa-battery-full"></i>
+              </div>
+              <div class="part-label">Fonte</div>
+            </div>
+            
+            <!-- Fio -->
+            <div class="wire-container">
+              <div class="wire-visual" id="electricWire">
+                <div class="wire-line"></div>
+                <div class="electron" id="movingElectron">⚡</div>
+              </div>
+              <div class="wire-label">Fio Condutor</div>
+            </div>
+            
+            <!-- Lâmpada -->
+            <div class="circuit-part lamp" id="electricLamp">
+              <div class="part-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="part-label">Lâmpada</div>
+            </div>
+          </div>
+          
+          <div class="electric-controls">
+            <div class="status-display">
+              <!-- <span>Status: </span> -->
+              <span class="status-text" id="electricStatus">Aguardando...</span>
+            </div>
+            <button class="flow-btn electric-btn" id="startElectric">
+              <i class="fas fa-play"></i> Iniciar Fluxo
+            </button>
+          </div>
+          
+          <div class="flow-explanation">
+            <h5><i class="fas fa-info-circle"></i> Como funciona:</h5>
+            <p>Os <strong>elétrons</strong> saem da fonte, viajam pelo fio e chegam à lâmpada, transformando energia elétrica em luz.</p>
+          </div>
+        </div>
+        
+        <!-- Divisor Central -->
+        <div class="flow-divider-main">
+          <div class="divider-vertical">
+            <div class="vs-badge">
+              <span>VS</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Lado DIREITO: Programação -->
+        <div class="flow-container code-side">
+          <div class="flow-header">
+            <i class="fas fa-code"></i>
+            <h4>Fluxo de Código</h4>
+            <span class="flow-subtitle">Comando → Terminal</span>
+          </div>
+          
+          <div class="code-simple">
+            <!-- Bloco de código arrastável -->
+            <div class="code-block-duo" id="helloBlock" draggable="true">
+              <div class="code-block-header">
+                <i class="fas fa-cube"></i>
+                <span>Bloco de Código</span>
+              </div>
+              <div class="code-block-content">
+                <pre>print("Hello World")</pre>
+              </div>
+              <div class="code-block-hint">
+                <i class="fas fa-hand-point-up"></i>
+                <span>Arraste para o terminal</span>
+              </div>
+            </div>
+            
+            <!-- Terminal -->
+            <div class="terminal-container" id="codeTerminal">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="terminal-title">Terminal</span>
+              </div>
+              <div class="terminal-output" id="terminalOutput">
+                <div class="terminal-line">&gt; Sistema pronto...</div>
+                <div class="terminal-line">&gt; Aguardando comando...</div>
+              </div>
+              <div class="terminal-input">
+                <span class="prompt">&gt;</span>
+                <span class="input-text" id="inputText">_</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="code-controls">
+            <div class="status-display">
+              <!-- <span>Status: </span> -->
+              <span class="status-text" id="codeStatus">Aguardando código...</span>
+            </div>
+            <button class="flow-btn code-btn" id="runCode" disabled>
+              <i class="fas fa-play-circle"></i> Executar
+            </button>
+          </div>
+          
+          <div class="flow-explanation">
+            <h5><i class="fas fa-info-circle"></i> Como funciona:</h5>
+            <p>O <strong>comando</strong> é processado pelo sistema, viaja pela execução e produz saída no terminal.</p>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Comparação -->
+      <div class="comparison-box">
+        <h4><i class="fas fa-balance-scale"></i> Paralelo:</h4>
+        <div class="comparison-items">
+          <div class="comparison-item">
+            <span class="comp-icon electric">⚡</span>
+            <span class="comp-text">Elétron = Unidade de energia</span>
+          </div>
+          <div class="comparison-item">
+            <span class="comp-icon code">{}</span>
+            <span class="comp-text">Comando = Unidade de instrução</span>
+          </div>
+          <div class="comparison-item">
+            <span class="comp-icon electric">🔌</span>
+            <span class="comp-text">Fio = Caminho para elétrons</span>
+          </div>
+          <div class="comparison-item">
+            <span class="comp-icon code">📟</span>
+            <span class="comp-text">Terminal = Caminho para dados</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Controles Gerais -->
+      <div class="duoflow-controls">
+        <button class="duoflow-btn secondary" id="resetDuoflow">
+          <i class="fas fa-redo"></i> Reiniciar
+        </button>
+        <button class="duoflow-btn" id="runBoth">
+          <i class="fas fa-play"></i> Executar Ambos
+        </button>
+      </div>
+    </div>
+    
+    <!-- Tela de Conclusão -->
+    <div id="duoflowComplete" class="duoflow-screen">
+      <div class="complete-content">
+        <div class="complete-animation">
+          <div class="parallel-success">
+            <div class="success-side electric-success">
+              <div class="success-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <span>Luz Acesa</span>
+            </div>
+            
+            <div class="success-divider">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <div class="success-side code-success">
+              <div class="success-icon">
+                <i class="fas fa-terminal"></i>
+              </div>
+              <span>Hello World!</span>
+            </div>
+          </div>
+        </div>
+        
+        <h2><i class="fas fa-trophy"></i> Paralelo Completo!</h2>
+        <p class="complete-message">Você viu como eletricidade e programação seguem o mesmo princípio de fluxo!</p>
+        
+        <div class="parallel-insight">
+          <div class="insight-card">
+            <h4><i class="fas fa-bolt"></i> Insight Elétrico:</h4>
+            <p>A eletricidade precisa de um <strong>caminho completo</strong> (circuito fechado) para fluir e produzir luz.</p>
+          </div>
+          <div class="insight-card">
+            <h4><i class="fas fa-code"></i> Insight de Programação:</h4>
+            <p>O código precisa de um <strong>fluxo lógico correto</strong> (sintaxe + execução) para produzir resultados.</p>
+          </div>
+        </div>
+        
+        <div class="complete-actions">
+          <button class="duoflow-btn" id="playAgainDuo">
+            <i class="fas fa-redo"></i> Ver Novamente
+          </button>
+          <button class="duoflow-btn secondary" id="learnMore">
+            <i class="fas fa-book"></i> Aprender Mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Modal Aprender Mais -->
+<div id="learnModal" class="learn-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i class="fas fa-graduation-cap"></i> Aprender Mais</h3>
+      <button class="modal-close" id="closeLearnModal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="learn-columns">
+        <div class="learn-card electric-card">
+          <div class="learn-card-header">
+            <i class="fas fa-bolt"></i>
+            <h4>Conceitos de Eletricidade</h4>
+          </div>
+          <div class="learn-card-content">
+            <ul>
+              <li><strong>Circuito Fechado:</strong> Caminho completo para os elétrons</li>
+              <li><strong>Corrente Elétrica:</strong> Fluxo de elétrons através de um condutor</li>
+              <li><strong>Resistência:</strong> Oposição ao fluxo de corrente</li>
+              <li><strong>Fonte de Energia:</strong> Fornece diferença de potencial (voltagem)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="learn-card code-card">
+          <div class="learn-card-header">
+            <i class="fas fa-code"></i>
+            <h4>Conceitos de Programação</h4>
+          </div>
+          <div class="learn-card-content">
+            <ul>
+              <li><strong>Fluxo de Execução:</strong> Ordem em que as instruções são processadas</li>
+              <li><strong>Funções/Métodos:</strong> Blocos de código reutilizáveis</li>
+              <li><strong>Input/Output:</strong> Entrada e saída de dados</li>
+              <li><strong>Sintaxe:</strong> Regras estruturais da linguagem</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="parallel-table">
+        <h5><i class="fas fa-balance-scale"></i> Paralelos Diretos</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Eletricidade</th>
+              <th>Programação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Elétron → Unidade básica</td>
+              <td>Bit → Unidade básica</td>
+            </tr>
+            <tr>
+              <td>Fio → Caminho condutor</td>
+              <td>Variável → Armazenamento</td>
+            </tr>
+            <tr>
+              <td>Circuito → Caminho fechado</td>
+              <td>Algoritmo → Sequência lógica</td>
+            </tr>
+            <tr>
+              <td>Fonte → Energia</td>
+              <td>Input → Dados de entrada</td>
+            </tr>
+            <tr>
+              <td>Lâmpada → Saída (luz)</td>
+              <td>Print() → Saída (texto)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="learn-tip">
+        <i class="fas fa-lightbulb"></i>
+        <p><strong>Dica:</strong> Tanto na eletricidade quanto na programação, o fluxo precisa ser contínuo e lógico para produzir resultados!</p>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="modal-btn" id="closeLearnModalBtn">
+        <i class="fas fa-check"></i> Entendi!
+      </button>
+    </div>
+  </div>
+</div>
+</section>
+
+    <!-- <section id="contato" class="contact">
       <div class="section-header">
         <h2><i class="fas fa-comment-dots"></i> Vamos Conversar?</h2>
         <div class="section-line"></div>
@@ -350,7 +721,7 @@
           </a>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 
   <footer>
@@ -525,13 +896,13 @@
   </div>
 
   <!-- Efeitos de partículas no fundo -->
-  <div class="footer-particles">
+  <!-- <div class="footer-particles">
     <div class="particle particle-1"></div>
     <div class="particle particle-2"></div>
     <div class="particle particle-3"></div>
     <div class="particle particle-4"></div>
     <div class="particle particle-5"></div>
-  </div>
+  </div> -->
 </footer>
 
   <!-- Modal Aprimorado -->
