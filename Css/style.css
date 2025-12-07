@@ -5237,7 +5237,43 @@ footer {
 }
 
 
-/* ===== MELHORIAS DUOFLOW ===== */
+/* ===== CONTROLE DE VISIBILIDADE DAS TELAS ===== */
+.duoflow-container {
+  position: relative;
+  min-height: 600px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.duoflow-screen {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.duoflow-screen.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Garantir que a tela de conclusão comece escondida */
+#duoflowComplete {
+  display: none !important;
+  opacity: 0;
+}
+
+#duoflowComplete.active {
+  display: block !important;
+  opacity: 1;
+}
+
+/* Ajuste para garantir que os elementos dentro estejam visíveis */
+.duoflow-screen.active > * {
+  visibility: visible;
+}
 
 /* Partículas de elétron */
 .electron-particle {
