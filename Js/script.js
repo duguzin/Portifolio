@@ -411,7 +411,7 @@ const projetos = {
         alt: 'Demonstração do sistema em operação' 
       }
     ],
-    tecnologias: ["JavaScript", "HTML5 Canvas", "CSS3", "Bootstrap", "Web Speech API"],
+    tecnologias: ["JavaScript", "HTML5", "CSS3", "Bootstrap"],
     links: [
       { type: 'github', url: 'https://github.com/duguzin/milkmoo', text: 'Ver código no GitHub' },
       { type: 'demo', url: 'https://milkmoo.demo.com', text: 'Testar demonstração' }
@@ -909,4 +909,5 @@ function updateVisitCount() {
 }
 
 // Executar ao carregar
+
 updateVisitCount();
