@@ -287,7 +287,7 @@ const projetos = {
     features: [
       "Catálogo de produtos com filtros",
       "Carrinho de compras",
-      "Checkout",
+      "Checkou",
       "Painel administrativo"
     ]
   },
@@ -411,7 +411,7 @@ const projetos = {
         alt: 'Demonstração do sistema em operação' 
       }
     ],
-    tecnologias: ["JavaScript", "HTML5", "CSS3", "Bootstrap"],
+    tecnologias: ["JavaScript", "HTML5 Canvas", "CSS3", "Bootstrap", "Web Speech API"],
     links: [
       { type: 'github', url: 'https://github.com/duguzin/milkmoo', text: 'Ver código no GitHub' },
       { type: 'demo', url: 'https://milkmoo.demo.com', text: 'Testar demonstração' }
@@ -723,9 +723,9 @@ document.querySelectorAll('.swiper-container, .swiper-slide, .swiper-wrapper, .m
 // ===== EFETO DE DIGITAÇÃO =====
 const typewriterText = document.querySelector('.typewriter p');
 const texts = [
-  "Desenvolvedor Web & Técnico em Eletrônica",
+  "Técnico em Desenvolvimento de Sistemas",
+  "Eletricista de Manutenção Eletroeletrônica",
   "Criando soluções com código e circuitos",
-  "Especialista em Flutter & Python",
   "Transformando ideias em realidade"
 ];
 
@@ -902,6 +902,7 @@ function updateVisitCount() {
   if (!localStorage.getItem('visitCount')) {
     localStorage.setItem('visitCount', '1');
   } else {
+    
     let count = parseInt(localStorage.getItem('visitCount'));
     count++;
     localStorage.setItem('visitCount', count.toString());
@@ -909,6 +910,62 @@ function updateVisitCount() {
 }
 
 // Executar ao carregar
-
 updateVisitCount();
 
+// ===== BOTÃO DE VOLTAR AO TOPO DO FOOTER =====
+const footerBackToTop = document.getElementById('footerBackToTop');
+
+if (footerBackToTop) {
+  footerBackToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Mostrar/ocultar botão baseado no scroll
+  window.addEventListener('scroll', debounce(() => {
+    if (window.scrollY > 500) {
+      footerBackToTop.style.opacity = '1';
+      footerBackToTop.style.visibility = 'visible';
+      footerBackToTop.style.transform = 'translateY(0)';
+    } else {
+      footerBackToTop.style.opacity = '0';
+      footerBackToTop.style.visibility = 'hidden';
+      footerBackToTop.style.transform = 'translateY(20px)';
+    }
+  }, 10));
+
+  // Estado inicial
+  footerBackToTop.style.transition = 'all 0.3s ease';
+  footerBackToTop.style.opacity = '0';
+  footerBackToTop.style.visibility = 'hidden';
+  footerBackToTop.style.transform = 'translateY(20px)';
+}
+
+// ===== ANIMAÇÃO DE ENTRADA DOS ELEMENTOS DO FOOTER =====
+function animateFooterElements() {
+  const footerElements = document.querySelectorAll('.footer-column, .tech-badge, .social-card');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('animate-in');
+        }, index * 100); // Delay escalonado
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  footerElements.forEach(el => {
+    observer.observe(el);
+  });
+}
+
+// Inicializar quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', () => {
+  animateFooterElements();
+});
