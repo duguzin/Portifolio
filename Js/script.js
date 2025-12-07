@@ -8,7 +8,7 @@ const config = {
   }
 };
 
-// ===== GERENCIAMENTO DE TEMA - VERSÃO CORRIGIDA =====
+// ===== GERENCIAMENTO DE TEMA =====
 const toggleButton = document.getElementById('tema-toggle');
 const mobileTemaToggle = document.getElementById('mobileTemaToggle');
 const body = document.body;
