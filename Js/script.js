@@ -258,7 +258,6 @@ const closeModalBtn = document.querySelector('.close-modal');
 
 // Dados dos projetos
 const projetos = {
-
   cultivamais: {
     titulo: "CultivaMais - E-commerce Agrícola",
     descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores. Sistema completo com catálogo de produtos, carrinho de compras, checkout seguro e painel administrativo. Inclui sistema de avaliações, rastreamento de pedidos e integração com correios.",
@@ -429,7 +428,6 @@ const projetos = {
   }
 };
 
-
 // Inicializar Swiper
 function initSwiper() {
   if (swiperInstance) {
@@ -440,6 +438,9 @@ function initSwiper() {
     slidesPerView: 1,
     spaceBetween: 10,
     loop: false,
+    allowTouchMove: true,
+    preventClicks: true,
+    preventClicksPropagation: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -466,6 +467,13 @@ function initSwiper() {
   });
 }
 
+// Função para atualizar thumbnail ativa
+function updateActiveThumbnail(index) {
+  document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+    thumb.classList.toggle('active', i === index);
+  });
+}
+
 // Abrir modal
 document.querySelectorAll(".project-btn").forEach(button => {
   button.addEventListener("click", () => {
@@ -484,66 +492,69 @@ document.querySelectorAll(".project-btn").forEach(button => {
       thumbnailsContainer.innerHTML = "";
       
       data.midia.forEach((item, index) => {
-  // Slide principal
-  const slide = document.createElement('div');
-  slide.className = 'swiper-slide';
-  
-  if (item.type === 'image') {
-    slide.innerHTML = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
-  } else if (item.type === 'video') {
-    const posterAttr = item.poster ? `poster="${item.poster}"` : '';
-    slide.innerHTML = `
-      <video controls playsinline preload="metadata" ${posterAttr}>
-        <source src="${item.src}" type="video/mp4">
-        Seu navegador não suporta o elemento de vídeo.
-      </video>
-    `;
-  } else if (item.type === 'youtube') {
-    // Renderizar iframe do YouTube
-    slide.innerHTML = `
-      <div class="youtube-container">
-        <iframe 
-          width="100%" 
-          height="100%" 
-          src="${item.src}?rel=0&showinfo=0" 
-          title="${item.alt}" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    `;
-  }
-  
-  mediaContainer.appendChild(slide);
-  
-  // Miniaturas
-  const thumbnail = document.createElement('div');
-  thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-  thumbnail.dataset.index = index;
+        // Slide principal
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        
+        if (item.type === 'image') {
+          slide.innerHTML = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
+        } else if (item.type === 'video') {
+          const posterAttr = item.poster ? `poster="${item.poster}"` : '';
+          slide.innerHTML = `
+            <video controls playsinline preload="metadata" ${posterAttr}>
+              <source src="${item.src}" type="video/mp4">
+              Seu navegador não suporta o elemento de vídeo.
+            </video>
+          `;
+        } else if (item.type === 'youtube') {
+          // Renderizar iframe do YouTube
+          slide.innerHTML = `
+            <div class="youtube-container">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="${item.src}?rel=0&showinfo=0&modestbranding=1" 
+                title="${item.alt}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          `;
+        }
+        
+        mediaContainer.appendChild(slide);
+        
+        // Miniaturas
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.dataset.index = index;
+        thumbnail.setAttribute('role', 'button');
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.setAttribute('aria-label', `Ver ${item.alt || 'imagem'}`);
 
-  let thumbnailContent = '';
-  
-  if (item.type === 'image') {
-    thumbnailContent = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
-  } else if (item.type === 'video' || item.type === 'youtube') {
-    const thumbSrc = item.thumbnail || item.poster || '';
-    if (thumbSrc) {
-      thumbnailContent = `<img src="${thumbSrc}" alt="Thumbnail: ${item.alt}" loading="lazy">`;
-    } else {
-      thumbnailContent = `
-        <div class="video-thumbnail">
-          <i class="fas fa-play"></i>
-          <span>Vídeo</span>
-        </div>
-      `;
-    }
-  }
+        let thumbnailContent = '';
+        
+        if (item.type === 'image') {
+          thumbnailContent = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
+        } else if (item.type === 'video' || item.type === 'youtube') {
+          const thumbSrc = item.thumbnail || item.poster || '';
+          if (thumbSrc) {
+            thumbnailContent = `<img src="${thumbSrc}" alt="Thumbnail: ${item.alt}" loading="lazy">`;
+          } else {
+            thumbnailContent = `
+              <div class="video-thumbnail">
+                <i class="fas fa-play"></i>
+                <span>Vídeo</span>
+              </div>
+            `;
+          }
+        }
 
-  thumbnail.innerHTML = thumbnailContent;
-  thumbnailsContainer.appendChild(thumbnail);
-});
-
+        thumbnail.innerHTML = thumbnailContent;
+        thumbnailsContainer.appendChild(thumbnail);
+      });
+      
       // Configurar tecnologias
       const techTags = document.getElementById("modal-tech-tags");
       techTags.innerHTML = "";
@@ -582,29 +593,67 @@ document.querySelectorAll(".project-btn").forEach(button => {
       
       // Abrir modal
       abrirModal();
+      
+      // Depois de inicializar o Swiper, configurar eventos das thumbnails
+      setTimeout(() => {
+        // Adicionar evento de clique nas thumbnails
+        document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+          thumb.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevenir propagação do clique
+            if (swiperInstance) {
+              swiperInstance.slideTo(index);
+              updateActiveThumbnail(index);
+            }
+          });
+          
+          // Suporte para teclado
+          thumb.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              e.stopPropagation();
+              if (swiperInstance) {
+                swiperInstance.slideTo(index);
+                updateActiveThumbnail(index);
+              }
+            }
+          });
+        });
+        
+        // Atualizar thumbnail ativa quando o slide mudar
+        if (swiperInstance) {
+          swiperInstance.on('slideChange', function() {
+            updateActiveThumbnail(this.activeIndex);
+          });
+        }
+      }, 150);
     }
   });
 });
 
-function updateActiveThumbnail(index) {
-  document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-    thumb.classList.toggle('active', i === index);
-  });
+// Função para prevenir scroll acidental
+function preventScrollPropagation(e) {
+  e.stopPropagation();
 }
 
 function abrirModal() {
   modal.classList.add("show");
+  document.body.classList.add('modal-open');
   document.body.style.overflow = "hidden";
   document.documentElement.style.overflow = "hidden";
+  
+  // Prevenir scroll dentro do modal (exceto no conteúdo)
+  const modalContent = document.querySelector('.modal-content');
+  modalContent.addEventListener('wheel', preventScrollPropagation, { passive: false });
+  modalContent.addEventListener('touchmove', preventScrollPropagation, { passive: false });
+  
+  // Prevenir que cliques dentro do modal fechem ele
+  modalContent.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
   
   // Inicializar Swiper
   setTimeout(() => {
     initSwiper();
-    
-    // Configurar evento de mudança de slide
-    swiperInstance.on('slideChange', function() {
-      updateActiveThumbnail(this.activeIndex);
-    });
   }, 100);
   
   // Foco no modal para acessibilidade
@@ -614,12 +663,27 @@ function abrirModal() {
 
 function fecharModal() {
   modal.classList.remove("show");
+  document.body.classList.remove('modal-open');
   document.body.style.overflow = "";
   document.documentElement.style.overflow = "";
+  
+  // Remover event listeners de prevenção
+  const modalContent = document.querySelector('.modal-content');
+  modalContent.removeEventListener('wheel', preventScrollPropagation);
+  modalContent.removeEventListener('touchmove', preventScrollPropagation);
   
   // Pausar vídeos
   document.querySelectorAll('#modal-media video').forEach(video => {
     video.pause();
+  });
+  
+  // Parar vídeos do YouTube
+  document.querySelectorAll('#modal-media iframe').forEach(iframe => {
+    const src = iframe.src;
+    iframe.src = ''; // Parar o vídeo
+    setTimeout(() => {
+      iframe.src = src.replace('autoplay=1', ''); // Remover autoplay se houver
+    }, 100);
   });
   
   // Destruir Swiper
@@ -629,7 +693,7 @@ function fecharModal() {
   }
 }
 
-// Eventos para fechar modal
+// Eventos para fechar modal - apenas nos elementos corretos
 closeModal?.addEventListener("click", fecharModal);
 closeModalBtn?.addEventListener("click", fecharModal);
 
@@ -640,11 +704,20 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Fechar modal ao clicar fora
+// Fechar modal ao clicar fora (apenas no overlay)
 modal.addEventListener("click", (e) => {
+  // Só fechar se clicar diretamente no overlay (background escuro)
+  // e não em nenhum elemento filho
   if (e.target === modal) {
     fecharModal();
   }
+});
+
+// Prevenir que cliques dentro do carrossel fechem o modal
+document.querySelectorAll('.swiper-container, .swiper-slide, .swiper-wrapper, .media-carousel, .media-thumbnails').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
 });
 
 // ===== EFETO DE DIGITAÇÃO =====
@@ -797,28 +870,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== TOUCH SUPPORT =====
+// ===== TOUCH SUPPORT ATUALIZADO =====
 let touchStartY = 0;
 let touchEndY = 0;
 
 document.addEventListener('touchstart', (e) => {
   touchStartY = e.changedTouches[0].screenY;
-});
+}, { passive: true });
 
 document.addEventListener('touchend', (e) => {
   touchEndY = e.changedTouches[0].screenY;
-  handleSwipe();
-});
-
-function handleSwipe() {
-  const swipeThreshold = 50;
-  const swipeDistance = touchEndY - touchStartY;
   
-  // Swipe para baixo para fechar modal
-  if (modal.classList.contains('show') && swipeDistance > swipeThreshold) {
-    fecharModal();
+  // Só processar swipe se o modal estiver aberto
+  if (modal.classList.contains('show')) {
+    const swipeThreshold = 100; // Aumentei o threshold para evitar fechamento acidental
+    const swipeDistance = touchEndY - touchStartY;
+    
+    // Verificar se é um swipe para baixo significativo
+    // e se o conteúdo do modal não está scrolável ou está no topo
+    const modalContent = document.querySelector('.modal-content');
+    const isAtTop = modalContent.scrollTop === 0;
+    
+    if (swipeDistance > swipeThreshold && isAtTop) {
+      fecharModal();
+    }
   }
-}
+}, { passive: true });
 
 // ===== CONTADOR DE VISITAS (OPCIONAL) =====
 function updateVisitCount() {

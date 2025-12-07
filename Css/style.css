@@ -80,6 +80,80 @@ body {
   position: relative;
 }
 
+/* Adicione ao seu style.css */
+
+/* Prevenir scroll quando modal aberto */
+body.modal-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Melhorar thumbnails */
+.thumbnail {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.thumbnail:active {
+  transform: scale(0.95);
+}
+
+.thumbnail.active {
+  border-color: var(--primary-color) !important;
+  transform: scale(1.05);
+}
+
+/* Container do YouTube responsivo */
+.youtube-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.youtube-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* Feedback visual para thumbnails de vídeo */
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 4px;
+}
+
+.video-thumbnail i {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.video-thumbnail span {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Prevenir seleção de texto no modal */
+.modal-content {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Garantir que o modal overlay não tenha scroll */
+.modal {
+  overflow: hidden;
+}
+
 /* Formas de fundo animadas - RESPONSIVO */
 .bg-shapes {
   position: fixed;
@@ -1180,7 +1254,7 @@ footer {
   transform: translateY(-5px);
 }
 
-/* Modal - COM SCROLL ESTILIZADO */
+/* ===== MODAL - COM SCROLL ESTILIZADO E COMPORTAMENTO MOBILE CORRIGIDO ===== */
 .modal {
   display: none;
   position: fixed;
@@ -1193,6 +1267,8 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  touch-action: none; /* Prevenir scroll do background no mobile */
+  -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
 }
 
 .modal.show {
@@ -1215,7 +1291,9 @@ footer {
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   position: relative;
-  
+  touch-action: pan-y; /* Permitir apenas scroll vertical */
+  -webkit-user-select: none; /* Prevenir seleção de texto no iOS */
+  user-select: none;
   
   /* Estilização personalizada do scroll */
   scrollbar-width: thin;
@@ -1249,11 +1327,16 @@ footer {
   align-items: center;
   padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem);
   border-bottom: 2px solid rgba(var(--primary-rgb), 0.2);
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  z-index: 10;
 }
 
 .modal-header h3 {
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--primary-color);
+  margin: 0;
 }
 
 .close {
@@ -1261,10 +1344,22 @@ footer {
   cursor: pointer;
   color: var(--secondary-color);
   transition: color 0.3s;
+  background: none;
+  border: none;
+  padding: 5px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent; /* Remover highlight no tap mobile */
 }
 
 .close:hover {
   color: var(--primary-color);
+  background: rgba(var(--primary-rgb), 0.1);
 }
 
 .modal-body {
@@ -1284,6 +1379,7 @@ footer {
   border-radius: 15px;
   overflow: hidden;
   margin-bottom: 1rem;
+  touch-action: pan-y pinch-zoom; /* Permitir zoom e scroll no carrossel */
 }
 
 .swiper-slide {
@@ -1292,17 +1388,40 @@ footer {
   justify-content: center;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 15px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.swiper-slide img,
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+  pointer-events: auto;
+}
+
 .swiper-slide video {
   width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 15px;
+  pointer-events: auto;
 }
 
-.swiper-slide iframe {
+/* Container do YouTube responsivo */
+.youtube-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* Proporção 16:9 */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
@@ -1317,11 +1436,12 @@ footer {
   height: clamp(35px, 6vw, 50px);
   border-radius: 50%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.tema-escuro .swiper-button-next,
 body.tema-escuro .swiper-button-prev {
-  background: rgba(26, 26, 46, 0.9);
+  background: rgba(var(--card-bg-rgb, 26, 26, 46), 0.9);
   color: var(--primary-color);
 }
 
@@ -1349,6 +1469,7 @@ body.tema-escuro .swiper-button-prev {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1rem;
+  touch-action: manipulation; /* Melhor resposta ao toque */
 }
 
 .thumbnail {
@@ -1360,6 +1481,8 @@ body.tema-escuro .swiper-button-prev {
   transition: all 0.3s;
   overflow: hidden;
   border: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .thumbnail:hover,
@@ -1369,11 +1492,40 @@ body.tema-escuro .swiper-button-prev {
   transform: scale(1.05);
 }
 
-.thumbnail img,
-.thumbnail video {
+/* Feedback tátil no mobile */
+.thumbnail:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+
+.thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none; /* Impedir arrastar imagem */
+}
+
+/* Estilos para thumbnails de vídeo */
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 8px;
+}
+
+.video-thumbnail i {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.video-thumbnail span {
+  font-size: 10px;
+  font-weight: bold;
 }
 
 /* Informações do projeto no modal */
@@ -1397,12 +1549,17 @@ body.tema-escuro .swiper-button-prev {
   font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   transition: all 0.3s;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .project-link:hover {
   background: var(--secondary-color);
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-link:active {
+  transform: translateY(-1px);
 }
 
 .project-link.demo {
@@ -1450,6 +1607,8 @@ body.tema-escuro .swiper-button-prev {
 
 .feature-list {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .feature-list li {
@@ -1458,6 +1617,7 @@ body.tema-escuro .swiper-button-prev {
   position: relative;
   font-size: clamp(0.9rem, 1.5vw, 1rem);
   color: var(--text-color);
+  line-height: 1.5;
 }
 
 .feature-list li:before {
@@ -1490,6 +1650,10 @@ body.tema-escuro .swiper-button-prev {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  position: sticky;
+  bottom: 0;
+  background: var(--card-bg);
+  z-index: 10;
 }
 
 .close-modal {
@@ -1501,6 +1665,8 @@ body.tema-escuro .swiper-button-prev {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s;
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .close-modal:hover {
@@ -1509,6 +1675,106 @@ body.tema-escuro .swiper-button-prev {
   transform: translateY(-2px);
 }
 
+.close-modal:active {
+  transform: translateY(0);
+}
+
+/* Responsividade específica para modal no mobile */
+@media (max-width: 768px) {
+  .modal {
+    padding: 10px;
+    align-items: flex-end; /* Modal aparece da parte de baixo no mobile */
+  }
+  
+  .modal-content {
+    max-height: 85vh;
+    border-radius: 20px 20px 0 0;
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal-header {
+    padding: 1.2rem 1.5rem 1rem;
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+  }
+  
+  .modal-footer {
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .swiper-container {
+    height: 250px;
+  }
+  
+  .thumbnail {
+    width: 60px;
+    height: 40px;
+  }
+  
+  /* Garantir que o modal não tenha scroll horizontal */
+  .modal-content {
+    overflow-x: hidden;
+  }
+}
+
+/* Melhorias para telas muito pequenas */
+@media (max-width: 480px) {
+  .modal-content {
+    max-width: 95vw;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .project-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .project-link {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .close-modal {
+    width: 100%;
+  }
+}
+
+/* Prevenir scroll do body quando modal aberto */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Adicionar estas variáveis RGB se não existirem */
+:root {
+  --card-bg-rgb: 255, 255, 255;
+}
+
+body.tema-escuro {
+  --card-bg-rgb: 26, 26, 46;
+}
 /* Adicione cores para os novos ícones */
 .fa-dragon {
   color: #ff6b6b;
