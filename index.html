@@ -3,95 +3,436 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./Css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
   <title>Portfólio | Gustavo</title>
 </head>
 <body>
+  <!-- Elementos de fundo decorativos -->
+  <div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+
   <header>
     <nav class="nav-bar">
       <div class="container-nav">
-        <h1>Gustavo.dev</h1>
-    
-        <button id="tema-toggle" class="tema-button">🌙</button>
+        <div class="logo">
+          <div class="logo-icon">⚡</div>
+          <h1>Gustavo<span>.dev</span></h1>
+        </div>
+        
+        <!-- Menu Desktop -->
+        <div class="nav-links">
+          <a href="#home">Início</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#contato">Contato</a>
+        </div>
+        
+        <!-- Botão Tema e Menu Hamburger -->
+        <div class="nav-right">
+          <button id="tema-toggle" class="tema-button">
+            <i class="fas fa-moon"></i>
+          </button>
+          
+          <!-- Menu Hamburger -->
+          <button id="menuToggle" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
       </div>
     </nav>
     
-  </header>
-
-  <section id="home" class="section-1">
-    <div class="container">
-      <h2>Olá! Eu sou <span>Gustavo</span></h2>
-      <p>Desenvolvedor Web & Técnico em Eletrônica</p>
-      <a href="#projetos" class="button-section-1">Ver Projetos</a>
-    </div>
-  </section>
-
-  <section id="sobre" class="section-2">
-    <div class="container">
-      <h2>Sobre mim</h2>
-      <p style="margin-bottom: 10px; text-align: justify;">Sou estudante de Análise e Desenvolvimento de Sistemas na Fatec Carapicuíba, dando continuidade à formação iniciada na ETEC de Carapicuíba (2022–2025), onde adquiri experiência em programação, banco de dados, desenvolvimento web/mobile e integração com IoT. Participei de projetos práticos, como um e-commerce voltado a pequenos agricultores e soluções com Arduino e sensores.</p>
-
-      <p p style="text-align: justify;">Atualmente, também curso Eletricista de Manutenção Eletroeletrônica no SENAI Barueri, desenvolvendo habilidades em comandos elétricos, automação industrial e manutenção de sistemas eletroeletrônicos. Busco unir tecnologia e eletricidade para criar soluções inovadoras, com foco em qualidade, segurança e eficiência.</p>
-    </div>
-  </section>
-
-  <section id="projetos" class="section-3">
-    <div class="container">
-      <h2>Projetos</h2>
-      <div class="cards">
-
-              <div class="card">
-                <div class="card-content">
-                  <h3>Regador Automático</h3>
-                  <p>Projeto com ESP32 e sensores para umidade do solo.</p>
-                </div>
-                
-                <button class="saber-mais-button" data-projeto="regador">Saber mais</button>
-              </div>
-
-              <div class="card">
-
-                  <div class="card-content">
-                    <h3>CultivaMais</h3>
-                    <p>Loja Virtual onde pequenos agricultores podem vender seus produtos.</p>
-                  </div>
-
-                <button class="saber-mais-button" data-projeto="cultivamais">Saber mais</button>
-              </div>
-
-              <div class="card">
-
-                  <div class="card-content">
-                    <h3>Guia360</h3>
-                    <p>Site que auxilia estudantes a se prepararem para um vestibular ou concurso.</p>
-                  </div>
-
-                <button class="saber-mais-button" data-projeto="guia360">Saber mais</button>
-              </div>
+    <!-- Menu Mobile -->
+    <div id="mobileMenu" class="mobile-menu">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <div class="logo-icon">⚡</div>
+          <h1>Gustavo<span>.dev</span></h1>
+        </div>
+        <button id="menuClose" class="menu-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link">
+          <i class="fas fa-home"></i> Início
+        </a>
+        <a href="#sobre" class="mobile-nav-link">
+          <i class="fas fa-user-astronaut"></i> Sobre
+        </a>
+        <a href="#projetos" class="mobile-nav-link">
+          <i class="fas fa-rocket"></i> Projetos
+        </a>
+        <a href="#contato" class="mobile-nav-link">
+          <i class="fas fa-comment-dots"></i> Contato
+        </a>
+        
+        <div class="mobile-menu-footer">
+          <button id="mobileTemaToggle" class="mobile-tema-toggle">
+            <i class="fas fa-moon"></i> Tema Escuro
+          </button>
+        </div>
       </div>
     </div>
-  </section>
+    
+    <!-- Overlay do Menu Mobile -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
+  </header>
 
-  <footer id="contato">
-    <p>© 2025 Gustavo Rodrigues - Todos os direitos reservados.</p>
-    <div class="redes">
-      <a href="https://github.com/duguzin" target="_blank">GitHub</a>
-      <a href="www.linkedin.com/in/gustavo-rodrigues-2288852aa" target="_blank">LinkedIn</a>
-      <a href="https://www.instagram.com/duguzin?igsh=Y2U4MzB1OXdxZzM0" target="_blank">Instagram</a>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="tag">👋 Olá, eu sou</div>
+          <h2>Gustavo <span class="highlight">Rodrigues</span></h2>
+          <div class="typewriter">
+            <p>Desenvolvedor Web & Técnico em Eletrônica</p>
+          </div>
+          <p class="hero-desc">Unindo código e circuitos para criar soluções criativas e funcionais!</p>
+          <div class="hero-buttons">
+            <a href="#projetos" class="btn-primary">
+              <i class="fas fa-rocket"></i> Ver Projetos
+            </a>
+            <a href="#contato" class="btn-secondary">
+              <i class="fas fa-paper-plane"></i> Entrar em Contato
+            </a>
+          </div>
+        </div>
+        <div class="hero-avatar">
+          <div class="avatar-container">
+            <div class="avatar">
+              <div class="avatar-face">
+                <div class="avatar-eyes">
+                  <div class="eye"></div>
+                  <div class="eye"></div>
+                </div>
+                <div class="avatar-smile"></div>
+              </div>
+              <div class="avatar-decoration">
+                <div class="decoration-1">{"</>"}</div>
+                <div class="decoration-2">⚡</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="scroll-down">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="section-header">
+        <h2><i class="fas fa-user-astronaut"></i> Sobre Mim</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <div class="about-card">
+            <h3><i class="fas fa-graduation-cap"></i> Formação</h3>
+            <p>Sou estudante de <span class="highlight-text">Análise e Desenvolvimento de Sistemas</span> na Fatec Carapicuíba, com formação técnica em Desenvolvimento de Sistemas pela ETEC Carapicuíba (2022-2025).</p>
+            <p>Atualmente também curso <span class="highlight-text">Eletricista de Manutenção Eletroeletrônica</span> no SENAI Barueri, desenvolvendo habilidades em automação industrial e sistemas elétricos.</p>
+          </div>
+          
+          <div class="about-card">
+            <h3><i class="fas fa-bullseye"></i> Objetivo</h3>
+            <p>Busco unir tecnologia e eletricidade para criar soluções inovadoras, com foco em qualidade, segurança e eficiência. Meu objetivo é desenvolver projetos que integrem software e hardware de forma criativa.</p>
+          </div>
+          
+          <div class="skills">
+            <h3><i class="fas fa-code"></i> Habilidades</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Flutter/Dart</span>
+              <span class="skill-tag">Python/Flask</span>
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Arduino/ESP32</span>
+              <span class="skill-tag">IoT</span>
+              <span class="skill-tag">Comandos Elétricos</span>
+              <span class="skill-tag">Automação</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-visual">
+          <div class="floating-icons">
+            <div class="floating-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="floating-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="floating-icon"><i class="fas fa-database"></i></div>
+            <div class="floating-icon"><i class="fas fa-robot"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="projects">
+      <div class="section-header">
+        <h2><i class="fas fa-rocket"></i> Meus Projetos</h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Ideias que ganharam vida através do código e circuitos</p>
+      </div>
+      
+      <div class="project-cards">
+        <!-- Projetos originais -->
+        <!-- <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <div class="project-content">
+            <h3>Regador Automático</h3>
+            <p>Projeto com ESP32 e sensores para monitoramento e controle de umidade do solo.</p>
+            <div class="project-tech">
+              <span>ESP32</span>
+              <span>IoT</span>
+              <span>C++</span>
+            </div>
+          </div>
+          <button class="project-btn" data-projeto="regador">
+            <i class="fas fa-expand-alt"></i> Detalhes
+          </button>
+        </div> -->
+        
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="project-content">
+            <h3>CultivaMais</h3>
+            <p>E-commerce para pequenos agricultores venderem seus produtos diretamente aos consumidores.</p>
+            <div class="project-tech">
+              <span>Web</span>
+              <span>E-commerce</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+          <button class="project-btn" data-projeto="cultivamais">
+            <i class="fas fa-expand-alt"></i> Detalhes
+          </button>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="project-content">
+            <h3>Guia360</h3>
+            <p>Plataforma educacional para auxiliar estudantes na preparação para vestibulares e concursos.</p>
+            <div class="project-tech">
+              <span>Educação</span>
+              <span>Web</span>
+              <span>Design</span>
+            </div>
+          </div>
+          <button class="project-btn" data-projeto="guia360">
+            <i class="fas fa-expand-alt"></i> Detalhes
+          </button>
+        </div>
+        
+        <!-- Novos projetos -->
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-dragon"></i>
+          </div>
+          <div class="project-content">
+            <h3>FitBattle</h3>
+            <p>App gamificado com temática medieval para motivar prática de exercícios físicos.</p>
+            <div class="project-tech">
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>Firebase</span>
+              <span>Mobile</span>
+            </div>
+          </div>
+          <button class="project-btn" data-projeto="fitbattle">
+            <i class="fas fa-expand-alt"></i> Detalhes
+          </button>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="project-content">
+            <h3>Banco Digital Python</h3>
+            <p>Sistema bancário digital completo com back-end Python/Flask e front-end JavaScript.</p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Flask</span>
+              <span>JavaScript</span>
+              <span>API REST</span>
+              <span>Web</span>
+            </div>
+          </div>
+          <button class="project-btn" data-projeto="bancodigital">
+            <i class="fas fa-expand-alt"></i> Detalhes
+          </button>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-ice-cream"></i>
+          </div>
+          <div class="project-content">
+            <h3>MilkMoo</h3>
+            <p>Sistema triplo de atendimento para sorveteria com 3 interfaces integradas em tempo real.</p>
+            <div class="project-tech">
+              <span>JavaScript</span>
+              <span>Bootstrap</span>
+              <span>Web</span>
+              <span>Canvas</span>
+            </div>
+          </div>
+          <button class="project-btn" data-projeto="milkmoo">
+            <i class="fas fa-expand-alt"></i> Detalhes
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="section-header">
+        <h2><i class="fas fa-comment-dots"></i> Vamos Conversar?</h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Entre em contato para colaborações ou apenas para trocar ideias!</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>gustavorodriguessud87@gmail.com</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Localização</h3>
+            <p>Carapicuíba, SP</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3>Disponibilidade</h3>
+            <p>Aberto a novas oportunidades</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="https://github.com/duguzin" target="_blank" class="social-link github">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/gustavo-rodrigues-2288852aa" target="_blank" class="social-link linkedin">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.instagram.com/duguzin?igsh=Y2U4MzB1OXdxZzM0" target="_blank" class="social-link instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo-icon">⚡</div>
+        <h2>Gustavo<span>.dev</span></h2>
+      </div>
+      <p class="footer-text">Unindo criatividade, tecnologia e eletrônica para construir o futuro</p>
+      <div class="footer-links">
+        <a href="#home">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <p class="copyright">© 2025 Gustavo Rodrigues - Todos os direitos reservados.</p>
     </div>
   </footer>
 
+  <!-- Modal Aprimorado -->
   <div class="modal" id="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <img id="modal-img" src="" alt="Imagem do Projeto" />
-      <h3 id="modal-title"></h3>
-      <p id="modal-desc"></p>
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <!-- Carrossel de Imagens/Vídeos -->
+        <div class="media-carousel">
+          <div class="swiper-container">
+            <div class="swiper-wrapper" id="modal-media">
+              <!-- Slides serão adicionados dinamicamente -->
+            </div>
+            
+            <!-- Navegação -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            
+            <!-- Paginação -->
+            <!-- <div class="swiper-pagination"></div> -->
+          </div>
+          
+          <!-- Miniaturas -->
+          <div class="media-thumbnails" id="modal-thumbnails">
+            <!-- Miniaturas serão adicionadas dinamicamente -->
+          </div>
+          
+        </div>
+        
+        <div class="modal-info">
+          <div class="project-links" id="modal-links">
+            <!-- Links serão adicionados dinamicamente -->
+          </div>
+          
+          <div class="project-description">
+            <h4><i class="fas fa-info-circle"></i> Sobre o Projeto</h4>
+            <p id="modal-desc"></p>
+          </div>
+          
+          <div class="modal-tech">
+            <h4><i class="fas fa-tools"></i> Tecnologias Utilizadas</h4>
+            <div id="modal-tech-tags"></div>
+          </div>
+          
+          <div class="project-features" id="modal-features">
+            <!-- Features serão adicionadas dinamicamente -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary close-modal">Fechar</button>
+      </div>
     </div>
   </div>
-  
 
-  <script src="./Js/script.js"></script>
+  <!-- Botão Voltar ao Topo -->
+  <button id="backToTop" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 </html>
