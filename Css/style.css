@@ -1659,7 +1659,7 @@ body.tema-escuro .swiper-button-prev {
   padding: 1.5rem 2rem;
   border-top: 2px solid rgba(var(--primary-rgb), 0.2);
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 1rem;
   position: sticky;
   bottom: 0;
@@ -1762,7 +1762,7 @@ body.tema-escuro .swiper-button-prev {
   }
   
   .modal-footer {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
   
   .close-modal {
@@ -1924,7 +1924,7 @@ body.tema-escuro {
   }
   
   .modal-footer {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
   
   .close-modal {
