@@ -6443,3 +6443,96 @@ body:not(.tema-escuro) .modal-btn:hover {
     margin: 10px 0;
   }
 }
+
+/* Adicione ao final do seu style.css */
+
+/* Melhorias para o modal principal */
+body.modal-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal.show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content {
+  margin: 20px auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevenir bounce no iOS */
+.modal {
+  overscroll-behavior: contain;
+}
+
+/* Melhorias para drag & drop do DuoFlow */
+.code-block-duo.dragging {
+  opacity: 0.7 !important;
+  transform: scale(0.95) !important;
+  box-shadow: 0 10px 30px rgba(54, 209, 220, 0.3) !important;
+}
+
+.code-block-duo.used {
+  opacity: 0.5;
+  cursor: default !important;
+  pointer-events: none;
+}
+
+/* Feedback visual para drag & drop */
+.code-block-duo.drag-feedback {
+  animation: pulseFeedback 0.5s ease-in-out;
+}
+
+@keyframes pulseFeedback {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+}
+
+/* Terminal animation */
+.terminal-container.terminal-active {
+  animation: terminalGlow 2s ease-in-out;
+}
+
+@keyframes terminalGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(33, 150, 243, 0); }
+  50% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.3); }
+}
+
+/* Melhorar acessibilidade para touch */
+@media (hover: none) and (pointer: coarse) {
+  .code-block-duo {
+    min-height: 60px;
+    padding: 1rem;
+  }
+  
+  .code-block-hint {
+    font-size: 0.8rem;
+  }
+  
+  .flow-btn, .duoflow-btn {
+    min-height: 44px;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  /* Prevenir zoom em inputs */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+/* Suporte para iOS Safe Areas */
+@supports (padding: max(0px)) {
+  .modal-content {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}

@@ -8,6 +8,178 @@ const config = {
   }
 };
 
+
+const projetos = {
+  cultivamais: {
+    titulo: "CultivaMais - E-commerce Agrícola",
+    descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores. Sistema completo com catálogo de produtos, carrinho de compras, checkout seguro e painel administrativo. Inclui sistema de avaliações, rastreamento de pedidos e integração com correios.",
+    midia: [
+      { 
+        type: 'image', 
+        src: 'Imagens/CultivaMais/Imagens/foto-1.png', 
+        alt: 'Página inicial do e-commerce' 
+      },
+      { 
+        type: 'image', 
+        src: 'Imagens/CultivaMais/Imagens/foto-2.png', 
+        alt: 'Catálogo de Produto' 
+      },
+      { 
+        type: 'youtube', 
+        src: 'https://www.youtube.com/embed/MdgFU4I6zS8', 
+        thumbnail: 'Imagens/CultivaMais/Imagens/foto-2.png',
+        alt: 'Tour completo pela plataforma' 
+      }
+    ],
+    tecnologias: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "Bootstrap", "jQuery"],
+    links: [
+      { type: 'github', url: 'https://github.com/duguzin/CultivaMais-V2', text: 'Ver código no GitHub' },
+      { type: 'demo', url: '', text: 'Ver demonstração' }
+    ],
+    features: [
+      "Catálogo de produtos com filtros",
+      "Carrinho de compras",
+      "Checkou",
+      "Painel administrativo"
+    ]
+  },
+
+  guia360: {
+    titulo: "Guia360 - Plataforma Educacional",
+    descricao: "Sistema educacional completo para auxiliar estudantes na preparação para vestibulares e concursos.",
+    midia: [
+      { 
+        type: 'image', 
+        src: './Imagens/Guia360/Imagens/foto-1.png', 
+        alt: 'Página Inicial' 
+      },
+      { 
+        type: 'image', 
+        src: './Imagens/Guia360/Imagens/foto-2.png', 
+        alt: 'Página Aulão' 
+      },
+      { 
+        type: 'image', 
+        src: './Imagens/Guia360/Imagens/foto-3.png', 
+        alt: 'Página Simulados' 
+      },
+      { 
+        type: 'youtube', 
+        src: 'https://www.youtube.com/embed/Q4ukvCQg1gQ', 
+        thumbnail: './Imagens/Guia360/Imagens/foto-1.png',
+        alt: 'Demonstração da plataforma educacional' 
+      }
+    ],
+    tecnologias: ["HTML5", "CSS3", "JavaScript"],
+    links: [
+      { type: 'github', url: 'https://github.com/duguzin/Guia360-V2', text: 'Ver código no GitHub' },
+      { type: 'demo', url: 'https://duguzin.github.io/Guia360-V2', text: 'Ver demonstração' }
+    ],
+    features: [
+      "Videoaulas",
+      "Simulados",
+      "Plano de estudos adaptativo"
+    ]
+  },
+
+  fitbattle: {
+    titulo: "FitBattle - App Gamificado de Exercícios",
+    descricao: "Aplicativo móvel gamificado com temática medieval para motivar prática de exercícios físicos. Os usuários enfrentam desafios, participam de batalhas e sobem de nível ao completar exercícios. Integrado com wearables e com sistema de recompensas e rankings.",
+    midia: [
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-1.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-2.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-3.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-4.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-5.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-6.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-7.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-8.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-9.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-10.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-11.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-12.jpeg', alt: '' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-13.jpeg', alt: '' },
+      { 
+        type: 'youtube', 
+        src: 'https://www.youtube.com/embed/bnOwb9DLsL8', 
+        thumbnail: './Imagens/FitBattle/Imagens/foto-3.jpeg',
+        alt: 'Gameplay completo do FitBattle' 
+      }
+    ],
+    tecnologias: ["Flutter", "Dart", "Firebase", "Firestore", "Firebase Auth"],
+    links: [
+      { type: 'github', url: '', text: 'Ver código no GitHub' },
+      { type: 'demo', url: '', text: 'Em breve na Play Store' }
+    ],
+    features: [
+      "Desafios diários e semanais",
+      "Sistema de batalhas",
+      "Sistema de conquistas e recompensas",
+      "Ranking global e entre amigos",
+      "Modo offline para treinos"
+    ]
+  },
+
+  bancodigital: {
+    titulo: "Banco Digital Python",
+    descricao: "Sistema bancário digital completo desenvolvido com Python/Flask no back-end e JavaScript puro no front-end. Inclui todas as operações bancárias básicas: criação de conta, depósitos, saques, transferências, extrato e investimentos.",
+    midia: [
+      { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-1.png', alt: 'Tela de Login' },
+      { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-2.png', alt: 'Tela de Cadastro' },
+      { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-3.png', alt: 'Dashboard da conta bancária' },
+      { 
+        type: 'youtube', 
+        src: 'https://www.youtube.com/embed/q3AduCtIXV4', 
+        thumbnail: './Imagens/BancoDigitalPython/Imagens/foto-3.png',
+        alt: 'Demonstração completa das funcionalidades' 
+      }
+    ],
+    tecnologias: ["HTML5", "CSS3", "Python", "Flask", "REST API", "JavaScript"],
+    links: [
+      { type: 'github', url: 'https://github.com/duguzin/BancoDigitalPython', text: 'Ver código no GitHub' },
+      { type: 'demo', url: 'https://github.com/duguzin/BancoDigitalPython', text: 'Testar demonstração' }
+    ],
+    features: [
+      "Criação de conta",
+      "Depósitos, saques e transferências",
+      "Extrato",
+    ]
+  },
+
+  milkmoo: {
+    titulo: "MilkMoo - Sistema de Sorveteria",
+    descricao: "Desenvolvi um sistema completo de painel de atendimento para a faculdade, criando a sorveteria fictícia MilkMoo com três telas integradas: cliente, atendente e painel de TV. O cliente gera a senha, o atendente controla a fila com chamada por voz e a TV exibe tudo em tempo real. O projeto é 100% frontend, usa LocalStorage para comunicação e tem visual cartoon com modo festa. Tecnologias: HTML, CSS, JS, Bootstrap, Web Speech API e Canvas.",
+    midia: [
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-1.png', alt: '' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-2.png', alt: '' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-3.png', alt: '' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-4.png', alt: '' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-5.png', alt: '' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-6.png', alt: '' },
+      { 
+        type: 'youtube', 
+        src: 'https://www.youtube.com/embed/QRz-Wo3-cIs', 
+        thumbnail: './Imagens/MilkMoo/Imagens/foto-1.png',
+        alt: 'Demonstração do sistema em operação' 
+      }
+    ],
+    tecnologias: ["JavaScript", "HTML5 Canvas", "CSS3", "Bootstrap", "Web Speech API"],
+    links: [
+      { type: 'github', url: 'https://github.com/duguzin/milkmoo', text: 'Ver código no GitHub' },
+      { type: 'demo', url: 'https://milkmoo.demo.com', text: 'Testar demonstração' }
+    ],
+    features: [
+      "Geração de senhas pelo cliente ao escolher o produto",
+      "Chamada por voz das senhas no painel do atendente",
+      "Exibição em tempo real no painel de TV",
+      "Sincronização entre as 3 telas usando apenas LocalStorage",
+      "Modo Festa com efeitos visuais",
+      "Histórico de senhas chamadas",
+      "Simulação completa do fluxo de atendimento (cliente → atendente → TV)"
+    ]
+  }
+};
+
 // ===== GERENCIAMENTO DE TEMA =====
 const toggleButton = document.getElementById('tema-toggle');
 const mobileTemaToggle = document.getElementById('mobileTemaToggle');
@@ -250,183 +422,15 @@ backToTop?.addEventListener('click', () => {
   });
 });
 
-// ===== MODAL DE PROJETOS =====
+// ===== MODAL DE PROJETOS - VERSÃO CORRIGIDA (SEM FECHAR AO CLICAR FORA) =====
 let swiperInstance = null;
 const modal = document.getElementById('modal');
 const closeModal = document.querySelector('.close');
 const closeModalBtn = document.querySelector('.close-modal');
 
-// Dados dos projetos
-const projetos = {
-  cultivamais: {
-    titulo: "CultivaMais - E-commerce Agrícola",
-    descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores. Sistema completo com catálogo de produtos, carrinho de compras, checkout seguro e painel administrativo. Inclui sistema de avaliações, rastreamento de pedidos e integração com correios.",
-    midia: [
-      { 
-        type: 'image', 
-        src: 'Imagens/CultivaMais/Imagens/foto-1.png', 
-        alt: 'Página inicial do e-commerce' 
-      },
-      { 
-        type: 'image', 
-        src: 'Imagens/CultivaMais/Imagens/foto-2.png', 
-        alt: 'Catálogo de Produto' 
-      },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/MdgFU4I6zS8', 
-        thumbnail: 'Imagens/CultivaMais/Imagens/foto-2.png',
-        alt: 'Tour completo pela plataforma' 
-      }
-    ],
-    tecnologias: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "Bootstrap", "jQuery"],
-    links: [
-      { type: 'github', url: 'https://github.com/duguzin/CultivaMais-V2', text: 'Ver código no GitHub' },
-      { type: 'demo', url: '', text: 'Ver demonstração' }
-    ],
-    features: [
-      "Catálogo de produtos com filtros",
-      "Carrinho de compras",
-      "Checkou",
-      "Painel administrativo"
-    ]
-  },
-
-  guia360: {
-    titulo: "Guia360 - Plataforma Educacional",
-    descricao: "Sistema educacional completo para auxiliar estudantes na preparação para vestibulares e concursos.",
-    midia: [
-      { 
-        type: 'image', 
-        src: './Imagens/Guia360/Imagens/foto-1.png', 
-        alt: 'Página Inicial' 
-      },
-      { 
-        type: 'image', 
-        src: './Imagens/Guia360/Imagens/foto-2.png', 
-        alt: 'Página Aulão' 
-      },
-      { 
-        type: 'image', 
-        src: './Imagens/Guia360/Imagens/foto-3.png', 
-        alt: 'Página Simulados' 
-      },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/Q4ukvCQg1gQ', 
-        thumbnail: './Imagens/Guia360/Imagens/foto-1.png',
-        alt: 'Demonstração da plataforma educacional' 
-      }
-    ],
-    tecnologias: ["HTML5", "CSS3", "JavaScript"],
-    links: [
-      { type: 'github', url: 'https://github.com/duguzin/Guia360-V2', text: 'Ver código no GitHub' },
-      { type: 'demo', url: 'https://duguzin.github.io/Guia360-V2', text: 'Ver demonstração' }
-    ],
-    features: [
-      "Videoaulas",
-      "Simulados",
-      "Plano de estudos adaptativo"
-    ]
-  },
-
-  fitbattle: {
-    titulo: "FitBattle - App Gamificado de Exercícios",
-    descricao: "Aplicativo móvel gamificado com temática medieval para motivar prática de exercícios físicos. Os usuários enfrentam desafios, participam de batalhas e sobem de nível ao completar exercícios. Integrado com wearables e com sistema de recompensas e rankings.",
-    midia: [
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-1.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-2.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-3.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-4.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-5.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-6.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-7.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-8.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-9.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-10.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-11.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-12.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-13.jpeg', alt: '' },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/bnOwb9DLsL8', 
-        thumbnail: './Imagens/FitBattle/Imagens/foto-3.jpeg',
-        alt: 'Gameplay completo do FitBattle' 
-      }
-    ],
-    tecnologias: ["Flutter", "Dart", "Firebase", "Firestore", "Firebase Auth"],
-    links: [
-      { type: 'github', url: '', text: 'Ver código no GitHub' },
-      { type: 'demo', url: '', text: 'Em breve na Play Store' }
-    ],
-    features: [
-      "Desafios diários e semanais",
-      "Sistema de batalhas",
-      "Sistema de conquistas e recompensas",
-      "Ranking global e entre amigos",
-      "Modo offline para treinos"
-    ]
-  },
-
-  bancodigital: {
-    titulo: "Banco Digital Python",
-    descricao: "Sistema bancário digital completo desenvolvido com Python/Flask no back-end e JavaScript puro no front-end. Inclui todas as operações bancárias básicas: criação de conta, depósitos, saques, transferências, extrato e investimentos.",
-    midia: [
-      { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-1.png', alt: 'Tela de Login' },
-      { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-2.png', alt: 'Tela de Cadastro' },
-      { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-3.png', alt: 'Dashboard da conta bancária' },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/q3AduCtIXV4', 
-        thumbnail: './Imagens/BancoDigitalPython/Imagens/foto-3.png',
-        alt: 'Demonstração completa das funcionalidades' 
-      }
-    ],
-    tecnologias: ["HTML5", "CSS3", "Python", "Flask", "REST API", "JavaScript"],
-    links: [
-      { type: 'github', url: 'https://github.com/duguzin/BancoDigitalPython', text: 'Ver código no GitHub' },
-      { type: 'demo', url: 'https://github.com/duguzin/BancoDigitalPython', text: 'Testar demonstração' }
-    ],
-    features: [
-      "Criação de conta",
-      "Depósitos, saques e transferências",
-      "Extrato",
-    ]
-  },
-
-  milkmoo: {
-    titulo: "MilkMoo - Sistema de Sorveteria",
-    descricao: "Desenvolvi um sistema completo de painel de atendimento para a faculdade, criando a sorveteria fictícia MilkMoo com três telas integradas: cliente, atendente e painel de TV. O cliente gera a senha, o atendente controla a fila com chamada por voz e a TV exibe tudo em tempo real. O projeto é 100% frontend, usa LocalStorage para comunicação e tem visual cartoon com modo festa. Tecnologias: HTML, CSS, JS, Bootstrap, Web Speech API e Canvas.",
-    midia: [
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-1.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-2.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-3.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-4.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-5.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-6.png', alt: '' },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/QRz-Wo3-cIs', 
-        thumbnail: './Imagens/MilkMoo/Imagens/foto-1.png',
-        alt: 'Demonstração do sistema em operação' 
-      }
-    ],
-    tecnologias: ["JavaScript", "HTML5 Canvas", "CSS3", "Bootstrap", "Web Speech API"],
-    links: [
-      { type: 'github', url: 'https://github.com/duguzin/milkmoo', text: 'Ver código no GitHub' },
-      { type: 'demo', url: 'https://milkmoo.demo.com', text: 'Testar demonstração' }
-    ],
-    features: [
-      "Geração de senhas pelo cliente ao escolher o produto",
-      "Chamada por voz das senhas no painel do atendente",
-      "Exibição em tempo real no painel de TV",
-      "Sincronização entre as 3 telas usando apenas LocalStorage",
-      "Modo Festa com efeitos visuais",
-      "Histórico de senhas chamadas",
-      "Simulação completa do fluxo de atendimento (cliente → atendente → TV)"
-    ]
-  }
-};
+// Variáveis para controle de posição
+let lastScrollPosition = 0;
+let modalOpenedFromPosition = 0;
 
 // Inicializar Swiper
 function initSwiper() {
@@ -474,7 +478,175 @@ function updateActiveThumbnail(index) {
   });
 }
 
-// Abrir modal
+// Prevenir comportamento padrão do scroll
+function preventDefault(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}
+
+// Abrir modal - VERSÃO CORRIGIDA
+function abrirModal() {
+  // Salvar posição atual ANTES de abrir o modal
+  modalOpenedFromPosition = window.scrollY || document.documentElement.scrollTop;
+  
+  modal.classList.add("show");
+  document.body.classList.add('modal-open');
+  
+  // Salvar posição de scroll
+  lastScrollPosition = modalOpenedFromPosition;
+  
+  // Prevenir scroll acidental no iOS
+  const modalContent = document.querySelector('.modal-content');
+  modalContent.addEventListener('wheel', preventDefault, { passive: false });
+  modalContent.addEventListener('touchmove', preventDefault, { passive: false });
+  modalContent.addEventListener('scroll', preventDefault, { passive: false });
+  
+  // Adicionar classe para prevenir scroll do body
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+  document.body.style.top = `-${modalOpenedFromPosition}px`;
+  
+  // Inicializar Swiper
+  setTimeout(() => {
+    initSwiper();
+  }, 100);
+  
+  // Foco no modal para acessibilidade
+  modal.setAttribute('tabindex', '-1');
+  modal.focus();
+  
+  // Adicionar listener para tecla ESC
+  document.addEventListener('keydown', handleEscKey);
+}
+
+// Fechar modal - VERSÃO CORRIGIDA
+function fecharModal() {
+  modal.classList.remove("show");
+  document.body.classList.remove('modal-open');
+  
+  // Remover classes de prevenção de scroll
+  document.body.style.position = '';
+  document.body.style.width = '';
+  document.body.style.top = '';
+  
+  // Restaurar overflow
+  setTimeout(() => {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }, 10);
+  
+  // Remover event listeners de prevenção
+  const modalContent = document.querySelector('.modal-content');
+  if (modalContent) {
+    modalContent.removeEventListener('wheel', preventDefault);
+    modalContent.removeEventListener('touchmove', preventDefault);
+    modalContent.removeEventListener('scroll', preventDefault);
+  }
+  
+  // Remover listener de ESC
+  document.removeEventListener('keydown', handleEscKey);
+  
+  // Pausar vídeos
+  document.querySelectorAll('#modal-media video').forEach(video => {
+    video.pause();
+  });
+  
+  // Parar vídeos do YouTube
+  document.querySelectorAll('#modal-media iframe').forEach(iframe => {
+    const src = iframe.src;
+    iframe.src = ''; // Parar o vídeo
+    setTimeout(() => {
+      iframe.src = src.replace('autoplay=1', ''); // Remover autoplay se houver
+    }, 100);
+  });
+  
+  // Destruir Swiper
+  if (swiperInstance) {
+    swiperInstance.destroy(true, true);
+    swiperInstance = null;
+  }
+  
+  // Restaurar posição de scroll APÓS um pequeno delay
+  setTimeout(() => {
+    window.scrollTo({
+      top: lastScrollPosition,
+      behavior: 'auto'
+    });
+  }, 20);
+}
+
+// Função para lidar com tecla ESC (mantemos pois é boa para acessibilidade)
+function handleEscKey(e) {
+  if (e.key === 'Escape' && modal.classList.contains('show')) {
+    e.preventDefault();
+    e.stopPropagation();
+    fecharModal();
+  }
+}
+
+// Eventos para fechar modal - APENAS nos botões X e Fechar
+closeModal?.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  fecharModal();
+});
+
+closeModalBtn?.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  fecharModal();
+});
+
+// REMOVEMOS o evento de clique fora para fechar
+// modal.addEventListener("click", (e) => { ... }); // <-- Comentado/Não usado
+
+// Prevenir que cliques dentro do carrossel fechem o modal
+document.querySelectorAll('.swiper-container, .swiper-slide, .swiper-wrapper, .media-carousel, .media-thumbnails').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+});
+
+// Prevenir scroll do body quando modal aberto - MAS NÃO FECHAR
+modal.addEventListener('wheel', (e) => {
+  if (modal.classList.contains('show')) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}, { passive: false });
+
+modal.addEventListener('touchmove', (e) => {
+  if (modal.classList.contains('show')) {
+    // Permitir scroll dentro do modal, mas NÃO fechá-lo
+    const modalContent = modal.querySelector('.modal-content');
+    const isScrollable = modalContent.scrollHeight > modalContent.clientHeight;
+    
+    if (!isScrollable || e.target === modal) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+}, { passive: false });
+
+// ===== TOUCH SUPPORT MODIFICADO (SEM FECHAR AO DESLIZAR) =====
+let touchStartY = 0;
+let touchEndY = 0;
+
+document.addEventListener('touchstart', (e) => {
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+  touchEndY = e.changedTouches[0].screenY;
+  
+  // REMOVEMOS a lógica de fechar ao deslizar
+  // O modal agora só fecha pelos botões X e Fechar
+  // NÃO fazemos nada aqui
+  
+}, { passive: true });
+
+// Abrir modal de projetos (mantenha a função existente, apenas ajuste a chamada para usar a nova abrirModal)
 document.querySelectorAll(".project-btn").forEach(button => {
   button.addEventListener("click", () => {
     const projetoId = button.dataset.projeto;
@@ -630,96 +802,6 @@ document.querySelectorAll(".project-btn").forEach(button => {
   });
 });
 
-// Função para prevenir scroll acidental
-function preventScrollPropagation(e) {
-  e.stopPropagation();
-}
-
-function abrirModal() {
-  modal.classList.add("show");
-  document.body.classList.add('modal-open');
-  document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
-  
-  // Prevenir scroll dentro do modal (exceto no conteúdo)
-  const modalContent = document.querySelector('.modal-content');
-  modalContent.addEventListener('wheel', preventScrollPropagation, { passive: false });
-  modalContent.addEventListener('touchmove', preventScrollPropagation, { passive: false });
-  
-  // Prevenir que cliques dentro do modal fechem ele
-  modalContent.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-  
-  // Inicializar Swiper
-  setTimeout(() => {
-    initSwiper();
-  }, 100);
-  
-  // Foco no modal para acessibilidade
-  modal.setAttribute('tabindex', '-1');
-  modal.focus();
-}
-
-function fecharModal() {
-  modal.classList.remove("show");
-  document.body.classList.remove('modal-open');
-  document.body.style.overflow = "";
-  document.documentElement.style.overflow = "";
-  
-  // Remover event listeners de prevenção
-  const modalContent = document.querySelector('.modal-content');
-  modalContent.removeEventListener('wheel', preventScrollPropagation);
-  modalContent.removeEventListener('touchmove', preventScrollPropagation);
-  
-  // Pausar vídeos
-  document.querySelectorAll('#modal-media video').forEach(video => {
-    video.pause();
-  });
-  
-  // Parar vídeos do YouTube
-  document.querySelectorAll('#modal-media iframe').forEach(iframe => {
-    const src = iframe.src;
-    iframe.src = ''; // Parar o vídeo
-    setTimeout(() => {
-      iframe.src = src.replace('autoplay=1', ''); // Remover autoplay se houver
-    }, 100);
-  });
-  
-  // Destruir Swiper
-  if (swiperInstance) {
-    swiperInstance.destroy(true, true);
-    swiperInstance = null;
-  }
-}
-
-// Eventos para fechar modal - apenas nos elementos corretos
-closeModal?.addEventListener("click", fecharModal);
-closeModalBtn?.addEventListener("click", fecharModal);
-
-// Fechar modal com ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modal.classList.contains('show')) {
-    fecharModal();
-  }
-});
-
-// Fechar modal ao clicar fora (apenas no overlay)
-modal.addEventListener("click", (e) => {
-  // Só fechar se clicar diretamente no overlay (background escuro)
-  // e não em nenhum elemento filho
-  if (e.target === modal) {
-    fecharModal();
-  }
-});
-
-// Prevenir que cliques dentro do carrossel fechem o modal
-document.querySelectorAll('.swiper-container, .swiper-slide, .swiper-wrapper, .media-carousel, .media-thumbnails').forEach(el => {
-  el.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-});
-
 // ===== EFETO DE DIGITAÇÃO =====
 const typewriterText = document.querySelector('.typewriter p');
 const texts = [
@@ -870,32 +952,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== TOUCH SUPPORT ATUALIZADO =====
-let touchStartY = 0;
-let touchEndY = 0;
 
-document.addEventListener('touchstart', (e) => {
-  touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  touchEndY = e.changedTouches[0].screenY;
-  
-  // Só processar swipe se o modal estiver aberto
-  if (modal.classList.contains('show')) {
-    const swipeThreshold = 100; // Aumentei o threshold para evitar fechamento acidental
-    const swipeDistance = touchEndY - touchStartY;
-    
-    // Verificar se é um swipe para baixo significativo
-    // e se o conteúdo do modal não está scrolável ou está no topo
-    const modalContent = document.querySelector('.modal-content');
-    const isAtTop = modalContent.scrollTop === 0;
-    
-    if (swipeDistance > swipeThreshold && isAtTop) {
-      fecharModal();
-    }
-  }
-}, { passive: true });
 
 // ===== CONTADOR DE VISITAS (OPCIONAL) =====
 function updateVisitCount() {
@@ -970,9 +1027,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateFooterElements();
 });
 
-
-
-// ===== DUOFLOW - CONTROLE DE ETAPAS =====
+// ===== DUOFLOW - CONTROLE DE ETAPAS (VERSÃO CORRIGIDA) =====
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DuoFlow iniciando...');
@@ -1002,6 +1057,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let electronParticles = [];
   let electricActive = false;
   
+  // Variáveis para drag & drop
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let blockOffsetX = 0;
+  let blockOffsetY = 0;
+  
   // ===== FUNÇÕES DE CONTROLE DE TELAS =====
   
   function showScreen(screen) {
@@ -1018,11 +1080,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       screen.classList.add('active');
     }, 50);
-    
-    // Debug: verificar estado
-    console.log('Estado atual: start=', startScreen.classList.contains('active'), 
-                'game=', gameScreen.classList.contains('active'),
-                'complete=', completeScreen.classList.contains('active'));
   }
   
   // ===== FUNÇÃO PARA SCROLLAR PARA OS CARDS =====
@@ -1058,14 +1115,6 @@ document.addEventListener('DOMContentLoaded', function() {
             container.style.boxShadow = '';
           }, 1500);
         });
-        
-      } else {
-        console.log('Não encontrei containers, tentando o main...');
-        // Fallback para o container principal
-        const mainContainer = document.querySelector('.duoflow-main');
-        if (mainContainer) {
-          mainContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
       }
     }, 100);
   }
@@ -1086,10 +1135,231 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Resetar estado
     resetGameState();
+    
+    // Inicializar drag & drop
+    initDragAndDrop();
   }
   
   // Inicializar o jogo
   initializeGame();
+  
+  // ===== DRAG & DROP CORRIGIDO =====
+  
+  function initDragAndDrop() {
+    if (!helloBlock || !codeTerminal) return;
+    
+    // Desktop: Drag & Drop padrão
+    helloBlock.setAttribute('draggable', 'true');
+    
+    helloBlock.addEventListener('dragstart', function(e) {
+      if (this.classList.contains('used')) {
+        e.preventDefault();
+        return false;
+      }
+      e.dataTransfer.setData('text/plain', 'helloBlock');
+      this.classList.add('dragging');
+      this.style.opacity = '0.7';
+    });
+    
+    helloBlock.addEventListener('dragend', function() {
+      this.classList.remove('dragging');
+      this.style.opacity = '';
+      this.style.transform = '';
+    });
+    
+    codeTerminal.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      if (!helloBlock.classList.contains('used')) {
+        this.classList.add('drop-success');
+      }
+    });
+    
+    codeTerminal.addEventListener('dragleave', function() {
+      this.classList.remove('drop-success');
+    });
+    
+    codeTerminal.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('drop-success');
+      
+      if (helloBlock.classList.contains('used')) return;
+      
+      // Animar o bloco entrando no terminal
+      animateBlockToTerminal().then(() => {
+        // Ativar botão Executar
+        runCodeButton.disabled = false;
+        
+        // Marcar bloco como usado
+        helloBlock.classList.add('used');
+        helloBlock.style.cursor = 'default';
+        
+        // Atualizar status
+        const codeStatus = document.getElementById('codeStatus');
+        codeStatus.textContent = 'Código pronto para executar!';
+        codeStatus.style.color = '#FF9800';
+        
+        console.log('Bloco arrastado para o terminal!');
+      });
+    });
+    
+    // Mobile: Touch events corrigidos
+    initTouchDragAndDrop();
+  }
+  
+  function initTouchDragAndDrop() {
+    if (!helloBlock || !codeTerminal) return;
+    
+    helloBlock.addEventListener('touchstart', function(e) {
+      if (this.classList.contains('used')) return;
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const touch = e.touches[0];
+      const rect = this.getBoundingClientRect();
+      
+      dragStartX = touch.clientX;
+      dragStartY = touch.clientY;
+      blockOffsetX = touch.clientX - rect.left;
+      blockOffsetY = touch.clientY - rect.top;
+      isDragging = true;
+      
+      this.style.position = 'fixed';
+      this.style.zIndex = '1000';
+      this.style.opacity = '0.7';
+      this.style.transform = 'scale(0.95)';
+      this.style.transition = 'none';
+      
+      // Prevenir scroll da página
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    }, { passive: false });
+    
+    helloBlock.addEventListener('touchmove', function(e) {
+      if (!isDragging || this.classList.contains('used')) return;
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const touch = e.touches[0];
+      const x = touch.clientX - blockOffsetX;
+      const y = touch.clientY - blockOffsetY;
+      
+      this.style.left = `${x}px`;
+      this.style.top = `${y}px`;
+      this.style.transform = `translate(0, 0) scale(0.95)`;
+      
+    }, { passive: false });
+    
+    helloBlock.addEventListener('touchend', function(e) {
+      if (!isDragging || this.classList.contains('used')) {
+        resetBlockPosition();
+        return;
+      }
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const touch = e.changedTouches[0];
+      const terminalRect = codeTerminal.getBoundingClientRect();
+      
+      if (touch.clientX >= terminalRect.left && touch.clientX <= terminalRect.right &&
+          touch.clientY >= terminalRect.top && touch.clientY <= terminalRect.bottom) {
+        
+        // Animar para o terminal
+        animateBlockToTerminal().then(() => {
+          runCodeButton.disabled = false;
+          helloBlock.classList.add('used');
+          helloBlock.style.cursor = 'default';
+          
+          const codeStatus = document.getElementById('codeStatus');
+          codeStatus.textContent = 'Código pronto para executar!';
+          codeStatus.style.color = '#FF9800';
+          
+          codeTerminal.classList.add('drop-success');
+          setTimeout(() => {
+            codeTerminal.classList.remove('drop-success');
+          }, 500);
+        });
+      } else {
+        resetBlockPosition();
+      }
+      
+      isDragging = false;
+      
+      // Restaurar scroll da página
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }, { passive: false });
+  }
+  
+  function resetBlockPosition() {
+    if (!helloBlock) return;
+    
+    helloBlock.style.position = '';
+    helloBlock.style.left = '';
+    helloBlock.style.top = '';
+    helloBlock.style.zIndex = '';
+    helloBlock.style.opacity = '';
+    helloBlock.style.transform = '';
+    helloBlock.style.transition = '';
+  }
+  
+  // ===== ANIMAÇÃO DO BLOCO ENTRANDO NO TERMINAL =====
+  
+  function animateBlockToTerminal() {
+    return new Promise((resolve) => {
+      if (!helloBlock || !codeTerminal) {
+        resolve();
+        return;
+      }
+      
+      const blockRect = helloBlock.getBoundingClientRect();
+      const terminalRect = codeTerminal.getBoundingClientRect();
+      const terminalInput = codeTerminal.querySelector('.terminal-input');
+      
+      // Calcular posição final (centro do input do terminal)
+      const targetX = terminalRect.left + (terminalRect.width / 2) - (blockRect.width / 2);
+      const targetY = terminalRect.top + (terminalInput ? terminalInput.offsetTop : terminalRect.height / 2);
+      
+      // Posicionar o bloco fixo
+      helloBlock.style.position = 'fixed';
+      helloBlock.style.left = `${blockRect.left}px`;
+      helloBlock.style.top = `${blockRect.top}px`;
+      helloBlock.style.width = `${blockRect.width}px`;
+      helloBlock.style.height = `${blockRect.height}px`;
+      helloBlock.style.zIndex = '1000';
+      helloBlock.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      helloBlock.style.opacity = '1';
+      
+      // Animar para o terminal
+      requestAnimationFrame(() => {
+        helloBlock.style.left = `${targetX}px`;
+        helloBlock.style.top = `${targetY}px`;
+        helloBlock.style.transform = 'scale(0.8)';
+        helloBlock.style.opacity = '0.5';
+        
+        // Efeito de "entrada" no terminal
+        setTimeout(() => {
+          helloBlock.style.opacity = '0';
+          helloBlock.style.transform = 'scale(0.5) translateY(20px)';
+          
+          // Feedback visual no terminal
+          codeTerminal.classList.add('terminal-active');
+          const inputText = document.getElementById('inputText');
+          if (inputText) {
+            inputText.textContent = 'print("Hello World")';
+            inputText.style.color = '#4EC9B0';
+          }
+          
+          setTimeout(() => {
+            resetBlockPosition();
+            resolve();
+          }, 300);
+        }, 400);
+      });
+    });
+  }
   
   // ===== EVENT LISTENERS =====
   
@@ -1099,13 +1369,6 @@ document.addEventListener('DOMContentLoaded', function() {
     showScreen(gameScreen);
     resetGameState();
     animateGameStart();
-    
-    // Scroll em mobile
-    if (window.innerWidth <= 768) {
-      setTimeout(() => {
-        gameScreen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
-    }
   });
   
   // 2. Botão "Reiniciar"
@@ -1114,50 +1377,39 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeGame();
   });
   
-  // 3. Botão "Executar Ambos" - SCROLL + SIMULAÇÕES
+  // 3. Botão "Executar Ambos"
   runBothButton.addEventListener('click', function() {
     console.log('--- Executar Ambos clicado ---');
     
     isRunningBoth = true;
-    
-    // Primeiro scroll para os cards
-    scrollToSimulationCards();
-    
-    // Feedback visual
     runBothButton.disabled = true;
     const originalText = runBothButton.innerHTML;
     runBothButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
     
-    // Delay para scroll completar, depois executar
+    // Primeiro simular drag & drop
+    if (!helloBlock.classList.contains('used')) {
+      simulateCodeBlockDrop();
+    }
+    
+    // Executar fluxos sequencialmente
     setTimeout(() => {
-      console.log('Iniciando simulações...');
-      
-      // Executar elétrico primeiro
       if (!electricRunning && !electricCompleted) {
         startElectricFlow();
       }
       
-      // Executar código depois de um delay
       setTimeout(() => {
         if (!codeRunning && !codeCompleted) {
-          // Primeiro simular drag & drop do bloco
-          simulateCodeBlockDrop();
-          
-          // Depois executar o código
-          setTimeout(() => {
-            runCodeFlow();
-          }, 800);
+          runCodeFlow();
         }
-      }, 1000);
-      
-      // Restaurar botão depois de um tempo
-      setTimeout(() => {
-        runBothButton.disabled = false;
-        runBothButton.innerHTML = originalText;
-        isRunningBoth = false;
-      }, 3000);
-      
-    }, 800); // Tempo para scroll completar
+      }, 1500);
+    }, 1000);
+    
+    // Restaurar botão
+    setTimeout(() => {
+      runBothButton.disabled = false;
+      runBothButton.innerHTML = originalText;
+      isRunningBoth = false;
+    }, 4000);
   });
   
   // 4. Botão "Iniciar Fluxo" individual
@@ -1197,9 +1449,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('learnModal').classList.remove('active');
   });
   
-  // ===== NOVAS FUNÇÕES DO FLUXO ELÉTRICO COM MÚLTIPLOS ELÉTRONS =====
+  // ===== FUNÇÕES DO FLUXO ELÉTRICO =====
   
-  // Criar múltiplas partículas de elétrons
   function createElectronParticle() {
     const wireVisual = document.getElementById('electricWire');
     if (!wireVisual) return null;
@@ -1232,7 +1483,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return particle;
   }
   
-  // Animar partícula de elétron
   function animateElectronParticle(particle, delay = 0) {
     const wireVisual = document.getElementById('electricWire');
     if (!wireVisual) return;
@@ -1270,7 +1520,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, delay * 1000);
   }
   
-  // Limpar partículas
   function clearElectronParticles() {
     electronParticles.forEach(particle => particle.remove());
     electronParticles = [];
@@ -1280,7 +1529,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Iniciar fluxo elétrico com MÚLTIPLOS elétrons
   function startElectricFlow() {
     if (electricActive || electricRunning || electricCompleted) return;
     
@@ -1348,25 +1596,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function simulateCodeBlockDrop() {
     console.log('Simulando drag & drop do bloco de código...');
     
-    // Se o bloco ainda não foi usado
     if (!helloBlock.classList.contains('used')) {
-      // Marcar como usado
-      helloBlock.classList.add('used');
-      helloBlock.style.cursor = 'default';
-      
-      // Ativar botão Executar
-      runCodeButton.disabled = false;
-      
-      // Atualizar status
-      const codeStatus = document.getElementById('codeStatus');
-      codeStatus.textContent = 'Código pronto para executar!';
-      codeStatus.style.color = '#FF9800';
-      
-      // Feedback visual no terminal
-      codeTerminal.classList.add('drop-success');
-      setTimeout(() => {
-        codeTerminal.classList.remove('drop-success');
-      }, 500);
+      animateBlockToTerminal().then(() => {
+        runCodeButton.disabled = false;
+        helloBlock.classList.add('used');
+        helloBlock.style.cursor = 'default';
+        
+        const codeStatus = document.getElementById('codeStatus');
+        codeStatus.textContent = 'Código pronto para executar!';
+        codeStatus.style.color = '#FF9800';
+      });
     }
   }
   
@@ -1402,11 +1641,9 @@ document.addEventListener('DOMContentLoaded', function() {
       resultLine.style.fontSize = '1.1em';
       
       terminalOutput.appendChild(resultLine);
-      
-      // Scroll no terminal
       terminalOutput.scrollTop = terminalOutput.scrollHeight;
       
-      // MANTER O HELLO WORLD POR 10 SEGUNDOS ANTES DE ATUALIZAR STATUS
+      // Limpar input
       setTimeout(() => {
         inputText.textContent = '_';
         
@@ -1426,7 +1663,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Verificar conclusão
         checkBothCompleted();
-      }, 10000); // AUMENTADO PARA 10 SEGUNDOS
+      }, 1500);
     }, 1000);
   }
   
@@ -1442,6 +1679,7 @@ document.addEventListener('DOMContentLoaded', function() {
     electricRunning = false;
     codeRunning = false;
     electricActive = false;
+    isDragging = false;
     
     // Limpar partículas de elétrons
     clearElectronParticles();
@@ -1453,7 +1691,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (electricWire) {
       electricWire.classList.remove('wire-active');
-      // Limpar partículas
       const particles = electricWire.querySelectorAll('.electron-particle');
       particles.forEach(p => p.remove());
     }
@@ -1504,6 +1741,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (helloBlock) {
       helloBlock.classList.remove('used');
       helloBlock.style.cursor = 'grab';
+      resetBlockPosition();
     }
     
     // Resetar botão Executar Ambos
@@ -1530,11 +1768,8 @@ document.addEventListener('DOMContentLoaded', function() {
         progressSteps[i].classList.add('active');
       }
     }
-    
-    console.log('Progresso atualizado para passo:', step);
   }
   
-  // FUNÇÃO CRÍTICA: Só mostra conclusão se AMBOS completarem
   function checkBothCompleted() {
     console.log('Verificando conclusão. Elétrico:', electricCompleted, 'Código:', codeCompleted);
     
@@ -1548,25 +1783,13 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         showScreen(completeScreen);
         animateSuccessScreen();
-        
-        console.log('Tela de conclusão mostrada!');
-        
-        // Scroll em mobile
-        if (window.innerWidth <= 768) {
-          setTimeout(() => {
-            completeScreen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 300);
-        }
       }, 1500);
-    } else {
-      console.log('Ainda não completou ambos. Aguardando...');
     }
   }
   
   function animateGameStart() {
     console.log('Animando início do jogo...');
     
-    // Animar entrada dos containers
     const flowContainers = document.querySelectorAll('.flow-container');
     flowContainers.forEach((container, index) => {
       setTimeout(() => {
@@ -1587,7 +1810,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function animateSuccessScreen() {
     console.log('Animando tela de sucesso...');
     
-    // Animar ícones
     const successIcons = document.querySelectorAll('.success-icon');
     successIcons.forEach((icon, index) => {
       setTimeout(() => {
@@ -1601,147 +1823,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
       }, index * 300);
     });
-    
-    // Animar cards de insight
-    const insightCards = document.querySelectorAll('.insight-card');
-    insightCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-          card.style.transition = 'all 0.5s ease';
-        }, 100);
-      }, 600 + (index * 200));
-    });
-  }
-  
-  // ===== DRAG & DROP =====
-  
-  if (helloBlock && codeTerminal) {
-    helloBlock.addEventListener('dragstart', function(e) {
-      e.dataTransfer.setData('text/plain', 'helloBlock');
-      this.classList.add('dragging');
-    });
-    
-    helloBlock.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
-    });
-    
-    codeTerminal.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      this.classList.add('drop-success');
-    });
-    
-    codeTerminal.addEventListener('dragleave', function() {
-      this.classList.remove('drop-success');
-    });
-    
-    codeTerminal.addEventListener('drop', function(e) {
-      e.preventDefault();
-      this.classList.remove('drop-success');
-      
-      // Ativar botão Executar
-      runCodeButton.disabled = false;
-      
-      // Marcar bloco como usado
-      helloBlock.classList.add('used');
-      helloBlock.style.cursor = 'default';
-      
-      // Atualizar status
-      const codeStatus = document.getElementById('codeStatus');
-      codeStatus.textContent = 'Código pronto para executar!';
-      codeStatus.style.color = '#FF9800';
-      
-      console.log('Bloco arrastado para o terminal!');
-    });
-  }
-  
-  // ===== TOUCH SUPPORT CORRIGIDO =====
-  
-  if ('ontouchstart' in window && helloBlock && codeTerminal) {
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let isDragging = false;
-    let initialScrollY = 0;
-    
-    helloBlock.addEventListener('touchstart', function(e) {
-      if (this.classList.contains('used')) return;
-      
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      isDragging = false;
-      initialScrollY = window.scrollY;
-      
-      this.style.transform = 'scale(0.95)';
-      
-      // PREVINE SCROLL DA PÁGINA DURANTE DRAG
-      e.preventDefault();
-      
-      // Adiciona classe que previne scroll
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    }, { passive: false });
-    
-    helloBlock.addEventListener('touchmove', function(e) {
-      if (this.classList.contains('used')) return;
-      
-      const touchX = e.touches[0].clientX;
-      const touchY = e.touches[0].clientY;
-      
-      if (Math.abs(touchX - touchStartX) > 10 || Math.abs(touchY - touchStartY) > 10) {
-        isDragging = true;
-        this.style.opacity = '0.7';
-        this.style.transform = 'translate(' + (touchX - touchStartX) + 'px, ' + (touchY - touchStartY) + 'px) scale(0.95)';
-        
-        // Mantém a posição do scroll fixa
-        window.scrollTo(0, initialScrollY);
-        
-        // Previne o scroll da página
-        e.preventDefault();
-      }
-    }, { passive: false });
-    
-    helloBlock.addEventListener('touchend', function(e) {
-      if (!isDragging || this.classList.contains('used')) return;
-      
-      const terminalRect = codeTerminal.getBoundingClientRect();
-      const touchX = e.changedTouches[0].clientX;
-      const touchY = e.changedTouches[0].clientY;
-      
-      if (touchX >= terminalRect.left && touchX <= terminalRect.right &&
-          touchY >= terminalRect.top && touchY <= terminalRect.bottom) {
-        
-        runCodeButton.disabled = false;
-        helloBlock.classList.add('used');
-        helloBlock.style.cursor = 'default';
-        
-        const codeStatus = document.getElementById('codeStatus');
-        codeStatus.textContent = 'Código pronto para executar!';
-        codeStatus.style.color = '#FF9800';
-        
-        codeTerminal.classList.add('drop-success');
-        setTimeout(() => {
-          codeTerminal.classList.remove('drop-success');
-        }, 500);
-      }
-      
-      this.style.opacity = '';
-      this.style.transform = '';
-      
-      // RESTAURA SCROLL DA PÁGINA
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    });
-    
-    // Previne scroll acidental quando tocar no bloco
-    helloBlock.addEventListener('touchmove', function(e) {
-      if (isDragging) {
-        e.preventDefault();
-      }
-    }, { passive: false });
   }
   
   // ===== DEBUG =====
@@ -1758,13 +1839,11 @@ document.addEventListener('DOMContentLoaded', function() {
     showComplete: () => showScreen(completeScreen),
     scrollToCards: () => scrollToSimulationCards(),
     clearParticles: () => clearElectronParticles(),
-    createParticle: () => createElectronParticle(),
     checkState: () => {
       console.log('Estado atual:');
       console.log('- Elétrico completo:', electricCompleted);
       console.log('- Código completo:', codeCompleted);
       console.log('- Executando ambos:', isRunningBoth);
-      console.log('- Partículas ativas:', electronParticles.length);
     }
   };
 });
