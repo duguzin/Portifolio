@@ -972,11 +972,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-/// ===== DUOFLOW - CONTROLE DE ETAPAS =====
+// ===== DUOFLOW - CONTROLE DE ETAPAS =====
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DuoFlow iniciando...');
@@ -1407,7 +1403,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       terminalOutput.appendChild(resultLine);
       
-      // Limpar input após 3 segundos (tempo aumentado para leitura)
+      // Scroll no terminal
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      
+      // MANTER O HELLO WORLD POR 10 SEGUNDOS ANTES DE ATUALIZAR STATUS
       setTimeout(() => {
         inputText.textContent = '_';
         
@@ -1427,10 +1426,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Verificar conclusão
         checkBothCompleted();
-        
-        // Scroll no terminal
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-      }, 3000); // Aumentado para 3 segundos
+      }, 10000); // AUMENTADO PARA 10 SEGUNDOS
     }, 1000);
   }
   
@@ -1494,7 +1490,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (inputText) inputText.textContent = '_';
     if (codeStatus) {
-      codeStatus.textContent = 'Aguardando código...';
+      codeStatus.textContent = 'Aguardando...';
       codeStatus.style.color = '';
     }
     
@@ -1663,12 +1659,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // ===== TOUCH SUPPORT =====
+  // ===== TOUCH SUPPORT CORRIGIDO =====
   
   if ('ontouchstart' in window && helloBlock && codeTerminal) {
     let touchStartX = 0;
     let touchStartY = 0;
     let isDragging = false;
+    let initialScrollY = 0;
     
     helloBlock.addEventListener('touchstart', function(e) {
       if (this.classList.contains('used')) return;
@@ -1676,9 +1673,17 @@ document.addEventListener('DOMContentLoaded', function() {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
       isDragging = false;
+      initialScrollY = window.scrollY;
       
       this.style.transform = 'scale(0.95)';
-    }, { passive: true });
+      
+      // PREVINE SCROLL DA PÁGINA DURANTE DRAG
+      e.preventDefault();
+      
+      // Adiciona classe que previne scroll
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    }, { passive: false });
     
     helloBlock.addEventListener('touchmove', function(e) {
       if (this.classList.contains('used')) return;
@@ -1690,8 +1695,14 @@ document.addEventListener('DOMContentLoaded', function() {
         isDragging = true;
         this.style.opacity = '0.7';
         this.style.transform = 'translate(' + (touchX - touchStartX) + 'px, ' + (touchY - touchStartY) + 'px) scale(0.95)';
+        
+        // Mantém a posição do scroll fixa
+        window.scrollTo(0, initialScrollY);
+        
+        // Previne o scroll da página
+        e.preventDefault();
       }
-    }, { passive: true });
+    }, { passive: false });
     
     helloBlock.addEventListener('touchend', function(e) {
       if (!isDragging || this.classList.contains('used')) return;
@@ -1719,7 +1730,18 @@ document.addEventListener('DOMContentLoaded', function() {
       
       this.style.opacity = '';
       this.style.transform = '';
+      
+      // RESTAURA SCROLL DA PÁGINA
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     });
+    
+    // Previne scroll acidental quando tocar no bloco
+    helloBlock.addEventListener('touchmove', function(e) {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    }, { passive: false });
   }
   
   // ===== DEBUG =====
