@@ -5356,7 +5356,7 @@ body:not(.tema-escuro) .insight-card {
   .duoflow-progress {
     flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
+    gap: 2rem;
   }
   
   .progress-step::before {
@@ -6426,3 +6426,11 @@ body:not(.tema-escuro) .modal-btn:hover {
 }
 
 
+@media (max-width: 440px) {
+  .status-text {
+    font-size: 14px;
+  }
+  #startElectric, #runCode {
+    padding: 5px 10px;
+  }
+}
