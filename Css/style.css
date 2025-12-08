@@ -6434,3 +6434,12 @@ body:not(.tema-escuro) .modal-btn:hover {
     padding: 5px 10px;
   }
 }
+
+@media (max-width: 720px) {
+  .parallel-success {
+    display: block;
+  }
+  .success-divider {
+    margin: 10px 0;
+  }
+}
