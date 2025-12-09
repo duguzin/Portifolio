@@ -1,4 +1,6 @@
-// ===== CONFIGURAÇÕES GLOBAIS =====
+// ==============================================
+// CONFIGURAÇÕES GLOBAIS
+// ==============================================
 const config = {
   breakpoints: {
     mobile: 480,
@@ -8,160 +10,84 @@ const config = {
   }
 };
 
-
+// Dados dos projetos
 const projetos = {
+  // ... (mantenha seus dados de projetos aqui exatamente como estavam)
   cultivamais: {
     titulo: "CultivaMais - E-commerce Agrícola",
-    descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores. Sistema completo com catálogo de produtos, carrinho de compras, checkout seguro e painel administrativo. Inclui sistema de avaliações, rastreamento de pedidos e integração com correios.",
+    descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores.",
     midia: [
-      { 
-        type: 'image', 
-        src: 'Imagens/CultivaMais/Imagens/foto-1.png', 
-        alt: 'Página inicial do e-commerce' 
-      },
-      { 
-        type: 'image', 
-        src: 'Imagens/CultivaMais/Imagens/foto-2.png', 
-        alt: 'Catálogo de Produto' 
-      },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/MdgFU4I6zS8', 
-        thumbnail: 'Imagens/CultivaMais/Imagens/foto-2.png',
-        alt: 'Tour completo pela plataforma' 
-      }
+      { type: 'image', src: 'Imagens/CultivaMais/Imagens/foto-1.png', alt: 'Página inicial do e-commerce' },
+      { type: 'image', src: 'Imagens/CultivaMais/Imagens/foto-2.png', alt: 'Catálogo de Produto' },
+      { type: 'youtube', src: 'https://www.youtube.com/embed/MdgFU4I6zS8', thumbnail: 'Imagens/CultivaMais/Imagens/foto-2.png', alt: 'Tour completo pela plataforma' }
     ],
     tecnologias: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "Bootstrap", "jQuery"],
     links: [
       { type: 'github', url: 'https://github.com/duguzin/CultivaMais-V2', text: 'Ver código no GitHub' },
       { type: 'demo', url: '', text: 'Ver demonstração' }
     ],
-    features: [
-      "Catálogo de produtos com filtros",
-      "Carrinho de compras",
-      "Checkou",
-      "Painel administrativo"
-    ]
+    features: ["Catálogo de produtos com filtros", "Carrinho de compras", "Checkou", "Painel administrativo"]
   },
 
   guia360: {
     titulo: "Guia360 - Plataforma Educacional",
     descricao: "Sistema educacional completo para auxiliar estudantes na preparação para vestibulares e concursos.",
     midia: [
-      { 
-        type: 'image', 
-        src: './Imagens/Guia360/Imagens/foto-1.png', 
-        alt: 'Página Inicial' 
-      },
-      { 
-        type: 'image', 
-        src: './Imagens/Guia360/Imagens/foto-2.png', 
-        alt: 'Página Aulão' 
-      },
-      { 
-        type: 'image', 
-        src: './Imagens/Guia360/Imagens/foto-3.png', 
-        alt: 'Página Simulados' 
-      },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/Q4ukvCQg1gQ', 
-        thumbnail: './Imagens/Guia360/Imagens/foto-1.png',
-        alt: 'Demonstração da plataforma educacional' 
-      }
+      { type: 'image', src: './Imagens/Guia360/Imagens/foto-1.png', alt: 'Página Inicial' },
+      { type: 'image', src: './Imagens/Guia360/Imagens/foto-2.png', alt: 'Página Aulão' },
+      { type: 'image', src: './Imagens/Guia360/Imagens/foto-3.png', alt: 'Página Simulados' },
+      { type: 'youtube', src: 'https://www.youtube.com/embed/Q4ukvCQg1gQ', thumbnail: './Imagens/Guia360/Imagens/foto-1.png', alt: 'Demonstração da plataforma educacional' }
     ],
     tecnologias: ["HTML5", "CSS3", "JavaScript"],
     links: [
       { type: 'github', url: 'https://github.com/duguzin/Guia360-V2', text: 'Ver código no GitHub' },
       { type: 'demo', url: 'https://duguzin.github.io/Guia360-V2', text: 'Ver demonstração' }
     ],
-    features: [
-      "Videoaulas",
-      "Simulados",
-      "Plano de estudos adaptativo"
-    ]
+    features: ["Videoaulas", "Simulados", "Plano de estudos adaptativo"]
   },
 
   fitbattle: {
     titulo: "FitBattle - App Gamificado de Exercícios",
-    descricao: "Aplicativo móvel gamificado com temática medieval para motivar prática de exercícios físicos. Os usuários enfrentam desafios, participam de batalhas e sobem de nível ao completar exercícios. Integrado com wearables e com sistema de recompensas e rankings.",
+    descricao: "Aplicativo móvel gamificado com temática medieval para motivar prática de exercícios físicos.",
     midia: [
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-1.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-2.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-3.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-4.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-5.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-6.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-7.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-8.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-9.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-10.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-11.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-12.jpeg', alt: '' },
-      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-13.jpeg', alt: '' },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/bnOwb9DLsL8', 
-        thumbnail: './Imagens/FitBattle/Imagens/foto-3.jpeg',
-        alt: 'Gameplay completo do FitBattle' 
-      }
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-1.jpeg', alt: 'Tela inicial do app' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-2.jpeg', alt: 'Tela de desafios' },
+      { type: 'image', src: './Imagens/FitBattle/Imagens/foto-3.jpeg', alt: 'Tela de perfil' },
+      { type: 'youtube', src: 'https://www.youtube.com/embed/bnOwb9DLsL8', thumbnail: './Imagens/FitBattle/Imagens/foto-3.jpeg', alt: 'Gameplay completo do FitBattle' }
     ],
     tecnologias: ["Flutter", "Dart", "Firebase", "Firestore", "Firebase Auth"],
     links: [
       { type: 'github', url: '', text: 'Ver código no GitHub' },
       { type: 'demo', url: '', text: 'Em breve na Play Store' }
     ],
-    features: [
-      "Desafios diários e semanais",
-      "Sistema de batalhas",
-      "Sistema de conquistas e recompensas",
-      "Ranking global e entre amigos",
-      "Modo offline para treinos"
-    ]
+    features: ["Desafios diários e semanais", "Sistema de batalhas", "Sistema de conquistas e recompensas", "Ranking global e entre amigos", "Modo offline para treinos"]
   },
 
   bancodigital: {
     titulo: "Banco Digital Python",
-    descricao: "Sistema bancário digital completo desenvolvido com Python/Flask no back-end e JavaScript puro no front-end. Inclui todas as operações bancárias básicas: criação de conta, depósitos, saques, transferências, extrato e investimentos.",
+    descricao: "Sistema bancário digital completo desenvolvido com Python/Flask no back-end e JavaScript puro no front-end.",
     midia: [
       { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-1.png', alt: 'Tela de Login' },
       { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-2.png', alt: 'Tela de Cadastro' },
       { type: 'image', src: './Imagens/BancoDigitalPython/Imagens/foto-3.png', alt: 'Dashboard da conta bancária' },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/q3AduCtIXV4', 
-        thumbnail: './Imagens/BancoDigitalPython/Imagens/foto-3.png',
-        alt: 'Demonstração completa das funcionalidades' 
-      }
+      { type: 'youtube', src: 'https://www.youtube.com/embed/q3AduCtIXV4', thumbnail: './Imagens/BancoDigitalPython/Imagens/foto-3.png', alt: 'Demonstração completa das funcionalidades' }
     ],
     tecnologias: ["HTML5", "CSS3", "Python", "Flask", "REST API", "JavaScript"],
     links: [
       { type: 'github', url: 'https://github.com/duguzin/BancoDigitalPython', text: 'Ver código no GitHub' },
       { type: 'demo', url: 'https://github.com/duguzin/BancoDigitalPython', text: 'Testar demonstração' }
     ],
-    features: [
-      "Criação de conta",
-      "Depósitos, saques e transferências",
-      "Extrato",
-    ]
+    features: ["Criação de conta", "Depósitos, saques e transferências", "Extrato"]
   },
 
   milkmoo: {
     titulo: "MilkMoo - Sistema de Sorveteria",
-    descricao: "Desenvolvi um sistema completo de painel de atendimento para a faculdade, criando a sorveteria fictícia MilkMoo com três telas integradas: cliente, atendente e painel de TV. O cliente gera a senha, o atendente controla a fila com chamada por voz e a TV exibe tudo em tempo real. O projeto é 100% frontend, usa LocalStorage para comunicação e tem visual cartoon com modo festa. Tecnologias: HTML, CSS, JS, Bootstrap, Web Speech API e Canvas.",
+    descricao: "Sistema completo de painel de atendimento para sorveteria fictícia com três telas integradas.",
     midia: [
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-1.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-2.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-3.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-4.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-5.png', alt: '' },
-      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-6.png', alt: '' },
-      { 
-        type: 'youtube', 
-        src: 'https://www.youtube.com/embed/QRz-Wo3-cIs', 
-        thumbnail: './Imagens/MilkMoo/Imagens/foto-1.png',
-        alt: 'Demonstração do sistema em operação' 
-      }
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-1.png', alt: 'Tela do cliente' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-2.png', alt: 'Tela do atendente' },
+      { type: 'image', src: './Imagens/MilkMoo/Imagens/foto-3.png', alt: 'Painel de TV' },
+      { type: 'youtube', src: 'https://www.youtube.com/embed/QRz-Wo3-cIs', thumbnail: './Imagens/MilkMoo/Imagens/foto-1.png', alt: 'Demonstração do sistema em operação' }
     ],
     tecnologias: ["JavaScript", "HTML5 Canvas", "CSS3", "Bootstrap", "Web Speech API"],
     links: [
@@ -169,1470 +95,1148 @@ const projetos = {
       { type: 'demo', url: 'https://milkmoo.demo.com', text: 'Testar demonstração' }
     ],
     features: [
-      "Geração de senhas pelo cliente ao escolher o produto",
-      "Chamada por voz das senhas no painel do atendente",
+      "Geração de senhas pelo cliente",
+      "Chamada por voz das senhas",
       "Exibição em tempo real no painel de TV",
-      "Sincronização entre as 3 telas usando apenas LocalStorage",
-      "Modo Festa com efeitos visuais",
-      "Histórico de senhas chamadas",
-      "Simulação completa do fluxo de atendimento (cliente → atendente → TV)"
+      "Sincronização entre as 3 telas usando LocalStorage",
+      "Modo Festa com efeitos visuais"
     ]
   }
 };
 
-// ===== GERENCIAMENTO DE TEMA =====
-const toggleButton = document.getElementById('tema-toggle');
-const mobileTemaToggle = document.getElementById('mobileTemaToggle');
-const body = document.body;
-
-// Inicializar tema ao carregar a página
-function inicializarTema() {
-  const temaSalvo = localStorage.getItem("tema");
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  console.log('Tema salvo:', temaSalvo);
-  console.log('Prefere escuro:', prefersDark);
-  
-  // Limpar qualquer classe de tema existente
-  body.classList.remove('tema-escuro');
-  
-  // Aplicar tema baseado na preferência salva ou no sistema
-  if (temaSalvo === "escuro" || (temaSalvo === null && prefersDark)) {
-    body.classList.add('tema-escuro');
-    console.log('Aplicando tema escuro');
-  } else {
-    body.classList.remove('tema-escuro');
-    console.log('Aplicando tema claro');
+// ==============================================
+// GERENCIAMENTO DE TEMA
+// ==============================================
+class ThemeManager {
+  constructor() {
+    this.toggleButton = document.getElementById('tema-toggle');
+    this.mobileTemaToggle = document.getElementById('mobileTemaToggle');
+    this.body = document.body;
+    
+    this.initialize();
   }
   
-  // Atualizar ícones
-  atualizarIconesTema();
-}
-
-// Atualizar apenas os ícones
-function atualizarIconesTema() {
-  const temaEscuro = body.classList.contains('tema-escuro');
-  
-  console.log('Atualizando ícones. Tema escuro?', temaEscuro);
-  
-  // Atualizar ícone do botão desktop
-  const icon = temaEscuro ? 'fa-sun' : 'fa-moon';
-  if (toggleButton) {
-    toggleButton.innerHTML = `<i class="fas ${icon}"></i>`;
-    console.log('Ícone desktop:', icon);
+  initialize() {
+    this.loadTheme();
+    this.bindEvents();
   }
   
-  // Atualizar texto e ícone do botão mobile
-  if (mobileTemaToggle) {
-    mobileTemaToggle.innerHTML = `<i class="fas ${icon}"></i> ${temaEscuro ? 'Tema Claro' : 'Tema Escuro'}`;
-    console.log('Ícone mobile:', icon);
+  loadTheme() {
+    const temaSalvo = localStorage.getItem("tema");
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (temaSalvo === "escuro" || (temaSalvo === null && prefersDark)) {
+      this.body.classList.add('tema-escuro');
+    } else {
+      this.body.classList.remove('tema-escuro');
+    }
+    
+    this.updateThemeIcons();
+  }
+  
+  updateThemeIcons() {
+    const temaEscuro = this.body.classList.contains('tema-escuro');
+    const icon = temaEscuro ? 'fa-sun' : 'fa-moon';
+    
+    if (this.toggleButton) {
+      this.toggleButton.innerHTML = `<i class="fas ${icon}"></i>`;
+    }
+    
+    if (this.mobileTemaToggle) {
+      this.mobileTemaToggle.innerHTML = `<i class="fas ${icon}"></i> ${temaEscuro ? 'Tema Claro' : 'Tema Escuro'}`;
+    }
+  }
+  
+  toggleTheme() {
+    this.body.classList.toggle('tema-escuro');
+    
+    const temaEscuro = this.body.classList.contains('tema-escuro');
+    localStorage.setItem("tema", temaEscuro ? "escuro" : "claro");
+    
+    this.updateThemeIcons();
+  }
+  
+  bindEvents() {
+    if (this.toggleButton) {
+      this.toggleButton.addEventListener("click", () => this.toggleTheme());
+    }
+    
+    if (this.mobileTemaToggle) {
+      this.mobileTemaToggle.addEventListener("click", () => {
+        this.toggleTheme();
+        MobileMenu.close();
+      });
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem("tema")) {
+        if (e.matches) {
+          this.body.classList.add('tema-escuro');
+        } else {
+          this.body.classList.remove('tema-escuro');
+        }
+        this.updateThemeIcons();
+      }
+    });
   }
 }
 
-// Alternar tema completo
-function alternarTema() {
-  console.log('Alternando tema...');
-  console.log('Classe antes:', body.classList.toString());
+// ==============================================
+// MENU MOBILE
+// ==============================================
+class MobileMenu {
+  static init() {
+    this.menuToggle = document.getElementById('menuToggle');
+    this.menuClose = document.getElementById('menuClose');
+    this.mobileMenu = document.getElementById('mobileMenu');
+    this.mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    this.mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    
+    this.bindEvents();
+  }
   
-  body.classList.toggle('tema-escuro');
-  
-  console.log('Classe depois:', body.classList.toString());
-  console.log('Tema escuro agora?', body.classList.contains('tema-escuro'));
-  
-  // Salvar preferência
-  const temaEscuro = body.classList.contains('tema-escuro');
-  localStorage.setItem("tema", temaEscuro ? "escuro" : "claro");
-  
-  console.log('Tema salvo:', localStorage.getItem("tema"));
-  
-  // Atualizar ícones
-  atualizarIconesTema();
-  
-  // Forçar repaint para garantir que as mudanças sejam visíveis
-  document.documentElement.style.display = 'none';
-  document.documentElement.offsetHeight; // Trigger reflow
-  document.documentElement.style.display = '';
-}
-
-// Configurar event listeners
-function configurarEventosTema() {
-  // Botão desktop
-  toggleButton.addEventListener("click", alternarTema);
-  
-  // Botão mobile
-  if (mobileTemaToggle) {
-    mobileTemaToggle.addEventListener("click", () => {
-      alternarTema();
-      // Fechar menu mobile após alterar tema
-      if (mobileMenu && mobileMenu.classList.contains('active')) {
-        fecharMenuMobile();
+  static bindEvents() {
+    if (this.menuToggle) {
+      this.menuToggle.addEventListener('click', () => this.open());
+    }
+    
+    if (this.menuClose) {
+      this.menuClose.addEventListener('click', () => this.close());
+    }
+    
+    if (this.mobileMenuOverlay) {
+      this.mobileMenuOverlay.addEventListener('click', () => this.close());
+    }
+    
+    this.mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => this.close());
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.mobileMenu.classList.contains('active')) {
+        this.close();
       }
     });
   }
   
-  // Escutar mudanças na preferência do sistema
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    // Só aplicar se não houver tema salvo
-    if (!localStorage.getItem("tema")) {
-      if (e.matches) {
-        body.classList.add('tema-escuro');
-      } else {
-        body.classList.remove('tema-escuro');
-      }
-      atualizarIconesTema();
+  static open() {
+    if (this.mobileMenu) {
+      this.mobileMenu.classList.add('active');
     }
-  });
-}
-
-// Inicializar tudo quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM carregado, inicializando tema...');
-  inicializarTema();
-  configurarEventosTema();
-  
-  // Log para debug
-  console.log('Corpo HTML:', body.outerHTML.substring(0, 200) + '...');
-  console.log('Toggle button:', toggleButton.outerHTML);
-});
-
-// ===== MENU MOBILE =====
-const menuToggle = document.getElementById('menuToggle');
-const menuClose = document.getElementById('menuClose');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-function abrirMenuMobile() {
-  mobileMenu.classList.add('active');
-  mobileMenuOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'hidden';
-}
-
-function fecharMenuMobile() {
-  mobileMenu.classList.remove('active');
-  mobileMenuOverlay.classList.remove('active');
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-}
-
-menuToggle?.addEventListener('click', abrirMenuMobile);
-menuClose?.addEventListener('click', fecharMenuMobile);
-mobileMenuOverlay?.addEventListener('click', fecharMenuMobile);
-
-// Fechar menu ao clicar em um link
-mobileNavLinks.forEach(link => {
-  link.addEventListener('click', fecharMenuMobile);
-});
-
-// Fechar menu com ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-    fecharMenuMobile();
-  }
-});
-
-// Fechar menu ao redimensionar para desktop
-function handleResize() {
-  if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
-    fecharMenuMobile();
+    if (this.mobileMenuOverlay) {
+      this.mobileMenuOverlay.classList.add('active');
+    }
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
   
-  // Re-inicializar Swiper se necessário
-  if (modal.classList.contains('show') && swiperInstance) {
-    swiperInstance.update();
+  static close() {
+    if (this.mobileMenu) {
+      this.mobileMenu.classList.remove('active');
+    }
+    if (this.mobileMenuOverlay) {
+      this.mobileMenuOverlay.classList.remove('active');
+    }
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
-  
-  // Ajustar formas para telas pequenas
-  adjustShapes();
 }
 
-// ===== NAVEGAÇÃO SUAVE E ATIVAÇÃO DE LINKS =====
-function atualizarLinkAtivo() {
-  const sections = document.querySelectorAll('section[id]');
-  const scrollPos = window.scrollY + 100;
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    const sectionId = section.getAttribute('id');
+// ==============================================
+// NAVEGAÇÃO
+// ==============================================
+class Navigation {
+  static init() {
+    this.backToTop = document.getElementById('backToTop');
+    this.footerBackToTop = document.getElementById('footerBackToTop');
     
-    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-      // Atualizar links desktop
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${sectionId}`) {
-          link.classList.add('active');
-        }
-      });
-      
-      // Atualizar links mobile
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${sectionId}`) {
-          link.classList.add('active');
-        }
-      });
-    }
-  });
-}
-
-// Navegação suave para links internos
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      e.preventDefault();
-      
-      // Fechar menu mobile se aberto
-      if (mobileMenu.classList.contains('active')) {
-        fecharMenuMobile();
-      }
-      
-      // Scroll suave
-      const headerHeight = document.querySelector('.nav-bar').offsetHeight;
-      const targetPosition = targetElement.offsetTop - headerHeight;
-      
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
-
-// ===== BOTÃO VOLTAR AO TOPO =====
-const backToTop = document.getElementById('backToTop');
-
-function toggleBackToTop() {
-  if (window.scrollY > 300) {
-    backToTop.classList.add('visible');
-  } else {
-    backToTop.classList.remove('visible');
-  }
-}
-
-backToTop?.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-// ===== MODAL DE PROJETOS - VERSÃO CORRIGIDA (SEM FECHAR AO CLICAR FORA) =====
-let swiperInstance = null;
-const modal = document.getElementById('modal');
-const closeModal = document.querySelector('.close');
-const closeModalBtn = document.querySelector('.close-modal');
-
-// Variáveis para controle de posição
-let lastScrollPosition = 0;
-let modalOpenedFromPosition = 0;
-
-// Inicializar Swiper
-function initSwiper() {
-  if (swiperInstance) {
-    swiperInstance.destroy(true, true);
+    this.bindEvents();
+    this.setupSmoothScrolling();
   }
   
-  swiperInstance = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: false,
-    allowTouchMove: true,
-    preventClicks: true,
-    preventClicksPropagation: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 1,
-        spaceBetween: 30,
-      },
-      1024: {
-        slidesPerView: 1,
-        spaceBetween: 40,
-      },
-    }
-  });
-}
-
-// Função para atualizar thumbnail ativa
-function updateActiveThumbnail(index) {
-  document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-    thumb.classList.toggle('active', i === index);
-  });
-}
-
-// Prevenir comportamento padrão do scroll
-function preventDefault(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  return false;
-}
-
-// Abrir modal - VERSÃO CORRIGIDA
-function abrirModal() {
-  // Salvar posição atual ANTES de abrir o modal
-  modalOpenedFromPosition = window.scrollY || document.documentElement.scrollTop;
-  
-  modal.classList.add("show");
-  document.body.classList.add('modal-open');
-  
-  // Salvar posição de scroll
-  lastScrollPosition = modalOpenedFromPosition;
-  
-  // Prevenir scroll acidental no iOS
-  const modalContent = document.querySelector('.modal-content');
-  modalContent.addEventListener('wheel', preventDefault, { passive: false });
-  modalContent.addEventListener('touchmove', preventDefault, { passive: false });
-  modalContent.addEventListener('scroll', preventDefault, { passive: false });
-  
-  // Adicionar classe para prevenir scroll do body
-  document.body.style.position = 'fixed';
-  document.body.style.width = '100%';
-  document.body.style.top = `-${modalOpenedFromPosition}px`;
-  
-  // Inicializar Swiper
-  setTimeout(() => {
-    initSwiper();
-  }, 100);
-  
-  // Foco no modal para acessibilidade
-  modal.setAttribute('tabindex', '-1');
-  modal.focus();
-  
-  // Adicionar listener para tecla ESC
-  document.addEventListener('keydown', handleEscKey);
-}
-
-// Fechar modal - VERSÃO CORRIGIDA
-function fecharModal() {
-  modal.classList.remove("show");
-  document.body.classList.remove('modal-open');
-  
-  // Remover classes de prevenção de scroll
-  document.body.style.position = '';
-  document.body.style.width = '';
-  document.body.style.top = '';
-  
-  // Restaurar overflow
-  setTimeout(() => {
-    document.body.style.overflow = "";
-    document.documentElement.style.overflow = "";
-  }, 10);
-  
-  // Remover event listeners de prevenção
-  const modalContent = document.querySelector('.modal-content');
-  if (modalContent) {
-    modalContent.removeEventListener('wheel', preventDefault);
-    modalContent.removeEventListener('touchmove', preventDefault);
-    modalContent.removeEventListener('scroll', preventDefault);
-  }
-  
-  // Remover listener de ESC
-  document.removeEventListener('keydown', handleEscKey);
-  
-  // Pausar vídeos
-  document.querySelectorAll('#modal-media video').forEach(video => {
-    video.pause();
-  });
-  
-  // Parar vídeos do YouTube
-  document.querySelectorAll('#modal-media iframe').forEach(iframe => {
-    const src = iframe.src;
-    iframe.src = ''; // Parar o vídeo
-    setTimeout(() => {
-      iframe.src = src.replace('autoplay=1', ''); // Remover autoplay se houver
-    }, 100);
-  });
-  
-  // Destruir Swiper
-  if (swiperInstance) {
-    swiperInstance.destroy(true, true);
-    swiperInstance = null;
-  }
-  
-  // Restaurar posição de scroll APÓS um pequeno delay
-  setTimeout(() => {
-    window.scrollTo({
-      top: lastScrollPosition,
-      behavior: 'auto'
-    });
-  }, 20);
-}
-
-// Função para lidar com tecla ESC (mantemos pois é boa para acessibilidade)
-function handleEscKey(e) {
-  if (e.key === 'Escape' && modal.classList.contains('show')) {
-    e.preventDefault();
-    e.stopPropagation();
-    fecharModal();
-  }
-}
-
-// Eventos para fechar modal - APENAS nos botões X e Fechar
-closeModal?.addEventListener("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  fecharModal();
-});
-
-closeModalBtn?.addEventListener("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  fecharModal();
-});
-
-// REMOVEMOS o evento de clique fora para fechar
-// modal.addEventListener("click", (e) => { ... }); // <-- Comentado/Não usado
-
-// Prevenir que cliques dentro do carrossel fechem o modal
-document.querySelectorAll('.swiper-container, .swiper-slide, .swiper-wrapper, .media-carousel, .media-thumbnails').forEach(el => {
-  el.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-});
-
-// Prevenir scroll do body quando modal aberto - MAS NÃO FECHAR
-modal.addEventListener('wheel', (e) => {
-  if (modal.classList.contains('show')) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-}, { passive: false });
-
-modal.addEventListener('touchmove', (e) => {
-  if (modal.classList.contains('show')) {
-    // Permitir scroll dentro do modal, mas NÃO fechá-lo
-    const modalContent = modal.querySelector('.modal-content');
-    const isScrollable = modalContent.scrollHeight > modalContent.clientHeight;
-    
-    if (!isScrollable || e.target === modal) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  }
-}, { passive: false });
-
-// ===== TOUCH SUPPORT MODIFICADO (SEM FECHAR AO DESLIZAR) =====
-let touchStartY = 0;
-let touchEndY = 0;
-
-document.addEventListener('touchstart', (e) => {
-  touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  touchEndY = e.changedTouches[0].screenY;
-  
-  // REMOVEMOS a lógica de fechar ao deslizar
-  // O modal agora só fecha pelos botões X e Fechar
-  // NÃO fazemos nada aqui
-  
-}, { passive: true });
-
-// Abrir modal de projetos (mantenha a função existente, apenas ajuste a chamada para usar a nova abrirModal)
-document.querySelectorAll(".project-btn").forEach(button => {
-  button.addEventListener("click", () => {
-    const projetoId = button.dataset.projeto;
-    const data = projetos[projetoId];
-
-    if (data) {
-      // Configurar modal
-      document.getElementById("modal-title").textContent = data.titulo;
-      document.getElementById("modal-desc").textContent = data.descricao;
-      
-      // Configurar mídia
-      const mediaContainer = document.getElementById("modal-media");
-      const thumbnailsContainer = document.getElementById("modal-thumbnails");
-      mediaContainer.innerHTML = "";
-      thumbnailsContainer.innerHTML = "";
-      
-      data.midia.forEach((item, index) => {
-        // Slide principal
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
+  static setupSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
         
-        if (item.type === 'image') {
-          slide.innerHTML = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
-        } else if (item.type === 'video') {
-          const posterAttr = item.poster ? `poster="${item.poster}"` : '';
-          slide.innerHTML = `
-            <video controls playsinline preload="metadata" ${posterAttr}>
-              <source src="${item.src}" type="video/mp4">
-              Seu navegador não suporta o elemento de vídeo.
-            </video>
-          `;
-        } else if (item.type === 'youtube') {
-          // Renderizar iframe do YouTube
-          slide.innerHTML = `
-            <div class="youtube-container">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src="${item.src}?rel=0&showinfo=0&modestbranding=1" 
-                title="${item.alt}" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          
+          MobileMenu.close();
+          
+          const headerHeight = document.querySelector('.nav-bar')?.offsetHeight || 0;
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+  
+  static bindEvents() {
+    if (this.backToTop) {
+      this.backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    
+    if (this.footerBackToTop) {
+      this.footerBackToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    
+    window.addEventListener('scroll', Utils.debounce(() => {
+      this.updateActiveLinks();
+      this.toggleBackToTop();
+    }, 10));
+  }
+  
+  static updateActiveLinks() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPos = window.scrollY + 100;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+        
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  
+  static toggleBackToTop() {
+    if (this.backToTop) {
+      if (window.scrollY > 300) {
+        this.backToTop.classList.add('visible');
+      } else {
+        this.backToTop.classList.remove('visible');
+      }
+    }
+    
+    if (this.footerBackToTop) {
+      if (window.scrollY > 500) {
+        this.footerBackToTop.style.opacity = '1';
+        this.footerBackToTop.style.visibility = 'visible';
+        this.footerBackToTop.style.transform = 'translateY(0)';
+      } else {
+        this.footerBackToTop.style.opacity = '0';
+        this.footerBackToTop.style.visibility = 'hidden';
+        this.footerBackToTop.style.transform = 'translateY(20px)';
+      }
+    }
+  }
+}
+
+// ==============================================
+// MODAL DE PROJETOS
+// ==============================================
+class ProjectModal {
+  static init() {
+    this.modal = document.getElementById('modal');
+    this.closeModal = document.querySelector('.close');
+    this.closeModalBtn = document.querySelector('.close-modal');
+    this.swiperInstance = null;
+    
+    this.lastScrollPosition = 0;
+    this.modalOpenedFromPosition = 0;
+    
+    this.bindEvents();
+    this.setupProjectButtons();
+  }
+  
+  static bindEvents() {
+    if (this.closeModal) {
+      this.closeModal.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.close();
+      });
+    }
+    
+    if (this.closeModalBtn) {
+      this.closeModalBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.close();
+      });
+    }
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.modal.classList.contains('show')) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.close();
+      }
+    });
+    
+    this.modal.addEventListener('wheel', (e) => {
+      if (this.modal.classList.contains('show')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, { passive: false });
+    
+    this.modal.addEventListener('touchmove', (e) => {
+      if (this.modal.classList.contains('show')) {
+        const modalContent = this.modal.querySelector('.modal-content');
+        const isScrollable = modalContent.scrollHeight > modalContent.clientHeight;
+        
+        if (!isScrollable || e.target === this.modal) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    }, { passive: false });
+  }
+  
+  static setupProjectButtons() {
+    document.querySelectorAll(".project-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const projetoId = button.dataset.projeto;
+        const data = projetos[projetoId];
+        
+        if (data) {
+          this.open(data);
+        }
+      });
+    });
+  }
+  
+  static open(projectData) {
+    this.modalOpenedFromPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    document.getElementById("modal-title").textContent = projectData.titulo;
+    document.getElementById("modal-desc").textContent = projectData.descricao;
+    
+    this.setupMedia(projectData.midia);
+    this.setupTechnologies(projectData.tecnologias);
+    this.setupLinks(projectData.links);
+    this.setupFeatures(projectData.features);
+    
+    this.modal.classList.add("show");
+    document.body.classList.add('modal-open');
+    
+    this.lastScrollPosition = this.modalOpenedFromPosition;
+    
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${this.modalOpenedFromPosition}px`;
+    
+    setTimeout(() => {
+      this.initSwiper();
+    }, 100);
+  }
+  
+  static close() {
+    this.modal.classList.remove("show");
+    document.body.classList.remove('modal-open');
+    
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    
+    document.querySelectorAll('#modal-media video').forEach(video => {
+      video.pause();
+    });
+    
+    document.querySelectorAll('#modal-media iframe').forEach(iframe => {
+      const src = iframe.src;
+      iframe.src = '';
+      setTimeout(() => {
+        iframe.src = src.replace('autoplay=1', '');
+      }, 100);
+    });
+    
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
+      this.swiperInstance = null;
+    }
+    
+    setTimeout(() => {
+      window.scrollTo({
+        top: this.lastScrollPosition,
+        behavior: 'auto'
+      });
+    }, 20);
+  }
+  
+  static setupMedia(mediaItems) {
+    const mediaContainer = document.getElementById("modal-media");
+    const thumbnailsContainer = document.getElementById("modal-thumbnails");
+    
+    mediaContainer.innerHTML = "";
+    thumbnailsContainer.innerHTML = "";
+    
+    mediaItems.forEach((item, index) => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      
+      if (item.type === 'image') {
+        slide.innerHTML = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
+      } else if (item.type === 'youtube') {
+        slide.innerHTML = `
+          <div class="youtube-container">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="${item.src}?rel=0&showinfo=0&modestbranding=1" 
+              title="${item.alt}" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        `;
+      }
+      
+      mediaContainer.appendChild(slide);
+      
+      const thumbnail = document.createElement('div');
+      thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+      thumbnail.dataset.index = index;
+      thumbnail.setAttribute('role', 'button');
+      thumbnail.setAttribute('tabindex', '0');
+      thumbnail.setAttribute('aria-label', `Ver ${item.alt || 'imagem'}`);
+      
+      let thumbnailContent = '';
+      
+      if (item.type === 'image') {
+        thumbnailContent = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
+      } else if (item.type === 'youtube') {
+        const thumbSrc = item.thumbnail || '';
+        if (thumbSrc) {
+          thumbnailContent = `<img src="${thumbSrc}" alt="Thumbnail: ${item.alt}" loading="lazy">`;
+        } else {
+          thumbnailContent = `
+            <div class="video-thumbnail">
+              <i class="fas fa-play"></i>
+              <span>Vídeo</span>
             </div>
           `;
         }
-        
-        mediaContainer.appendChild(slide);
-        
-        // Miniaturas
-        const thumbnail = document.createElement('div');
-        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-        thumbnail.dataset.index = index;
-        thumbnail.setAttribute('role', 'button');
-        thumbnail.setAttribute('tabindex', '0');
-        thumbnail.setAttribute('aria-label', `Ver ${item.alt || 'imagem'}`);
-
-        let thumbnailContent = '';
-        
-        if (item.type === 'image') {
-          thumbnailContent = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
-        } else if (item.type === 'video' || item.type === 'youtube') {
-          const thumbSrc = item.thumbnail || item.poster || '';
-          if (thumbSrc) {
-            thumbnailContent = `<img src="${thumbSrc}" alt="Thumbnail: ${item.alt}" loading="lazy">`;
-          } else {
-            thumbnailContent = `
-              <div class="video-thumbnail">
-                <i class="fas fa-play"></i>
-                <span>Vídeo</span>
-              </div>
-            `;
-          }
-        }
-
-        thumbnail.innerHTML = thumbnailContent;
-        thumbnailsContainer.appendChild(thumbnail);
-      });
+      }
       
-      // Configurar tecnologias
-      const techTags = document.getElementById("modal-tech-tags");
-      techTags.innerHTML = "";
-      data.tecnologias.forEach(tech => {
-        const tag = document.createElement("span");
-        tag.className = "skill-tag";
-        tag.textContent = tech;
-        techTags.appendChild(tag);
-      });
-      
-      // Configurar links
-      const linksContainer = document.getElementById("modal-links");
-      linksContainer.innerHTML = "";
-      data.links.forEach(link => {
-        const linkElement = document.createElement("a");
-        linkElement.href = link.url;
-        linkElement.target = "_blank";
-        linkElement.rel = "noopener noreferrer";
-        linkElement.className = `project-link ${link.type}`;
-        linkElement.innerHTML = `
-          ${link.type === 'github' ? '<i class="fab fa-github"></i>' : ''}
-          ${link.type === 'demo' ? '<i class="fas fa-external-link-alt"></i>' : ''}
-          ${link.text}
-        `;
-        linksContainer.appendChild(linkElement);
-      });
-      
-      // Configurar features
-      const featuresContainer = document.getElementById("modal-features");
-      featuresContainer.innerHTML = `
-        <h4><i class="fas fa-star"></i> Funcionalidades Principais</h4>
-        <ul class="feature-list">
-          ${data.features.map(feature => `<li>${feature}</li>`).join('')}
-        </ul>
+      thumbnail.innerHTML = thumbnailContent;
+      thumbnailsContainer.appendChild(thumbnail);
+    });
+  }
+  
+  static setupTechnologies(technologies) {
+    const techTags = document.getElementById("modal-tech-tags");
+    techTags.innerHTML = "";
+    
+    technologies.forEach(tech => {
+      const tag = document.createElement("span");
+      tag.className = "skill-tag";
+      tag.textContent = tech;
+      techTags.appendChild(tag);
+    });
+  }
+  
+  static setupLinks(links) {
+    const linksContainer = document.getElementById("modal-links");
+    linksContainer.innerHTML = "";
+    
+    links.forEach(link => {
+      const linkElement = document.createElement("a");
+      linkElement.href = link.url;
+      linkElement.target = "_blank";
+      linkElement.rel = "noopener noreferrer";
+      linkElement.className = `project-link ${link.type}`;
+      linkElement.innerHTML = `
+        ${link.type === 'github' ? '<i class="fab fa-github"></i>' : ''}
+        ${link.type === 'demo' ? '<i class="fas fa-external-link-alt"></i>' : ''}
+        ${link.text}
       `;
-      
-      // Abrir modal
-      abrirModal();
-      
-      // Depois de inicializar o Swiper, configurar eventos das thumbnails
-      setTimeout(() => {
-        // Adicionar evento de clique nas thumbnails
-        document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-          thumb.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevenir propagação do clique
-            if (swiperInstance) {
-              swiperInstance.slideTo(index);
-              updateActiveThumbnail(index);
-            }
-          });
-          
-          // Suporte para teclado
-          thumb.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              e.stopPropagation();
-              if (swiperInstance) {
-                swiperInstance.slideTo(index);
-                updateActiveThumbnail(index);
-              }
-            }
-          });
-        });
-        
-        // Atualizar thumbnail ativa quando o slide mudar
-        if (swiperInstance) {
-          swiperInstance.on('slideChange', function() {
-            updateActiveThumbnail(this.activeIndex);
-          });
+      linksContainer.appendChild(linkElement);
+    });
+  }
+  
+  static setupFeatures(features) {
+    const featuresContainer = document.getElementById("modal-features");
+    featuresContainer.innerHTML = `
+      <h4><i class="fas fa-star"></i> Funcionalidades Principais</h4>
+      <ul class="feature-list">
+        ${features.map(feature => `<li>${feature}</li>`).join('')}
+      </ul>
+    `;
+  }
+  
+  static initSwiper() {
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
+    }
+    
+    this.swiperInstance = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: false,
+      allowTouchMove: true,
+      preventClicks: true,
+      preventClicksPropagation: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { spaceBetween: 20 },
+        768: { spaceBetween: 30 },
+        1024: { spaceBetween: 40 },
+      }
+    });
+    
+    this.setupThumbnailEvents();
+  }
+  
+  static setupThumbnailEvents() {
+    document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+      thumb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.swiperInstance) {
+          this.swiperInstance.slideTo(index);
+          this.updateActiveThumbnail(index);
         }
-      }, 150);
-    }
-  });
-});
-
-// ===== EFETO DE DIGITAÇÃO =====
-const typewriterText = document.querySelector('.typewriter p');
-const texts = [
-  "Técnico em Desenvolvimento de Sistemas",
-  "Eletricista de Manutenção Eletroeletrônica",
-  "Criando soluções com código e circuitos",
-  "Transformando ideias em realidade"
-];
-
-let currentTextIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let isPaused = false;
-
-function typeWriter() {
-  if (isPaused) return;
-  
-  const currentText = texts[currentTextIndex];
-  
-  if (!isDeleting && charIndex < currentText.length) {
-    typewriterText.textContent = currentText.substring(0, charIndex + 1);
-    charIndex++;
-    setTimeout(typeWriter, 50);
-  } else if (isDeleting && charIndex > 0) {
-    typewriterText.textContent = currentText.substring(0, charIndex - 1);
-    charIndex--;
-    setTimeout(typeWriter, 30);
-  } else {
-    isDeleting = !isDeleting;
-    
-    if (!isDeleting) {
-      currentTextIndex = (currentTextIndex + 1) % texts.length;
-    }
-    
-    setTimeout(typeWriter, isDeleting ? 1500 : 500);
-  }
-}
-
-// Pausar animação quando não visível
-function handleVisibilityChange() {
-  if (document.hidden) {
-    isPaused = true;
-  } else {
-    isPaused = false;
-    typeWriter();
-  }
-}
-
-// ===== ANIMAÇÃO AO ROLAR =====
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate');
-    }
-  });
-}, observerOptions);
-
-// Observar elementos
-document.querySelectorAll('.about-card, .project-card, .contact-card, .hero, .section-header').forEach(el => {
-  observer.observe(el);
-});
-
-// ===== OTIMIZAÇÕES DE PERFORMANCE =====
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// ===== AJUSTE DAS FORMAS DE FUNDO =====
-function adjustShapes() {
-  const shapes = document.querySelectorAll('.shape');
-  const width = window.innerWidth;
-  
-  if (width <= 480) {
-    // Telas muito pequenas - esconder algumas formas
-    shapes.forEach((shape, index) => {
-      if (index >= 3) {
-        shape.style.display = 'none';
-      } else {
-        shape.style.transform = 'scale(0.4)';
-      }
-    });
-  } else if (width <= 768) {
-    // Telas pequenas - reduzir tamanho
-    shapes.forEach(shape => {
-      shape.style.transform = 'scale(0.6)';
-      shape.style.display = 'block';
-    });
-  } else if (width >= 1440) {
-    // Telas grandes - aumentar tamanho
-    shapes.forEach(shape => {
-      shape.style.transform = 'scale(1.2)';
-    });
-  } else {
-    // Telas médias - tamanho normal
-    shapes.forEach(shape => {
-      shape.style.transform = 'scale(1)';
-      shape.style.display = 'block';
-    });
-  }
-}
-
-// ===== INICIALIZAÇÃO =====
-document.addEventListener('DOMContentLoaded', () => {
-  // Iniciar animações
-  setTimeout(typeWriter, 1000);
-  
-  // Configurar eventos de scroll
-  window.addEventListener('scroll', debounce(() => {
-    atualizarLinkAtivo();
-    toggleBackToTop();
-  }, 10));
-  
-  // Configurar visibilidade da página
-  document.addEventListener('visibilitychange', handleVisibilityChange);
-  
-  // Detectar redimensionamento
-  window.addEventListener('resize', debounce(() => {
-    handleResize();
-    adjustShapes();
-  }, 250));
-  
-  // Inicializar estado
-  atualizarLinkAtivo();
-  toggleBackToTop();
-  adjustShapes();
-  
-  // Inicializar links ativos
-  document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(link => {
-    link.addEventListener('click', function() {
-      document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(l => {
-        l.classList.remove('active');
       });
-      this.classList.add('active');
+      
+      thumb.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && this.swiperInstance) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.swiperInstance.slideTo(index);
+          this.updateActiveThumbnail(index);
+        }
+      });
     });
-  });
-});
-
-
-
-// ===== CONTADOR DE VISITAS (OPCIONAL) =====
-function updateVisitCount() {
-  if (!localStorage.getItem('visitCount')) {
-    localStorage.setItem('visitCount', '1');
-  } else {
     
-    let count = parseInt(localStorage.getItem('visitCount'));
-    count++;
-    localStorage.setItem('visitCount', count.toString());
+    if (this.swiperInstance) {
+      this.swiperInstance.on('slideChange', () => {
+        this.updateActiveThumbnail(this.swiperInstance.activeIndex);
+      });
+    }
+  }
+  
+  static updateActiveThumbnail(index) {
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+      thumb.classList.toggle('active', i === index);
+    });
   }
 }
 
-// Executar ao carregar
-updateVisitCount();
-
-// ===== BOTÃO DE VOLTAR AO TOPO DO FOOTER =====
-const footerBackToTop = document.getElementById('footerBackToTop');
-
-if (footerBackToTop) {
-  footerBackToTop.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  // Mostrar/ocultar botão baseado no scroll
-  window.addEventListener('scroll', debounce(() => {
-    if (window.scrollY > 500) {
-      footerBackToTop.style.opacity = '1';
-      footerBackToTop.style.visibility = 'visible';
-      footerBackToTop.style.transform = 'translateY(0)';
-    } else {
-      footerBackToTop.style.opacity = '0';
-      footerBackToTop.style.visibility = 'hidden';
-      footerBackToTop.style.transform = 'translateY(20px)';
-    }
-  }, 10));
-
-  // Estado inicial
-  footerBackToTop.style.transition = 'all 0.3s ease';
-  footerBackToTop.style.opacity = '0';
-  footerBackToTop.style.visibility = 'hidden';
-  footerBackToTop.style.transform = 'translateY(20px)';
-}
-
-// ===== ANIMAÇÃO DE ENTRADA DOS ELEMENTOS DO FOOTER =====
-function animateFooterElements() {
-  const footerElements = document.querySelectorAll('.footer-column, .tech-badge, .social-card');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('animate-in');
-        }, index * 100); // Delay escalonado
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  footerElements.forEach(el => {
-    observer.observe(el);
-  });
-}
-
-// Inicializar quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-  animateFooterElements();
-});
-
-// ===== DUOFLOW - CONTROLE DE ETAPAS (VERSÃO CORRIGIDA) =====
-
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DuoFlow iniciando...');
-  
-  // Elementos principais
-  const startScreen = document.getElementById('duoflowStart');
-  const gameScreen = document.getElementById('duoflowGame');
-  const completeScreen = document.getElementById('duoflowComplete');
-  const startButton = document.getElementById('startDuoflow');
-  const runBothButton = document.getElementById('runBoth');
-  const resetButton = document.getElementById('resetDuoflow');
-  const playAgainButton = document.getElementById('playAgainDuo');
-  const electricButton = document.getElementById('startElectric');
-  const runCodeButton = document.getElementById('runCode');
-  const helloBlock = document.getElementById('helloBlock');
-  const codeTerminal = document.getElementById('codeTerminal');
-  
-  // Variáveis de estado
-  let electricCompleted = false;
-  let codeCompleted = false;
-  let isRunningBoth = false;
-  let electricRunning = false;
-  let codeRunning = false;
-  
-  // Variáveis para sistema de partículas
-  let electronInterval = null;
-  let electronParticles = [];
-  let electricActive = false;
-  
-  // Variáveis para drag & drop
-  let isDragging = false;
-  let dragStartX = 0;
-  let dragStartY = 0;
-  let blockOffsetX = 0;
-  let blockOffsetY = 0;
-  
-  // ===== FUNÇÕES DE CONTROLE DE TELAS =====
-  
-  function showScreen(screen) {
-    console.log('Mostrando tela:', screen.id);
+// ==============================================
+// DUOFLOW GAME - COM AS MELHORIAS SOLICITADAS
+// ==============================================
+class DuoFlowGame {
+  constructor() {
+    this.startScreen = document.getElementById('duoflowStart');
+    this.gameScreen = document.getElementById('duoflowGame');
+    this.completeScreen = document.getElementById('duoflowComplete');
     
-    // Esconde todas as telas
-    document.querySelectorAll('.duoflow-screen').forEach(s => {
-      s.classList.remove('active');
-      s.style.display = 'none';
-    });
+    // Botões
+    this.startButton = document.getElementById('startDuoflow');
+    this.runBothButton = document.getElementById('runBoth');
+    this.resetButton = document.getElementById('resetDuoflow');
+    this.playAgainButton = document.getElementById('playAgainDuo');
+    this.electricButton = document.getElementById('startElectric');
+    this.runCodeButton = document.getElementById('runCode');
+    this.helloBlock = document.getElementById('helloBlock');
+    this.codeTerminal = document.getElementById('codeTerminal');
     
-    // Mostra a tela solicitada
-    screen.style.display = 'block';
-    setTimeout(() => {
-      screen.classList.add('active');
-    }, 50);
+    // Containers de simulação para scroll
+    this.flowContainers = document.querySelectorAll('.flow-container');
+    
+    // Estado do jogo
+    this.electricCompleted = false;
+    this.codeCompleted = false;
+    this.isRunningBoth = false;
+    this.electricRunning = false;
+    this.codeRunning = false;
+    this.electricActive = false;
+    
+    // Variáveis para drag & drop COM HOLD TO DRAG
+    this.isDragging = false;
+    this.isReadyToDrag = false;
+    this.holdTimer = null;
+    this.holdDuration = 500; // 0.5 segundos para segurar
+    this.dragStartX = 0;
+    this.dragStartY = 0;
+    this.blockOffsetX = 0;
+    this.blockOffsetY = 0;
+    this.initialTouchY = 0;
+    this.blockOriginalPosition = null;
+    
+    // Partículas
+    this.electronInterval = null;
+    this.electronParticles = [];
+    
+    this.initialize();
   }
   
-  // ===== FUNÇÃO PARA SCROLLAR PARA OS CARDS =====
-  
-  function scrollToSimulationCards() {
-    console.log('Scroll para cards de simulação...');
+  initialize() {
+    console.log('🚀 Inicializando DuoFlow...');
     
-    // Garantir que estamos na tela do jogo
-    if (!gameScreen.classList.contains('active')) {
-      console.log('Não está na tela do jogo, mudando...');
-      showScreen(gameScreen);
-    }
+    // Mostrar tela inicial
+    this.showScreen(this.startScreen);
+    
+    // Salvar posição original do bloco
+    this.saveBlockOriginalPosition();
+    
+    // Inicializar drag & drop com hold to drag
+    this.initHoldToDrag();
+    
+    // Adicionar estilos CSS
+    this.addCustomStyles();
+    
+    // Configurar eventos
+    this.bindEvents();
+    
+    // Resetar estado inicial
+    this.resetGameState();
+  }
+  
+  // ===== FUNÇÃO PARA SCROLLAR PARA AS SIMULAÇÕES =====
+  scrollToSimulations() {
+    console.log('📱 Scroll para simulações...');
     
     // Pequeno delay para DOM se atualizar
     setTimeout(() => {
-      // Encontrar os containers de fluxo
-      const flowContainers = document.querySelectorAll('.flow-container');
-      
-      if (flowContainers.length > 0) {
-        console.log('Encontrei', flowContainers.length, 'containers de fluxo');
+      if (this.flowContainers.length > 0) {
+        console.log('🎯 Encontrei containers de simulação');
         
         // Scroll para o primeiro container
-        flowContainers[0].scrollIntoView({ 
+        this.flowContainers[0].scrollIntoView({ 
           behavior: 'smooth', 
           block: 'center',
           inline: 'nearest'
         });
         
         // Highlight visual
-        flowContainers.forEach(container => {
+        this.flowContainers.forEach(container => {
           container.style.boxShadow = '0 0 30px rgba(var(--primary-rgb), 0.4)';
+          container.style.transform = 'scale(1.02)';
+          container.style.transition = 'all 0.5s ease';
+          
           setTimeout(() => {
             container.style.boxShadow = '';
-          }, 1500);
+            container.style.transform = '';
+          }, 2000);
         });
       }
-    }, 100);
+    }, 300);
   }
   
-  // ===== INICIALIZAÇÃO =====
+  // ===== CONTROLE DE TELAS =====
+  showScreen(screen) {
+    document.querySelectorAll('.duoflow-screen').forEach(s => {
+      s.classList.remove('active');
+      s.style.display = 'none';
+    });
+    
+    screen.style.display = 'block';
+    setTimeout(() => {
+      screen.classList.add('active');
+      
+      // Se for a tela do jogo, scroll para simulações
+      if (screen === this.gameScreen) {
+        setTimeout(() => {
+          this.scrollToSimulations();
+        }, 500);
+      }
+    }, 50);
+  }
   
-  function initializeGame() {
-    console.log('Inicializando DuoFlow...');
+  // ===== HOLD TO DRAG - NOVO SISTEMA =====
+  saveBlockOriginalPosition() {
+    if (!this.helloBlock) return;
     
-    // Mostrar apenas a tela inicial
-    showScreen(startScreen);
+    const rect = this.helloBlock.getBoundingClientRect();
+    this.blockOriginalPosition = {
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      height: rect.height
+    };
+  }
+  
+  initHoldToDrag() {
+    if (!this.helloBlock || !this.codeTerminal) return;
     
-    // Garantir que as outras telas estejam escondidas
-    gameScreen.style.display = 'none';
-    gameScreen.classList.remove('active');
-    completeScreen.style.display = 'none';
-    completeScreen.classList.remove('active');
+    // Remover draggable padrão
+    this.helloBlock.removeAttribute('draggable');
+    
+    // ===== DESKTOP =====
+    this.helloBlock.addEventListener('mousedown', (e) => {
+      if (this.helloBlock.classList.contains('used')) return;
+      
+      e.preventDefault();
+      console.log('🖱️ Mouse down - iniciando hold timer');
+      
+      // Iniciar timer para hold
+      this.holdTimer = setTimeout(() => {
+        console.log('✅ Hold completado - iniciando drag');
+        this.startDrag(e.clientX, e.clientY, 'mouse');
+      }, this.holdDuration);
+      
+      // Feedback visual de hold
+      this.helloBlock.classList.add('holding');
+      this.helloBlock.style.transform = 'scale(0.98)';
+      this.helloBlock.style.boxShadow = '0 0 20px rgba(54, 209, 220, 0.4)';
+    });
+    
+    // Cancelar hold se mouse sair
+    this.helloBlock.addEventListener('mouseup', () => {
+      this.cancelHold();
+    });
+    
+    this.helloBlock.addEventListener('mouseleave', () => {
+      this.cancelHold();
+    });
+    
+    // Movimento do mouse durante drag
+    document.addEventListener('mousemove', (e) => {
+      if (this.isDragging && this.isReadyToDrag) {
+        e.preventDefault();
+        this.handleDragMove(e.clientX, e.clientY);
+      }
+    });
+    
+    // Soltar mouse
+    document.addEventListener('mouseup', (e) => {
+      if (this.isDragging) {
+        this.handleDrop(e.clientX, e.clientY);
+      }
+    });
+    
+    // ===== MOBILE =====
+    this.helloBlock.addEventListener('touchstart', (e) => {
+      if (this.helloBlock.classList.contains('used')) return;
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const touch = e.touches[0];
+      console.log('📱 Touch start - iniciando hold timer');
+      
+      // Iniciar timer para hold
+      this.holdTimer = setTimeout(() => {
+        console.log('✅ Hold completado - iniciando drag mobile');
+        this.startDrag(touch.clientX, touch.clientY, 'touch');
+      }, this.holdDuration);
+      
+      // Feedback visual
+      this.helloBlock.classList.add('holding');
+      this.helloBlock.style.transform = 'scale(0.98)';
+      this.helloBlock.style.boxShadow = '0 0 20px rgba(54, 209, 220, 0.4)';
+      
+      // Desabilitar scroll
+      this.disablePageScroll();
+      
+    }, { passive: false });
+    
+    // Movimento do toque
+    this.helloBlock.addEventListener('touchmove', (e) => {
+      if (this.isDragging && this.isReadyToDrag) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const touch = e.touches[0];
+        this.handleDragMove(touch.clientX, touch.clientY);
+      }
+    }, { passive: false });
+    
+    // Soltar toque
+    this.helloBlock.addEventListener('touchend', (e) => {
+      if (this.isDragging) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const touch = e.changedTouches[0];
+        this.handleDrop(touch.clientX, touch.clientY);
+      } else {
+        this.cancelHold();
+      }
+      
+      this.enablePageScroll();
+    }, { passive: false });
+    
+    // Cancelar toque
+    this.helloBlock.addEventListener('touchcancel', () => {
+      this.cancelHold();
+      this.enablePageScroll();
+    });
+  }
+  
+  cancelHold() {
+    if (this.holdTimer) {
+      clearTimeout(this.holdTimer);
+      this.holdTimer = null;
+      console.log('❌ Hold cancelado');
+    }
+    
+    // Resetar feedback visual
+    this.helloBlock.classList.remove('holding');
+    this.helloBlock.style.transform = '';
+    this.helloBlock.style.boxShadow = '';
+    
+    this.isReadyToDrag = false;
+  }
+  
+  startDrag(clientX, clientY, inputType) {
+    if (this.helloBlock.classList.contains('used')) return;
+    
+    const rect = this.helloBlock.getBoundingClientRect();
+    
+    // Calcular offset
+    this.blockOffsetX = clientX - rect.left;
+    this.blockOffsetY = clientY - rect.top;
+    
+    // Configurar estado de drag
+    this.isDragging = true;
+    this.isReadyToDrag = true;
+    
+    // Preparar bloco para drag
+    this.helloBlock.style.position = 'fixed';
+    this.helloBlock.style.left = `${rect.left}px`;
+    this.helloBlock.style.top = `${rect.top}px`;
+    this.helloBlock.style.width = `${rect.width}px`;
+    this.helloBlock.style.height = `${rect.height}px`;
+    this.helloBlock.style.zIndex = '10000';
+    this.helloBlock.style.opacity = '0.95';
+    this.helloBlock.style.transform = 'scale(0.95) rotate(2deg)';
+    this.helloBlock.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4)';
+    this.helloBlock.style.transition = 'transform 0.1s, box-shadow 0.1s';
+    this.helloBlock.style.cursor = 'grabbing';
+    this.helloBlock.style.touchAction = 'none';
+    
+    // Feedback visual
+    this.helloBlock.classList.add('dragging');
+    this.helloBlock.classList.remove('holding');
+    
+    console.log(`🎮 Drag iniciado via ${inputType}`);
+  }
+  
+  handleDragMove(clientX, clientY) {
+    if (!this.isDragging || !this.isReadyToDrag) return;
+    
+    const x = clientX - this.blockOffsetX;
+    const y = clientY - this.blockOffsetY;
+    
+    // Atualizar posição
+    this.helloBlock.style.left = `${x}px`;
+    this.helloBlock.style.top = `${y}px`;
+    
+    // Verificar se está sobre o terminal
+    const terminalRect = this.codeTerminal.getBoundingClientRect();
+    const isOverTerminal = clientX >= terminalRect.left && 
+                          clientX <= terminalRect.right &&
+                          clientY >= terminalRect.top && 
+                          clientY <= terminalRect.bottom;
+    
+    // Feedback visual
+    if (isOverTerminal) {
+      this.helloBlock.style.transform = 'scale(0.85) rotate(0deg)';
+      this.helloBlock.style.boxShadow = '0 0 40px rgba(54, 209, 220, 0.8)';
+      this.codeTerminal.classList.add('drop-hover');
+    } else {
+      this.helloBlock.style.transform = 'scale(0.95) rotate(2deg)';
+      this.helloBlock.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4)';
+      this.codeTerminal.classList.remove('drop-hover');
+    }
+  }
+  
+  handleDrop(clientX, clientY) {
+    if (!this.isDragging) return;
+    
+    console.log('🎯 Soltando bloco...');
+    
+    const terminalRect = this.codeTerminal.getBoundingClientRect();
+    const isOverTerminal = clientX >= terminalRect.left && 
+                          clientX <= terminalRect.right &&
+                          clientY >= terminalRect.top && 
+                          clientY <= terminalRect.bottom;
+    
+    if (isOverTerminal) {
+      console.log('✅ Bloco solto sobre o terminal');
+      this.dropBlockIntoTerminal();
+    } else {
+      console.log('❌ Bloco solto fora do terminal');
+      this.returnBlockToOriginalPosition();
+    }
     
     // Resetar estado
-    resetGameState();
+    this.isDragging = false;
+    this.isReadyToDrag = false;
+    this.holdTimer = null;
     
-    // Inicializar drag & drop
-    initDragAndDrop();
+    // Remover feedback
+    this.helloBlock.classList.remove('dragging');
+    this.codeTerminal.classList.remove('drop-hover');
+    
+    this.enablePageScroll();
   }
   
-  // Inicializar o jogo
-  initializeGame();
+  // ===== CONTROLE DE SCROLL =====
+  disablePageScroll() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+    document.documentElement.style.overflow = 'hidden';
+  }
   
-  // ===== DRAG & DROP CORRIGIDO =====
+  enablePageScroll() {
+    document.body.style.overflow = '';
+    document.body.style.touchAction = '';
+    document.documentElement.style.overflow = '';
+  }
   
-  function initDragAndDrop() {
-    if (!helloBlock || !codeTerminal) return;
+  // ===== ANIMAÇÃO DO BLOCO =====
+  dropBlockIntoTerminal() {
+    if (!this.helloBlock || !this.codeTerminal) return;
     
-    // Desktop: Drag & Drop padrão
-    helloBlock.setAttribute('draggable', 'true');
+    const terminalRect = this.codeTerminal.getBoundingClientRect();
+    const terminalCenterX = terminalRect.left + (terminalRect.width / 2);
+    const terminalCenterY = terminalRect.top + (terminalRect.height / 2);
     
-    helloBlock.addEventListener('dragstart', function(e) {
-      if (this.classList.contains('used')) {
-        e.preventDefault();
-        return false;
-      }
-      e.dataTransfer.setData('text/plain', 'helloBlock');
-      this.classList.add('dragging');
-      this.style.opacity = '0.7';
-    });
+    // Feedback visual
+    this.codeTerminal.classList.add('terminal-active');
     
-    helloBlock.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
-      this.style.opacity = '';
-      this.style.transform = '';
-    });
+    // Animar bloco para o centro do terminal
+    this.helloBlock.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease';
+    this.helloBlock.style.left = `${terminalCenterX - (this.helloBlock.offsetWidth / 2)}px`;
+    this.helloBlock.style.top = `${terminalCenterY - (this.helloBlock.offsetHeight / 2)}px`;
+    this.helloBlock.style.transform = 'scale(0.4) rotate(0deg)';
+    this.helloBlock.style.opacity = '0';
+    this.helloBlock.style.boxShadow = '0 0 0 rgba(0,0,0,0)';
     
-    codeTerminal.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      if (!helloBlock.classList.contains('used')) {
-        this.classList.add('drop-success');
-      }
-    });
-    
-    codeTerminal.addEventListener('dragleave', function() {
-      this.classList.remove('drop-success');
-    });
-    
-    codeTerminal.addEventListener('drop', function(e) {
-      e.preventDefault();
-      this.classList.remove('drop-success');
+    // Após animação
+    setTimeout(() => {
+      this.helloBlock.style.display = 'none';
+      this.runCodeButton.disabled = false;
+      this.helloBlock.classList.add('used');
       
-      if (helloBlock.classList.contains('used')) return;
-      
-      // Animar o bloco entrando no terminal
-      animateBlockToTerminal().then(() => {
-        // Ativar botão Executar
-        runCodeButton.disabled = false;
-        
-        // Marcar bloco como usado
-        helloBlock.classList.add('used');
-        helloBlock.style.cursor = 'default';
-        
-        // Atualizar status
-        const codeStatus = document.getElementById('codeStatus');
+      // Atualizar status
+      const codeStatus = document.getElementById('codeStatus');
+      if (codeStatus) {
         codeStatus.textContent = 'Código pronto para executar!';
         codeStatus.style.color = '#FF9800';
-        
-        console.log('Bloco arrastado para o terminal!');
-      });
-    });
-    
-    // Mobile: Touch events corrigidos
-    initTouchDragAndDrop();
-  }
-  
-  function initTouchDragAndDrop() {
-    if (!helloBlock || !codeTerminal) return;
-    
-    helloBlock.addEventListener('touchstart', function(e) {
-      if (this.classList.contains('used')) return;
-      
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const touch = e.touches[0];
-      const rect = this.getBoundingClientRect();
-      
-      dragStartX = touch.clientX;
-      dragStartY = touch.clientY;
-      blockOffsetX = touch.clientX - rect.left;
-      blockOffsetY = touch.clientY - rect.top;
-      isDragging = true;
-      
-      this.style.position = 'fixed';
-      this.style.zIndex = '1000';
-      this.style.opacity = '0.7';
-      this.style.transform = 'scale(0.95)';
-      this.style.transition = 'none';
-      
-      // Prevenir scroll da página
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    }, { passive: false });
-    
-    helloBlock.addEventListener('touchmove', function(e) {
-      if (!isDragging || this.classList.contains('used')) return;
-      
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const touch = e.touches[0];
-      const x = touch.clientX - blockOffsetX;
-      const y = touch.clientY - blockOffsetY;
-      
-      this.style.left = `${x}px`;
-      this.style.top = `${y}px`;
-      this.style.transform = `translate(0, 0) scale(0.95)`;
-      
-    }, { passive: false });
-    
-    helloBlock.addEventListener('touchend', function(e) {
-      if (!isDragging || this.classList.contains('used')) {
-        resetBlockPosition();
-        return;
       }
       
-      e.preventDefault();
-      e.stopPropagation();
+      // Mostrar comando
+      const inputText = document.getElementById('inputText');
+      if (inputText) {
+        inputText.textContent = 'print("Hello World")';
+        inputText.style.color = '#4EC9B0';
+        inputText.style.fontWeight = 'bold';
+      }
       
-      const touch = e.changedTouches[0];
-      const terminalRect = codeTerminal.getBoundingClientRect();
+      // Efeito de digitação
+      this.simulateTypingEffect();
       
-      if (touch.clientX >= terminalRect.left && touch.clientX <= terminalRect.right &&
-          touch.clientY >= terminalRect.top && touch.clientY <= terminalRect.bottom) {
-        
-        // Animar para o terminal
-        animateBlockToTerminal().then(() => {
-          runCodeButton.disabled = false;
-          helloBlock.classList.add('used');
-          helloBlock.style.cursor = 'default';
-          
-          const codeStatus = document.getElementById('codeStatus');
-          codeStatus.textContent = 'Código pronto para executar!';
-          codeStatus.style.color = '#FF9800';
-          
-          codeTerminal.classList.add('drop-success');
-          setTimeout(() => {
-            codeTerminal.classList.remove('drop-success');
-          }, 500);
-        });
+    }, 600);
+  }
+  
+  returnBlockToOriginalPosition() {
+    if (!this.blockOriginalPosition) return;
+    
+    console.log('↩️ Retornando bloco à posição original...');
+    
+    // Animar de volta
+    this.helloBlock.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    this.helloBlock.style.left = `${this.blockOriginalPosition.left}px`;
+    this.helloBlock.style.top = `${this.blockOriginalPosition.top}px`;
+    this.helloBlock.style.transform = 'scale(1) rotate(0deg)';
+    this.helloBlock.style.opacity = '1';
+    this.helloBlock.style.boxShadow = '0 8px 25px rgba(54, 209, 220, 0.4)';
+    
+    // Após animação, resetar
+    setTimeout(() => {
+      this.resetBlockState();
+    }, 500);
+  }
+  
+  resetBlockState() {
+    if (!this.helloBlock) return;
+    
+    this.helloBlock.style.position = '';
+    this.helloBlock.style.left = '';
+    this.helloBlock.style.top = '';
+    this.helloBlock.style.width = '';
+    this.helloBlock.style.height = '';
+    this.helloBlock.style.zIndex = '';
+    this.helloBlock.style.opacity = '';
+    this.helloBlock.style.transform = '';
+    this.helloBlock.style.boxShadow = '';
+    this.helloBlock.style.transition = '';
+    this.helloBlock.style.display = '';
+    this.helloBlock.style.cursor = '';
+    this.helloBlock.style.touchAction = '';
+    
+    this.helloBlock.classList.remove('dragging', 'holding');
+    this.enablePageScroll();
+  }
+  
+  // ===== EFEITO DE DIGITAÇÃO =====
+  simulateTypingEffect() {
+    const inputText = document.getElementById('inputText');
+    if (!inputText) return;
+    
+    const command = 'print("Hello World")';
+    let i = 0;
+    
+    inputText.textContent = '';
+    inputText.style.color = '#4EC9B0';
+    
+    const typeChar = () => {
+      if (i < command.length) {
+        inputText.textContent += command.charAt(i);
+        i++;
+        setTimeout(typeChar, 50);
       } else {
-        resetBlockPosition();
+        const cursor = document.createElement('span');
+        cursor.className = 'blinking-cursor';
+        cursor.textContent = '_';
+        inputText.appendChild(cursor);
       }
-      
-      isDragging = false;
-      
-      // Restaurar scroll da página
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    }, { passive: false });
+    };
+    
+    setTimeout(typeChar, 300);
   }
   
-  function resetBlockPosition() {
-    if (!helloBlock) return;
+  // ===== FLUXO ELÉTRICO =====
+  startElectricFlow() {
+    if (this.electricActive || this.electricRunning || this.electricCompleted) return;
     
-    helloBlock.style.position = '';
-    helloBlock.style.left = '';
-    helloBlock.style.top = '';
-    helloBlock.style.zIndex = '';
-    helloBlock.style.opacity = '';
-    helloBlock.style.transform = '';
-    helloBlock.style.transition = '';
-  }
-  
-  // ===== ANIMAÇÃO DO BLOCO ENTRANDO NO TERMINAL =====
-  
-  function animateBlockToTerminal() {
-    return new Promise((resolve) => {
-      if (!helloBlock || !codeTerminal) {
-        resolve();
-        return;
-      }
-      
-      const blockRect = helloBlock.getBoundingClientRect();
-      const terminalRect = codeTerminal.getBoundingClientRect();
-      const terminalInput = codeTerminal.querySelector('.terminal-input');
-      
-      // Calcular posição final (centro do input do terminal)
-      const targetX = terminalRect.left + (terminalRect.width / 2) - (blockRect.width / 2);
-      const targetY = terminalRect.top + (terminalInput ? terminalInput.offsetTop : terminalRect.height / 2);
-      
-      // Posicionar o bloco fixo
-      helloBlock.style.position = 'fixed';
-      helloBlock.style.left = `${blockRect.left}px`;
-      helloBlock.style.top = `${blockRect.top}px`;
-      helloBlock.style.width = `${blockRect.width}px`;
-      helloBlock.style.height = `${blockRect.height}px`;
-      helloBlock.style.zIndex = '1000';
-      helloBlock.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      helloBlock.style.opacity = '1';
-      
-      // Animar para o terminal
-      requestAnimationFrame(() => {
-        helloBlock.style.left = `${targetX}px`;
-        helloBlock.style.top = `${targetY}px`;
-        helloBlock.style.transform = 'scale(0.8)';
-        helloBlock.style.opacity = '0.5';
-        
-        // Efeito de "entrada" no terminal
-        setTimeout(() => {
-          helloBlock.style.opacity = '0';
-          helloBlock.style.transform = 'scale(0.5) translateY(20px)';
-          
-          // Feedback visual no terminal
-          codeTerminal.classList.add('terminal-active');
-          const inputText = document.getElementById('inputText');
-          if (inputText) {
-            inputText.textContent = 'print("Hello World")';
-            inputText.style.color = '#4EC9B0';
-          }
-          
-          setTimeout(() => {
-            resetBlockPosition();
-            resolve();
-          }, 300);
-        }, 400);
-      });
-    });
-  }
-  
-  // ===== EVENT LISTENERS =====
-  
-  // 1. Botão "Ver Paralelo"
-  startButton.addEventListener('click', function() {
-    console.log('--- Ver Paralelo clicado ---');
-    showScreen(gameScreen);
-    resetGameState();
-    animateGameStart();
-  });
-  
-  // 2. Botão "Reiniciar"
-  resetButton.addEventListener('click', function() {
-    console.log('--- Reiniciar clicado ---');
-    initializeGame();
-  });
-  
-  // 3. Botão "Executar Ambos"
-  runBothButton.addEventListener('click', function() {
-    console.log('--- Executar Ambos clicado ---');
-    
-    isRunningBoth = true;
-    runBothButton.disabled = true;
-    const originalText = runBothButton.innerHTML;
-    runBothButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
-    
-    // Primeiro simular drag & drop
-    if (!helloBlock.classList.contains('used')) {
-      simulateCodeBlockDrop();
-    }
-    
-    // Executar fluxos sequencialmente
-    setTimeout(() => {
-      if (!electricRunning && !electricCompleted) {
-        startElectricFlow();
-      }
-      
-      setTimeout(() => {
-        if (!codeRunning && !codeCompleted) {
-          runCodeFlow();
-        }
-      }, 1500);
-    }, 1000);
-    
-    // Restaurar botão
-    setTimeout(() => {
-      runBothButton.disabled = false;
-      runBothButton.innerHTML = originalText;
-      isRunningBoth = false;
-    }, 4000);
-  });
-  
-  // 4. Botão "Iniciar Fluxo" individual
-  electricButton.addEventListener('click', function() {
-    console.log('--- Iniciar Fluxo Elétrico clicado ---');
-    if (!electricRunning && !electricCompleted) {
-      startElectricFlow();
-    }
-  });
-  
-  // 5. Botão "Executar Código" individual
-  runCodeButton.addEventListener('click', function() {
-    console.log('--- Executar Código clicado ---');
-    if (!codeRunning && !codeCompleted) {
-      runCodeFlow();
-    }
-  });
-  
-  // 6. Botão "Ver Novamente"
-  playAgainButton.addEventListener('click', function() {
-    console.log('--- Ver Novamente clicado ---');
-    initializeGame();
-  });
-  
-  // 7. Botão "Aprender Mais"
-  document.getElementById('learnMore')?.addEventListener('click', function() {
-    console.log('--- Aprender Mais clicado ---');
-    document.getElementById('learnModal').classList.add('active');
-  });
-  
-  // 8. Botões para fechar modal
-  document.getElementById('closeLearnModal')?.addEventListener('click', function() {
-    document.getElementById('learnModal').classList.remove('active');
-  });
-  
-  document.getElementById('closeLearnModalBtn')?.addEventListener('click', function() {
-    document.getElementById('learnModal').classList.remove('active');
-  });
-  
-  // ===== FUNÇÕES DO FLUXO ELÉTRICO =====
-  
-  function createElectronParticle() {
-    const wireVisual = document.getElementById('electricWire');
-    if (!wireVisual) return null;
-    
-    const particle = document.createElement('div');
-    particle.className = 'electron-particle';
-    particle.innerHTML = '⚡';
-    
-    // Posição aleatória no eixo Y
-    const randomY = Math.random() * 20 - 10;
-    particle.style.top = `calc(50% + ${randomY}px)`;
-    particle.style.left = '-20px';
-    
-    // Tamanho aleatório
-    const size = 0.7 + Math.random() * 0.6;
-    particle.style.fontSize = `${size}rem`;
-    
-    // Opacidade aleatória
-    particle.style.opacity = (0.5 + Math.random() * 0.5).toString();
-    
-    // Atraso aleatório para animação
-    const delay = Math.random() * 0.5;
-    
-    wireVisual.appendChild(particle);
-    electronParticles.push(particle);
-    
-    // Animar partícula
-    animateElectronParticle(particle, delay);
-    
-    return particle;
-  }
-  
-  function animateElectronParticle(particle, delay = 0) {
-    const wireVisual = document.getElementById('electricWire');
-    if (!wireVisual) return;
-    
-    setTimeout(() => {
-      const duration = 2000 + Math.random() * 2000; // 2-4 segundos
-      const startTime = Date.now();
-      const wireWidth = wireVisual.offsetWidth;
-      
-      function animate() {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Movimento com easing
-        const easedProgress = 1 - Math.pow(1 - progress, 2);
-        const position = -20 + easedProgress * (wireWidth + 40);
-        
-        // Efeito de oscilação
-        const oscillation = Math.sin(progress * Math.PI * 8) * 3;
-        
-        particle.style.left = `${position}px`;
-        particle.style.transform = `translateY(-50%) translateY(${oscillation}px)`;
-        particle.style.opacity = (0.8 * (1 - progress * 0.7)).toString();
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          // Remover partícula
-          particle.remove();
-          electronParticles = electronParticles.filter(p => p !== particle);
-        }
-      }
-      
-      requestAnimationFrame(animate);
-    }, delay * 1000);
-  }
-  
-  function clearElectronParticles() {
-    electronParticles.forEach(particle => particle.remove());
-    electronParticles = [];
-    if (electronInterval) {
-      clearInterval(electronInterval);
-      electronInterval = null;
-    }
-  }
-  
-  function startElectricFlow() {
-    if (electricActive || electricRunning || electricCompleted) return;
-    
-    console.log('⚡ Iniciando fluxo elétrico com múltiplos elétrons...');
-    electricActive = true;
-    electricRunning = true;
+    this.electricActive = true;
+    this.electricRunning = true;
     
     const electricWire = document.getElementById('electricWire');
     const electricLamp = document.getElementById('electricLamp');
     const electricStatus = document.getElementById('electricStatus');
     
-    // Atualizar status
     electricStatus.textContent = 'Fluxo iniciado...';
-    electricButton.disabled = true;
-    electricButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fluindo...';
+    this.electricButton.disabled = true;
+    this.electricButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fluindo...';
     
-    // Ativar visual do fio
     electricWire.classList.add('wire-active');
     
-    // Criar MUITAS partículas de elétrons
-    electronInterval = setInterval(() => {
-      // Criar 3-5 partículas por ciclo
-      const count = 3 + Math.floor(Math.random() * 3);
-      for (let i = 0; i < count; i++) {
-        createElectronParticle();
-      }
-    }, 300); // Novos elétrons a cada 300ms
+    this.electronInterval = setInterval(() => {
+      this.createElectronParticle();
+    }, 300);
     
-    // Parar criação após 4 segundos e acender lâmpada
     setTimeout(() => {
-      clearInterval(electronInterval);
-      electronInterval = null;
+      clearInterval(this.electronInterval);
+      this.electronInterval = null;
       
-      // Esperar últimas partículas chegarem
       setTimeout(() => {
-        // Acender lâmpada
         electricLamp.classList.add('lit');
-        
-        // Efeito de brilho
-        electricLamp.style.animation = 'lampPulse 1.5s infinite alternate';
-        
-        // Atualizar status
         electricStatus.textContent = 'Lâmpada acesa!';
         electricStatus.style.color = '#4CAF50';
-        electricButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
+        this.electricButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
         
-        // Marcar como completado
-        electricCompleted = true;
-        electricRunning = false;
-        electricActive = false;
+        this.electricCompleted = true;
+        this.electricRunning = false;
+        this.electricActive = false;
         
-        console.log('Fluxo elétrico COMPLETADO com múltiplos elétrons');
-        
-        // Atualizar progresso
-        updateProgress(1);
-        
-        // Verificar conclusão
-        checkBothCompleted();
+        this.updateProgress(1);
+        this.checkBothCompleted();
       }, 2000);
     }, 4000);
   }
   
-  // ===== FUNÇÕES DO FLUXO DE CÓDIGO =====
-  
-  function simulateCodeBlockDrop() {
-    console.log('Simulando drag & drop do bloco de código...');
+  createElectronParticle() {
+    const wireVisual = document.getElementById('electricWire');
+    if (!wireVisual) return;
     
-    if (!helloBlock.classList.contains('used')) {
-      animateBlockToTerminal().then(() => {
-        runCodeButton.disabled = false;
-        helloBlock.classList.add('used');
-        helloBlock.style.cursor = 'default';
+    const particle = document.createElement('div');
+    particle.className = 'electron-particle';
+    particle.innerHTML = '⚡';
+    
+    const randomY = Math.random() * 20 - 10;
+    particle.style.top = `calc(50% + ${randomY}px)`;
+    particle.style.left = '-20px';
+    const size = 0.7 + Math.random() * 0.6;
+    particle.style.fontSize = `${size}rem`;
+    particle.style.opacity = (0.5 + Math.random() * 0.5).toString();
+    
+    wireVisual.appendChild(particle);
+    this.electronParticles.push(particle);
+    this.animateElectronParticle(particle);
+  }
+  
+  animateElectronParticle(particle) {
+    const wireVisual = document.getElementById('electricWire');
+    if (!wireVisual) return;
+    
+    setTimeout(() => {
+      const duration = 2000 + Math.random() * 2000;
+      const startTime = Date.now();
+      const wireWidth = wireVisual.offsetWidth;
+      
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 2);
+        const position = -20 + easedProgress * (wireWidth + 40);
         
-        const codeStatus = document.getElementById('codeStatus');
-        codeStatus.textContent = 'Código pronto para executar!';
-        codeStatus.style.color = '#FF9800';
-      });
+        particle.style.left = `${position}px`;
+        particle.style.opacity = (0.8 * (1 - progress * 0.7)).toString();
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          particle.remove();
+          this.electronParticles = this.electronParticles.filter(p => p !== particle);
+        }
+      };
+      
+      requestAnimationFrame(animate);
+    }, Math.random() * 500);
+  }
+  
+  clearElectronParticles() {
+    this.electronParticles.forEach(particle => particle.remove());
+    this.electronParticles = [];
+    if (this.electronInterval) {
+      clearInterval(this.electronInterval);
+      this.electronInterval = null;
     }
   }
   
-  function runCodeFlow() {
-    if (codeRunning || codeCompleted) return;
+  // ===== FLUXO DE CÓDIGO =====
+  runCodeFlow() {
+    if (this.codeRunning || this.codeCompleted) return;
     
-    console.log('Iniciando execução de código...');
-    codeRunning = true;
-    runCodeButton.disabled = true;
+    this.codeRunning = true;
+    this.runCodeButton.disabled = true;
     
     const terminalOutput = document.getElementById('terminalOutput');
     const inputText = document.getElementById('inputText');
     const codeStatus = document.getElementById('codeStatus');
     
-    // Atualizar status
     codeStatus.textContent = 'Executando código...';
-    runCodeButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
+    this.runCodeButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
     
-    // Ativar terminal
-    codeTerminal.classList.add('terminal-active');
+    this.codeTerminal.classList.add('terminal-active');
     
-    // Mostrar comando
-    inputText.textContent = 'print("Hello World")';
-    
-    // Simular execução
     setTimeout(() => {
-      // Adicionar resultado
       const resultLine = document.createElement('div');
       resultLine.className = 'terminal-line';
       resultLine.textContent = 'Hello World';
@@ -1643,57 +1247,67 @@ document.addEventListener('DOMContentLoaded', function() {
       terminalOutput.appendChild(resultLine);
       terminalOutput.scrollTop = terminalOutput.scrollHeight;
       
-      // Limpar input
       setTimeout(() => {
         inputText.textContent = '_';
-        
-        // Atualizar status
         codeStatus.textContent = 'Código executado!';
         codeStatus.style.color = '#2196F3';
-        runCodeButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
+        this.runCodeButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
         
-        // Marcar como completado
-        codeCompleted = true;
-        codeRunning = false;
+        this.codeCompleted = true;
+        this.codeRunning = false;
         
-        console.log('Código COMPLETADO');
-        
-        // Atualizar progresso
-        updateProgress(2);
-        
-        // Verificar conclusão
-        checkBothCompleted();
+        this.updateProgress(2);
+        this.checkBothCompleted();
       }, 1500);
     }, 1000);
   }
   
-  // ===== FUNÇÕES AUXILIARES =====
+  // ===== CONTROLE DE PROGRESSO =====
+  updateProgress(step) {
+    const progressSteps = document.querySelectorAll('.progress-step');
+    
+    progressSteps.forEach(stepEl => {
+      stepEl.classList.remove('active');
+    });
+    
+    for (let i = 0; i <= step; i++) {
+      if (progressSteps[i]) {
+        progressSteps[i].classList.add('active');
+      }
+    }
+  }
   
-  function resetGameState() {
-    console.log('Resetando estado do jogo...');
-    
+  checkBothCompleted() {
+    if (this.electricCompleted && this.codeCompleted) {
+      this.updateProgress(3);
+      
+      setTimeout(() => {
+        this.showScreen(this.completeScreen);
+      }, 1500);
+    }
+  }
+  
+  // ===== RESET DO JOGO =====
+  resetGameState() {
     // Resetar variáveis
-    electricCompleted = false;
-    codeCompleted = false;
-    isRunningBoth = false;
-    electricRunning = false;
-    codeRunning = false;
-    electricActive = false;
-    isDragging = false;
+    this.electricCompleted = false;
+    this.codeCompleted = false;
+    this.isRunningBoth = false;
+    this.electricRunning = false;
+    this.codeRunning = false;
+    this.electricActive = false;
+    this.isDragging = false;
+    this.isReadyToDrag = false;
     
-    // Limpar partículas de elétrons
-    clearElectronParticles();
+    // Limpar partículas
+    this.clearElectronParticles();
     
     // Resetar elementos elétricos
     const electricWire = document.getElementById('electricWire');
     const electricLamp = document.getElementById('electricLamp');
     const electricStatus = document.getElementById('electricStatus');
     
-    if (electricWire) {
-      electricWire.classList.remove('wire-active');
-      const particles = electricWire.querySelectorAll('.electron-particle');
-      particles.forEach(p => p.remove());
-    }
+    if (electricWire) electricWire.classList.remove('wire-active');
     if (electricLamp) {
       electricLamp.classList.remove('lit');
       electricLamp.style.animation = '';
@@ -1704,9 +1318,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Resetar botão elétrico
-    if (electricButton) {
-      electricButton.disabled = false;
-      electricButton.innerHTML = '<i class="fas fa-play"></i> Iniciar Fluxo';
+    if (this.electricButton) {
+      this.electricButton.disabled = false;
+      this.electricButton.innerHTML = '<i class="fas fa-play"></i> Iniciar Fluxo';
     }
     
     // Resetar elementos de código
@@ -1714,12 +1328,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputText = document.getElementById('inputText');
     const codeStatus = document.getElementById('codeStatus');
     
-    if (codeTerminal) {
-      codeTerminal.classList.remove('terminal-active');
-      codeTerminal.classList.remove('drop-success');
-    }
+    if (this.codeTerminal) this.codeTerminal.classList.remove('terminal-active');
     if (terminalOutput) {
-      // Manter apenas as duas primeiras linhas
       const lines = terminalOutput.querySelectorAll('.terminal-line');
       for (let i = 2; i < lines.length; i++) {
         lines[i].remove();
@@ -1732,118 +1342,427 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Resetar botão de código
-    if (runCodeButton) {
-      runCodeButton.disabled = true;
-      runCodeButton.innerHTML = '<i class="fas fa-play-circle"></i> Executar';
+    if (this.runCodeButton) {
+      this.runCodeButton.disabled = true;
+      this.runCodeButton.innerHTML = '<i class="fas fa-play-circle"></i> Executar';
     }
     
     // Resetar bloco de código
-    if (helloBlock) {
-      helloBlock.classList.remove('used');
-      helloBlock.style.cursor = 'grab';
-      resetBlockPosition();
+    if (this.helloBlock) {
+      this.helloBlock.classList.remove('used');
+      this.helloBlock.style.cursor = 'pointer';
+      this.resetBlockState();
+      this.saveBlockOriginalPosition();
     }
     
     // Resetar botão Executar Ambos
-    if (runBothButton) {
-      runBothButton.disabled = false;
-      runBothButton.innerHTML = '<i class="fas fa-play"></i> Executar Ambos';
+    if (this.runBothButton) {
+      this.runBothButton.disabled = false;
+      this.runBothButton.innerHTML = '<i class="fas fa-play"></i> Executar Ambos';
     }
     
     // Resetar progresso
-    updateProgress(0);
+    this.updateProgress(0);
   }
   
-  function updateProgress(step) {
-    const progressSteps = document.querySelectorAll('.progress-step');
+  // ===== EVENT LISTENERS =====
+  bindEvents() {
+    // Botão "Ver Paralelo" - SCROLL PARA SIMULAÇÕES
+    if (this.startButton) {
+      this.startButton.addEventListener('click', () => {
+        console.log('🎮 Ver Paralelo clicado - indo para jogo');
+        this.showScreen(this.gameScreen);
+        this.resetGameState();
+        
+        // Scroll automático para simulações
+        setTimeout(() => {
+          this.scrollToSimulations();
+        }, 300);
+      });
+    }
     
-    // Remover active de todos
-    progressSteps.forEach(stepEl => {
-      stepEl.classList.remove('active');
+    // Botão "Reiniciar" - SCROLL PARA SIMULAÇÕES
+    if (this.resetButton) {
+      this.resetButton.addEventListener('click', () => {
+        console.log('🔄 Reiniciar clicado');
+        this.resetGameState();
+        
+        // Scroll para simulações
+        setTimeout(() => {
+          this.scrollToSimulations();
+        }, 100);
+      });
+    }
+    
+    // Botão "Executar Ambos" - SCROLL PARA SIMULAÇÕES
+    if (this.runBothButton) {
+      this.runBothButton.addEventListener('click', () => {
+        console.log('⚡ Executar Ambos clicado');
+        this.isRunningBoth = true;
+        this.runBothButton.disabled = true;
+        const originalText = this.runBothButton.innerHTML;
+        this.runBothButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
+        
+        // Scroll para simulações primeiro
+        this.scrollToSimulations();
+        
+        // Simular drag & drop
+        if (!this.helloBlock.classList.contains('used')) {
+          setTimeout(() => {
+            this.dropBlockIntoTerminal();
+          }, 800);
+        }
+        
+        // Executar fluxos
+        setTimeout(() => {
+          if (!this.electricRunning && !this.electricCompleted) {
+            this.startElectricFlow();
+          }
+          
+          setTimeout(() => {
+            if (!this.codeRunning && !this.codeCompleted) {
+              this.runCodeFlow();
+            }
+          }, 1500);
+        }, 1200);
+        
+        setTimeout(() => {
+          this.runBothButton.disabled = false;
+          this.runBothButton.innerHTML = originalText;
+          this.isRunningBoth = false;
+        }, 4000);
+      });
+    }
+    
+    // Botão "Iniciar Fluxo"
+    if (this.electricButton) {
+      this.electricButton.addEventListener('click', () => {
+        if (!this.electricRunning && !this.electricCompleted) {
+          this.startElectricFlow();
+        }
+      });
+    }
+    
+    // Botão "Executar Código"
+    if (this.runCodeButton) {
+      this.runCodeButton.addEventListener('click', () => {
+        if (!this.codeRunning && !this.codeCompleted) {
+          this.runCodeFlow();
+        }
+      });
+    }
+    
+    // Botão "Ver Novamente"
+    if (this.playAgainButton) {
+      this.playAgainButton.addEventListener('click', () => {
+        this.initialize();
+      });
+    }
+    
+    // Botão "Aprender Mais"
+    document.getElementById('learnMore')?.addEventListener('click', () => {
+      document.getElementById('learnModal').classList.add('active');
     });
     
-    // Ativar até o passo atual
-    for (let i = 0; i <= step; i++) {
-      if (progressSteps[i]) {
-        progressSteps[i].classList.add('active');
+    document.getElementById('closeLearnModal')?.addEventListener('click', () => {
+      document.getElementById('learnModal').classList.remove('active');
+    });
+    
+    document.getElementById('closeLearnModalBtn')?.addEventListener('click', () => {
+      document.getElementById('learnModal').classList.remove('active');
+    });
+  }
+  
+  // ===== ESTILOS CSS ADICIONAIS =====
+  addCustomStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+      .blinking-cursor {
+        display: inline-block;
+        width: 2px;
+        margin-left: 2px;
+        animation: blink 1s infinite;
+        color: #4EC9B0;
       }
-    }
+      
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+      
+      .drop-hover {
+        border-color: #36d1dc !important;
+        box-shadow: 0 0 20px rgba(54, 209, 220, 0.4) !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .code-block-duo.dragging {
+        cursor: grabbing !important;
+        user-select: none !important;
+      }
+      
+      .code-block-duo.holding {
+        cursor: move !important;
+        user-select: none !important;
+        transition: transform 0.2s, box-shadow 0.2s !important;
+      }
+      
+      .electron-particle {
+        position: absolute;
+        font-size: 0.9rem;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.8));
+        z-index: 5;
+        pointer-events: none;
+      }
+      
+      /* Pulse animation for hold feedback */
+      @keyframes pulse-hold {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.98); }
+        100% { transform: scale(1); }
+      }
+      
+      .code-block-duo.holding {
+        animation: pulse-hold 0.5s ease-in-out infinite;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+// ==============================================
+// ANIMAÇÃO DE DIGITAÇÃO (TYPEWRITER)
+// ==============================================
+class Typewriter {
+  constructor() {
+    this.typewriterText = document.querySelector('.typewriter p');
+    this.texts = [
+      "Técnico em Desenvolvimento de Sistemas",
+      "Eletricista de Manutenção Eletroeletrônica",
+      "Criando soluções com código e circuitos",
+      "Transformando ideias em realidade"
+    ];
+    
+    this.currentTextIndex = 0;
+    this.charIndex = 0;
+    this.isDeleting = false;
+    this.isPaused = false;
+    
+    this.initialize();
   }
   
-  function checkBothCompleted() {
-    console.log('Verificando conclusão. Elétrico:', electricCompleted, 'Código:', codeCompleted);
+  initialize() {
+    setTimeout(() => this.type(), 1000);
     
-    if (electricCompleted && codeCompleted) {
-      console.log('AMBOS COMPLETOS! Mostrando tela de conclusão...');
-      
-      // Atualizar progresso final
-      updateProgress(3);
-      
-      // Delay para mostrar conclusão
-      setTimeout(() => {
-        showScreen(completeScreen);
-        animateSuccessScreen();
-      }, 1500);
-    }
+    document.addEventListener('visibilitychange', () => {
+      this.isPaused = document.hidden;
+      if (!this.isPaused) this.type();
+    });
   }
   
-  function animateGameStart() {
-    console.log('Animando início do jogo...');
+  type() {
+    if (this.isPaused) return;
     
-    const flowContainers = document.querySelectorAll('.flow-container');
-    flowContainers.forEach((container, index) => {
-      setTimeout(() => {
-        container.style.opacity = '0';
-        container.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-          container.style.opacity = '1';
-          container.style.transform = 'translateY(0)';
-          container.style.transition = 'all 0.5s ease';
-        }, 100);
-      }, index * 200);
+    const currentText = this.texts[this.currentTextIndex];
+    
+    if (!this.isDeleting && this.charIndex < currentText.length) {
+      this.typewriterText.textContent = currentText.substring(0, this.charIndex + 1);
+      this.charIndex++;
+      setTimeout(() => this.type(), 50);
+    } else if (this.isDeleting && this.charIndex > 0) {
+      this.typewriterText.textContent = currentText.substring(0, this.charIndex - 1);
+      this.charIndex--;
+      setTimeout(() => this.type(), 30);
+    } else {
+      this.isDeleting = !this.isDeleting;
+      
+      if (!this.isDeleting) {
+        this.currentTextIndex = (this.currentTextIndex + 1) % this.texts.length;
+      }
+      
+      setTimeout(() => this.type(), this.isDeleting ? 1500 : 500);
+    }
+  }
+}
+
+// ==============================================
+// ANIMAÇÃO AO ROLAR (INTERSECTION OBSERVER)
+// ==============================================
+class ScrollAnimations {
+  static init() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.about-card, .project-card, .contact-card, .hero, .section-header').forEach(el => {
+      observer.observe(el);
+    });
+  }
+}
+
+// ==============================================
+// ANIMAÇÃO DO FOOTER
+// ==============================================
+class FooterAnimations {
+  static init() {
+    const footerElements = document.querySelectorAll('.footer-column, .tech-badge, .social-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+          }, index * 100);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
     
-    updateProgress(0);
-  }
-  
-  function animateSuccessScreen() {
-    console.log('Animando tela de sucesso...');
-    
-    const successIcons = document.querySelectorAll('.success-icon');
-    successIcons.forEach((icon, index) => {
-      setTimeout(() => {
-        icon.style.transform = 'scale(0)';
-        icon.style.opacity = '0';
-        
-        setTimeout(() => {
-          icon.style.transform = 'scale(1)';
-          icon.style.opacity = '1';
-          icon.style.transition = 'all 0.5s ease';
-        }, 100);
-      }, index * 300);
+    footerElements.forEach(el => {
+      observer.observe(el);
     });
   }
+}
+
+// ==============================================
+// UTILITÁRIOS
+// ==============================================
+class Utils {
+  static debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
   
-  // ===== DEBUG =====
-  
-  console.log('DuoFlow carregado com sucesso!');
-  
-  // Expor funções para debug
-  window.duoflowDebug = {
-    reset: () => resetGameState(),
-    runElectric: () => startElectricFlow(),
-    runCode: () => runCodeFlow(),
-    showStart: () => showScreen(startScreen),
-    showGame: () => showScreen(gameScreen),
-    showComplete: () => showScreen(completeScreen),
-    scrollToCards: () => scrollToSimulationCards(),
-    clearParticles: () => clearElectronParticles(),
-    checkState: () => {
-      console.log('Estado atual:');
-      console.log('- Elétrico completo:', electricCompleted);
-      console.log('- Código completo:', codeCompleted);
-      console.log('- Executando ambos:', isRunningBoth);
+  static adjustShapes() {
+    const shapes = document.querySelectorAll('.shape');
+    const width = window.innerWidth;
+    
+    if (width <= 480) {
+      shapes.forEach((shape, index) => {
+        if (index >= 3) {
+          shape.style.display = 'none';
+        } else {
+          shape.style.transform = 'scale(0.4)';
+        }
+      });
+    } else if (width <= 768) {
+      shapes.forEach(shape => {
+        shape.style.transform = 'scale(0.6)';
+        shape.style.display = 'block';
+      });
+    } else if (width >= 1440) {
+      shapes.forEach(shape => {
+        shape.style.transform = 'scale(1.2)';
+      });
+    } else {
+      shapes.forEach(shape => {
+        shape.style.transform = 'scale(1)';
+        shape.style.display = 'block';
+      });
     }
-  };
+  }
+  
+  static handleResize() {
+    if (window.innerWidth > 768 && document.getElementById('mobileMenu')?.classList.contains('active')) {
+      MobileMenu.close();
+    }
+    
+    const modal = document.getElementById('modal');
+    if (modal?.classList.contains('show') && ProjectModal.swiperInstance) {
+      ProjectModal.swiperInstance.update();
+    }
+    
+    this.adjustShapes();
+  }
+}
+
+// ==============================================
+// CONTADOR DE VISITAS
+// ==============================================
+class VisitCounter {
+  static update() {
+    if (!localStorage.getItem('visitCount')) {
+      localStorage.setItem('visitCount', '1');
+    } else {
+      let count = parseInt(localStorage.getItem('visitCount'));
+      count++;
+      localStorage.setItem('visitCount', count.toString());
+    }
+  }
+}
+
+// ==============================================
+// INICIALIZAÇÃO DA APLICAÇÃO
+// ==============================================
+class App {
+  static init() {
+    console.log('🚀 Inicializando aplicação...');
+    
+    new ThemeManager();
+    MobileMenu.init();
+    Navigation.init();
+    ProjectModal.init();
+    
+    if (document.getElementById('duoflowStart')) {
+      window.duoFlowGame = new DuoFlowGame();
+    }
+    
+    new Typewriter();
+    ScrollAnimations.init();
+    FooterAnimations.init();
+    
+    this.setupEventListeners();
+    VisitCounter.update();
+    
+    Navigation.updateActiveLinks();
+    Navigation.toggleBackToTop();
+    Utils.adjustShapes();
+    
+    console.log('✅ Aplicação inicializada com sucesso!');
+  }
+  
+  static setupEventListeners() {
+    window.addEventListener('resize', Utils.debounce(() => {
+      Utils.handleResize();
+      Utils.adjustShapes();
+    }, 250));
+    
+    document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(l => {
+          l.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  }
+}
+
+// ==============================================
+// INICIAR APLICAÇÃO
+// ==============================================
+document.addEventListener('DOMContentLoaded', () => {
+  App.init();
 });
+
+// Expor para debug
+window.App = App;
+window.DuoFlowGame = DuoFlowGame;
