@@ -12,7 +12,7 @@ const config = {
 
 // Dados dos projetos
 const projetos = {
-  // ... (mantenha seus dados de projetos aqui exatamente como estavam)
+
   cultivamais: {
     titulo: "CultivaMais - E-commerce Agrícola",
     descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores.",
@@ -26,7 +26,7 @@ const projetos = {
       { type: 'github', url: 'https://github.com/duguzin/CultivaMais-V2', text: 'Ver código no GitHub' },
       { type: 'demo', url: '', text: 'Ver demonstração' }
     ],
-    features: ["Catálogo de produtos com filtros", "Carrinho de compras", "Checkou", "Painel administrativo"]
+    features: ["Catálogo de produtos com filtros", "Carrinho de compras", "Checkout", "Painel administrativo"]
   },
 
   guia360: {
@@ -643,10 +643,11 @@ class ProjectModal {
 }
 
 // ==============================================
-// DUOFLOW GAME - COM AS MELHORIAS SOLICITADAS
+// DUOFLOW GAME - VERSÃO SIMPLIFICADA E CORRIGIDA
 // ==============================================
 class DuoFlowGame {
   constructor() {
+    // Elementos principais
     this.startScreen = document.getElementById('duoflowStart');
     this.gameScreen = document.getElementById('duoflowGame');
     this.completeScreen = document.getElementById('duoflowComplete');
@@ -671,20 +672,9 @@ class DuoFlowGame {
     this.electricRunning = false;
     this.codeRunning = false;
     this.electricActive = false;
+    this.blockUsed = false;
     
-    // Variáveis para drag & drop COM HOLD TO DRAG
-    this.isDragging = false;
-    this.isReadyToDrag = false;
-    this.holdTimer = null;
-    this.holdDuration = 500; // 0.5 segundos para segurar
-    this.dragStartX = 0;
-    this.dragStartY = 0;
-    this.blockOffsetX = 0;
-    this.blockOffsetY = 0;
-    this.initialTouchY = 0;
-    this.blockOriginalPosition = null;
-    
-    // Partículas
+    // Variáveis para animações
     this.electronInterval = null;
     this.electronParticles = [];
     
@@ -692,16 +682,13 @@ class DuoFlowGame {
   }
   
   initialize() {
-    console.log('🚀 Inicializando DuoFlow...');
+    console.log('🚀 Inicializando DuoFlow simplificado...');
     
     // Mostrar tela inicial
     this.showScreen(this.startScreen);
     
-    // Salvar posição original do bloco
-    this.saveBlockOriginalPosition();
-    
-    // Inicializar drag & drop com hold to drag
-    this.initHoldToDrag();
+    // Configurar clique no bloco (simples)
+    this.setupBlockClick();
     
     // Adicionar estilos CSS
     this.addCustomStyles();
@@ -715,21 +702,27 @@ class DuoFlowGame {
   
   // ===== FUNÇÃO PARA SCROLLAR PARA AS SIMULAÇÕES =====
   scrollToSimulations() {
-    console.log('📱 Scroll para simulações...');
+    console.log('📱 Scroll automático para simulações...');
+    
+    // Garantir que estamos na tela do jogo
+    if (!this.gameScreen.classList.contains('active')) {
+      console.log('⚠️ Não está na tela do jogo, mudando...');
+      this.showScreen(this.gameScreen);
+    }
     
     // Pequeno delay para DOM se atualizar
     setTimeout(() => {
       if (this.flowContainers.length > 0) {
         console.log('🎯 Encontrei containers de simulação');
         
-        // Scroll para o primeiro container
+        // Scroll suave para os containers
         this.flowContainers[0].scrollIntoView({ 
           behavior: 'smooth', 
           block: 'center',
           inline: 'nearest'
         });
         
-        // Highlight visual
+        // Efeito visual nos containers
         this.flowContainers.forEach(container => {
           container.style.boxShadow = '0 0 30px rgba(var(--primary-rgb), 0.4)';
           container.style.transform = 'scale(1.02)';
@@ -740,6 +733,8 @@ class DuoFlowGame {
             container.style.transform = '';
           }, 2000);
         });
+      } else {
+        console.log('❌ Nenhum container de simulação encontrado');
       }
     }, 300);
   }
@@ -754,376 +749,150 @@ class DuoFlowGame {
     screen.style.display = 'block';
     setTimeout(() => {
       screen.classList.add('active');
-      
-      // Se for a tela do jogo, scroll para simulações
-      if (screen === this.gameScreen) {
-        setTimeout(() => {
-          this.scrollToSimulations();
-        }, 500);
-      }
     }, 50);
   }
   
-  // ===== HOLD TO DRAG - NOVO SISTEMA =====
-  saveBlockOriginalPosition() {
-    if (!this.helloBlock) return;
-    
-    const rect = this.helloBlock.getBoundingClientRect();
-    this.blockOriginalPosition = {
-      left: rect.left,
-      top: rect.top,
-      width: rect.width,
-      height: rect.height
-    };
-  }
-  
-  initHoldToDrag() {
+  // ===== BLOCO SIMPLES - APENAS CLIQUE =====
+  setupBlockClick() {
     if (!this.helloBlock || !this.codeTerminal) return;
     
-    // Remover draggable padrão
+    // Remover qualquer draggable anterior
     this.helloBlock.removeAttribute('draggable');
+    this.helloBlock.style.cursor = 'pointer';
     
-    // ===== DESKTOP =====
-    this.helloBlock.addEventListener('mousedown', (e) => {
-      if (this.helloBlock.classList.contains('used')) return;
-      
-      e.preventDefault();
-      console.log('🖱️ Mouse down - iniciando hold timer');
-      
-      // Iniciar timer para hold
-      this.holdTimer = setTimeout(() => {
-        console.log('✅ Hold completado - iniciando drag');
-        this.startDrag(e.clientX, e.clientY, 'mouse');
-      }, this.holdDuration);
-      
-      // Feedback visual de hold
-      this.helloBlock.classList.add('holding');
-      this.helloBlock.style.transform = 'scale(0.98)';
-      this.helloBlock.style.boxShadow = '0 0 20px rgba(54, 209, 220, 0.4)';
-    });
-    
-    // Cancelar hold se mouse sair
-    this.helloBlock.addEventListener('mouseup', () => {
-      this.cancelHold();
-    });
-    
-    this.helloBlock.addEventListener('mouseleave', () => {
-      this.cancelHold();
-    });
-    
-    // Movimento do mouse durante drag
-    document.addEventListener('mousemove', (e) => {
-      if (this.isDragging && this.isReadyToDrag) {
-        e.preventDefault();
-        this.handleDragMove(e.clientX, e.clientY);
-      }
-    });
-    
-    // Soltar mouse
-    document.addEventListener('mouseup', (e) => {
-      if (this.isDragging) {
-        this.handleDrop(e.clientX, e.clientY);
-      }
-    });
-    
-    // ===== MOBILE =====
-    this.helloBlock.addEventListener('touchstart', (e) => {
-      if (this.helloBlock.classList.contains('used')) return;
+    // Clique simples para animar para o terminal
+    this.helloBlock.addEventListener('click', (e) => {
+      if (this.blockUsed) return;
       
       e.preventDefault();
       e.stopPropagation();
       
-      const touch = e.touches[0];
-      console.log('📱 Touch start - iniciando hold timer');
-      
-      // Iniciar timer para hold
-      this.holdTimer = setTimeout(() => {
-        console.log('✅ Hold completado - iniciando drag mobile');
-        this.startDrag(touch.clientX, touch.clientY, 'touch');
-      }, this.holdDuration);
-      
-      // Feedback visual
-      this.helloBlock.classList.add('holding');
-      this.helloBlock.style.transform = 'scale(0.98)';
-      this.helloBlock.style.boxShadow = '0 0 20px rgba(54, 209, 220, 0.4)';
-      
-      // Desabilitar scroll
-      this.disablePageScroll();
-      
-    }, { passive: false });
-    
-    // Movimento do toque
-    this.helloBlock.addEventListener('touchmove', (e) => {
-      if (this.isDragging && this.isReadyToDrag) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const touch = e.touches[0];
-        this.handleDragMove(touch.clientX, touch.clientY);
-      }
-    }, { passive: false });
-    
-    // Soltar toque
-    this.helloBlock.addEventListener('touchend', (e) => {
-      if (this.isDragging) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const touch = e.changedTouches[0];
-        this.handleDrop(touch.clientX, touch.clientY);
-      } else {
-        this.cancelHold();
-      }
-      
-      this.enablePageScroll();
-    }, { passive: false });
-    
-    // Cancelar toque
-    this.helloBlock.addEventListener('touchcancel', () => {
-      this.cancelHold();
-      this.enablePageScroll();
+      console.log('🎯 Bloco clicado - animando para terminal');
+      this.animateBlockToTerminal();
     });
+    
+    // Touch para mobile
+    this.helloBlock.addEventListener('touchstart', (e) => {
+      if (this.blockUsed) return;
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      console.log('📱 Bloco tocado - animando para terminal');
+      this.animateBlockToTerminal();
+    }, { passive: false });
   }
   
-  cancelHold() {
-    if (this.holdTimer) {
-      clearTimeout(this.holdTimer);
-      this.holdTimer = null;
-      console.log('❌ Hold cancelado');
-    }
-    
-    // Resetar feedback visual
-    this.helloBlock.classList.remove('holding');
-    this.helloBlock.style.transform = '';
-    this.helloBlock.style.boxShadow = '';
-    
-    this.isReadyToDrag = false;
-  }
+  // ===== ANIMAÇÃO DO BLOCO PARA TERMINAL  =====
+animateBlockToTerminal() {
+  if (!this.helloBlock || !this.codeTerminal || this.blockUsed) return;
   
-  startDrag(clientX, clientY, inputType) {
-    if (this.helloBlock.classList.contains('used')) return;
-    
-    const rect = this.helloBlock.getBoundingClientRect();
-    
-    // Calcular offset
-    this.blockOffsetX = clientX - rect.left;
-    this.blockOffsetY = clientY - rect.top;
-    
-    // Configurar estado de drag
-    this.isDragging = true;
-    this.isReadyToDrag = true;
-    
-    // Preparar bloco para drag
-    this.helloBlock.style.position = 'fixed';
-    this.helloBlock.style.left = `${rect.left}px`;
-    this.helloBlock.style.top = `${rect.top}px`;
-    this.helloBlock.style.width = `${rect.width}px`;
-    this.helloBlock.style.height = `${rect.height}px`;
-    this.helloBlock.style.zIndex = '10000';
-    this.helloBlock.style.opacity = '0.95';
-    this.helloBlock.style.transform = 'scale(0.95) rotate(2deg)';
-    this.helloBlock.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4)';
-    this.helloBlock.style.transition = 'transform 0.1s, box-shadow 0.1s';
-    this.helloBlock.style.cursor = 'grabbing';
-    this.helloBlock.style.touchAction = 'none';
-    
-    // Feedback visual
-    this.helloBlock.classList.add('dragging');
-    this.helloBlock.classList.remove('holding');
-    
-    console.log(`🎮 Drag iniciado via ${inputType}`);
-  }
+  const terminalRect = this.codeTerminal.getBoundingClientRect();
+  const blockRect = this.helloBlock.getBoundingClientRect();
   
-  handleDragMove(clientX, clientY) {
-    if (!this.isDragging || !this.isReadyToDrag) return;
-    
-    const x = clientX - this.blockOffsetX;
-    const y = clientY - this.blockOffsetY;
-    
-    // Atualizar posição
-    this.helloBlock.style.left = `${x}px`;
-    this.helloBlock.style.top = `${y}px`;
-    
-    // Verificar se está sobre o terminal
-    const terminalRect = this.codeTerminal.getBoundingClientRect();
-    const isOverTerminal = clientX >= terminalRect.left && 
-                          clientX <= terminalRect.right &&
-                          clientY >= terminalRect.top && 
-                          clientY <= terminalRect.bottom;
-    
-    // Feedback visual
-    if (isOverTerminal) {
-      this.helloBlock.style.transform = 'scale(0.85) rotate(0deg)';
-      this.helloBlock.style.boxShadow = '0 0 40px rgba(54, 209, 220, 0.8)';
-      this.codeTerminal.classList.add('drop-hover');
-    } else {
-      this.helloBlock.style.transform = 'scale(0.95) rotate(2deg)';
-      this.helloBlock.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4)';
-      this.codeTerminal.classList.remove('drop-hover');
-    }
-  }
+  // Posição final (centro do terminal)
+  const terminalCenterX = terminalRect.left + (terminalRect.width / 2);
+  const terminalCenterY = terminalRect.top + (terminalRect.height / 2);
   
-  handleDrop(clientX, clientY) {
-    if (!this.isDragging) return;
-    
-    console.log('🎯 Soltando bloco...');
-    
-    const terminalRect = this.codeTerminal.getBoundingClientRect();
-    const isOverTerminal = clientX >= terminalRect.left && 
-                          clientX <= terminalRect.right &&
-                          clientY >= terminalRect.top && 
-                          clientY <= terminalRect.bottom;
-    
-    if (isOverTerminal) {
-      console.log('✅ Bloco solto sobre o terminal');
-      this.dropBlockIntoTerminal();
-    } else {
-      console.log('❌ Bloco solto fora do terminal');
-      this.returnBlockToOriginalPosition();
-    }
-    
-    // Resetar estado
-    this.isDragging = false;
-    this.isReadyToDrag = false;
-    this.holdTimer = null;
-    
-    // Remover feedback
-    this.helloBlock.classList.remove('dragging');
-    this.codeTerminal.classList.remove('drop-hover');
-    
-    this.enablePageScroll();
-  }
+  // Posição inicial (centro do bloco)
+  const blockCenterX = blockRect.left + (blockRect.width / 2);
+  const blockCenterY = blockRect.top + (blockRect.height / 2);
   
-  // ===== CONTROLE DE SCROLL =====
-  disablePageScroll() {
-    document.body.style.overflow = 'hidden';
-    document.body.style.touchAction = 'none';
-    document.documentElement.style.overflow = 'hidden';
-  }
+  // Criar bloco animado
+  const animatedBlock = this.helloBlock.cloneNode(true);
+  animatedBlock.id = 'animated-block';
+  animatedBlock.style.cssText = `
+    position: fixed;
+    left: ${blockCenterX}px;
+    top: ${blockCenterY}px;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    width: ${blockRect.width}px;
+    height: ${blockRect.height}px;
+  `;
   
-  enablePageScroll() {
-    document.body.style.overflow = '';
-    document.body.style.touchAction = '';
-    document.documentElement.style.overflow = '';
-  }
+  document.body.appendChild(animatedBlock);
   
-  // ===== ANIMAÇÃO DO BLOCO =====
-  dropBlockIntoTerminal() {
-    if (!this.helloBlock || !this.codeTerminal) return;
+  // Esconder bloco original
+  this.helloBlock.style.visibility = 'hidden';
+  
+  // Animar para o terminal
+  setTimeout(() => {
+    animatedBlock.style.left = `${terminalCenterX}px`;
+    animatedBlock.style.top = `${terminalCenterY}px`;
+    animatedBlock.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    animatedBlock.style.opacity = '0.8';
     
-    const terminalRect = this.codeTerminal.getBoundingClientRect();
-    const terminalCenterX = terminalRect.left + (terminalRect.width / 2);
-    const terminalCenterY = terminalRect.top + (terminalRect.height / 2);
-    
-    // Feedback visual
+    // Efeito de brilho no terminal
     this.codeTerminal.classList.add('terminal-active');
     
-    // Animar bloco para o centro do terminal
-    this.helloBlock.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease';
-    this.helloBlock.style.left = `${terminalCenterX - (this.helloBlock.offsetWidth / 2)}px`;
-    this.helloBlock.style.top = `${terminalCenterY - (this.helloBlock.offsetHeight / 2)}px`;
-    this.helloBlock.style.transform = 'scale(0.4) rotate(0deg)';
-    this.helloBlock.style.opacity = '0';
-    this.helloBlock.style.boxShadow = '0 0 0 rgba(0,0,0,0)';
-    
-    // Após animação
-    setTimeout(() => {
-      this.helloBlock.style.display = 'none';
-      this.runCodeButton.disabled = false;
-      this.helloBlock.classList.add('used');
-      
-      // Atualizar status
-      const codeStatus = document.getElementById('codeStatus');
-      if (codeStatus) {
-        codeStatus.textContent = 'Código pronto para executar!';
-        codeStatus.style.color = '#FF9800';
-      }
-      
-      // Mostrar comando
-      const inputText = document.getElementById('inputText');
-      if (inputText) {
-        inputText.textContent = 'print("Hello World")';
-        inputText.style.color = '#4EC9B0';
-        inputText.style.fontWeight = 'bold';
-      }
-      
-      // Efeito de digitação
-      this.simulateTypingEffect();
-      
-    }, 600);
-  }
-  
-  returnBlockToOriginalPosition() {
-    if (!this.blockOriginalPosition) return;
-    
-    console.log('↩️ Retornando bloco à posição original...');
-    
-    // Animar de volta
-    this.helloBlock.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-    this.helloBlock.style.left = `${this.blockOriginalPosition.left}px`;
-    this.helloBlock.style.top = `${this.blockOriginalPosition.top}px`;
-    this.helloBlock.style.transform = 'scale(1) rotate(0deg)';
-    this.helloBlock.style.opacity = '1';
-    this.helloBlock.style.boxShadow = '0 8px 25px rgba(54, 209, 220, 0.4)';
-    
-    // Após animação, resetar
-    setTimeout(() => {
-      this.resetBlockState();
-    }, 500);
-  }
-  
-  resetBlockState() {
-    if (!this.helloBlock) return;
-    
-    this.helloBlock.style.position = '';
-    this.helloBlock.style.left = '';
-    this.helloBlock.style.top = '';
-    this.helloBlock.style.width = '';
-    this.helloBlock.style.height = '';
-    this.helloBlock.style.zIndex = '';
-    this.helloBlock.style.opacity = '';
-    this.helloBlock.style.transform = '';
-    this.helloBlock.style.boxShadow = '';
-    this.helloBlock.style.transition = '';
-    this.helloBlock.style.display = '';
-    this.helloBlock.style.cursor = '';
-    this.helloBlock.style.touchAction = '';
-    
-    this.helloBlock.classList.remove('dragging', 'holding');
-    this.enablePageScroll();
-  }
-  
-  // ===== EFEITO DE DIGITAÇÃO =====
-  simulateTypingEffect() {
+    // Efeito de digitação no terminal
     const inputText = document.getElementById('inputText');
-    if (!inputText) return;
+    if (inputText) {
+      this.simulateTyping(inputText, 'print("Hello World")');
+    }
     
-    const command = 'print("Hello World")';
-    let i = 0;
-    
-    inputText.textContent = '';
-    inputText.style.color = '#4EC9B0';
-    
-    const typeChar = () => {
-      if (i < command.length) {
-        inputText.textContent += command.charAt(i);
-        i++;
-        setTimeout(typeChar, 50);
-      } else {
-        const cursor = document.createElement('span');
-        cursor.className = 'blinking-cursor';
-        cursor.textContent = '_';
-        inputText.appendChild(cursor);
-      }
-    };
-    
-    setTimeout(typeChar, 300);
-  }
+    setTimeout(() => {
+      // Finalizar animação
+      animatedBlock.style.opacity = '0';
+      animatedBlock.style.transform = 'translate(-50%, -50%) scale(0.5)';
+      
+      setTimeout(() => {
+        // Remover bloco animado
+        animatedBlock.remove();
+        
+        // Mostrar bloco original como usado
+        this.helloBlock.style.visibility = 'visible';
+        this.helloBlock.style.opacity = '0.3';
+        this.helloBlock.style.cursor = 'default';
+        
+        // Ativar botão Executar
+        this.runCodeButton.disabled = false;
+        this.blockUsed = true;
+        
+        // Atualizar status
+        const codeStatus = document.getElementById('codeStatus');
+        if (codeStatus) {
+          codeStatus.textContent = 'Código carregado!';
+          codeStatus.style.color = '#4CAF50';
+        }
+        
+        console.log('✅ Bloco movido para terminal com sucesso!');
+      }, 300);
+    }, 600);
+  }, 50);
+}
+
+// ===== SIMULAÇÃO DE DIGITAÇÃO =====
+simulateTyping(element, text) {
+  element.textContent = '';
+  let i = 0;
+  
+  const typeChar = () => {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeChar, 50);
+    } else {
+      // Cursor piscante
+      const cursor = document.createElement('span');
+      cursor.className = 'blinking-cursor';
+      cursor.textContent = '|';
+      element.parentNode.appendChild(cursor);
+    }
+  };
+  
+  typeChar();
+}
   
   // ===== FLUXO ELÉTRICO =====
   startElectricFlow() {
     if (this.electricActive || this.electricRunning || this.electricCompleted) return;
     
+    console.log('⚡ Iniciando fluxo elétrico...');
     this.electricActive = true;
     this.electricRunning = true;
     
@@ -1135,28 +904,40 @@ class DuoFlowGame {
     this.electricButton.disabled = true;
     this.electricButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fluindo...';
     
+    // Ativar visual do fio
     electricWire.classList.add('wire-active');
     
+    // Criar elétrons
     this.electronInterval = setInterval(() => {
       this.createElectronParticle();
     }, 300);
     
+    // Parar criação após 4 segundos
     setTimeout(() => {
       clearInterval(this.electronInterval);
       this.electronInterval = null;
       
       setTimeout(() => {
+        // Acender lâmpada
         electricLamp.classList.add('lit');
+        
+        // Atualizar status
         electricStatus.textContent = 'Lâmpada acesa!';
         electricStatus.style.color = '#4CAF50';
         this.electricButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
         
+        // Marcar como completado
         this.electricCompleted = true;
         this.electricRunning = false;
         this.electricActive = false;
         
+        // Atualizar progresso
         this.updateProgress(1);
+        
+        // Verificar conclusão
         this.checkBothCompleted();
+        
+        console.log('✅ Fluxo elétrico completado');
       }, 2000);
     }, 4000);
   }
@@ -1170,45 +951,27 @@ class DuoFlowGame {
     particle.innerHTML = '⚡';
     
     const randomY = Math.random() * 20 - 10;
-    particle.style.top = `calc(50% + ${randomY}px)`;
-    particle.style.left = '-20px';
     const size = 0.7 + Math.random() * 0.6;
-    particle.style.fontSize = `${size}rem`;
-    particle.style.opacity = (0.5 + Math.random() * 0.5).toString();
+    
+    particle.style.cssText = `
+      position: absolute;
+      top: calc(50% + ${randomY}px);
+      left: -20px;
+      font-size: ${size}rem;
+      opacity: ${0.5 + Math.random() * 0.5};
+      filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.8));
+      z-index: 5;
+      pointer-events: none;
+      animation: electronTravel 2s linear forwards;
+    `;
     
     wireVisual.appendChild(particle);
     this.electronParticles.push(particle);
-    this.animateElectronParticle(particle);
-  }
-  
-  animateElectronParticle(particle) {
-    const wireVisual = document.getElementById('electricWire');
-    if (!wireVisual) return;
     
     setTimeout(() => {
-      const duration = 2000 + Math.random() * 2000;
-      const startTime = Date.now();
-      const wireWidth = wireVisual.offsetWidth;
-      
-      const animate = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = 1 - Math.pow(1 - progress, 2);
-        const position = -20 + easedProgress * (wireWidth + 40);
-        
-        particle.style.left = `${position}px`;
-        particle.style.opacity = (0.8 * (1 - progress * 0.7)).toString();
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          particle.remove();
-          this.electronParticles = this.electronParticles.filter(p => p !== particle);
-        }
-      };
-      
-      requestAnimationFrame(animate);
-    }, Math.random() * 500);
+      particle.remove();
+      this.electronParticles = this.electronParticles.filter(p => p !== particle);
+    }, 2000);
   }
   
   clearElectronParticles() {
@@ -1220,10 +983,11 @@ class DuoFlowGame {
     }
   }
   
-  // ===== FLUXO DE CÓDIGO =====
+  // ===== FLUXO DE CÓDIGO (TERMINAL NORMAL) =====
   runCodeFlow() {
-    if (this.codeRunning || this.codeCompleted) return;
+    if (this.codeRunning || this.codeCompleted || !this.blockUsed) return;
     
+    console.log('💻 Iniciando execução de código...');
     this.codeRunning = true;
     this.runCodeButton.disabled = true;
     
@@ -1234,32 +998,60 @@ class DuoFlowGame {
     codeStatus.textContent = 'Executando código...';
     this.runCodeButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
     
+    // Ativar terminal
     this.codeTerminal.classList.add('terminal-active');
     
-    setTimeout(() => {
-      const resultLine = document.createElement('div');
-      resultLine.className = 'terminal-line';
-      resultLine.textContent = 'Hello World';
-      resultLine.style.color = '#4CAF50';
-      resultLine.style.fontWeight = 'bold';
-      resultLine.style.fontSize = '1.1em';
+    // Limpar terminal e adicionar nova execução
+    if (terminalOutput) {
+      // Manter apenas as linhas iniciais
+      const initialLines = terminalOutput.querySelectorAll('.terminal-line');
+      if (initialLines.length > 2) {
+        for (let i = 2; i < initialLines.length; i++) {
+          initialLines[i].remove();
+        }
+      }
       
-      terminalOutput.appendChild(resultLine);
-      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      // Adicionar nova linha de execução
+      const execLine = document.createElement('div');
+      execLine.className = 'terminal-line';
+      execLine.textContent = '> Executando print("Hello World")...';
+      execLine.style.color = '#4EC9B0';
+      terminalOutput.appendChild(execLine);
       
+      // Mostrar resultado após delay
       setTimeout(() => {
-        inputText.textContent = '_';
-        codeStatus.textContent = 'Código executado!';
-        codeStatus.style.color = '#2196F3';
-        this.runCodeButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
+        const resultLine = document.createElement('div');
+        resultLine.className = 'terminal-line';
+        resultLine.textContent = 'Hello World';
+        resultLine.style.color = '#0f0';
+        resultLine.style.fontWeight = 'bold';
+        resultLine.style.fontSize = '1.1em';
+        resultLine.style.margin = '5px 0';
         
-        this.codeCompleted = true;
-        this.codeRunning = false;
+        terminalOutput.appendChild(resultLine);
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
         
-        this.updateProgress(2);
-        this.checkBothCompleted();
-      }, 1500);
-    }, 1000);
+        // Limpar input
+        setTimeout(() => {
+          if (inputText) {
+            inputText.textContent = '_';
+          }
+          
+          // Atualizar status
+          codeStatus.textContent = 'Código executado!';
+          codeStatus.style.color = '#2196F3';
+          this.runCodeButton.innerHTML = '<i class="fas fa-check"></i> Concluído';
+          
+          this.codeCompleted = true;
+          this.codeRunning = false;
+          
+          this.updateProgress(2);
+          this.checkBothCompleted();
+          
+          console.log('✅ Código executado com sucesso');
+        }, 1500);
+      }, 1000);
+    }
   }
   
   // ===== CONTROLE DE PROGRESSO =====
@@ -1278,7 +1070,13 @@ class DuoFlowGame {
   }
   
   checkBothCompleted() {
+    console.log('🔍 Verificando conclusão:', {
+      electric: this.electricCompleted,
+      code: this.codeCompleted
+    });
+    
     if (this.electricCompleted && this.codeCompleted) {
+      console.log('🎉 AMBOS COMPLETOS! Mostrando tela de conclusão...');
       this.updateProgress(3);
       
       setTimeout(() => {
@@ -1287,8 +1085,79 @@ class DuoFlowGame {
     }
   }
   
+  // ===== EXECUTAR AMBOS - FUNÇÃO CORRIGIDA =====
+  runBothFlows() {
+    console.log('⚡🖥️ Executando ambos os fluxos...');
+    
+    // Primeiro, scroll para simulações
+    this.scrollToSimulations();
+    
+    // Resetar se já completou antes
+    if (this.electricCompleted || this.codeCompleted) {
+      this.resetGameState();
+      setTimeout(() => this.runBothFlows(), 500);
+      return;
+    }
+    
+    this.isRunningBoth = true;
+    this.runBothButton.disabled = true;
+    const originalText = this.runBothButton.innerHTML;
+    this.runBothButton.innerHTML = '<i class="fas fa-sync fa-spin"></i> Executando...';
+    
+    // Sequência de execução:
+    // 1. Primeiro animar bloco (se não usado)
+    // 2. Depois executar fluxo elétrico
+    // 3. Por último executar código
+    
+    let step = 0;
+    
+    const nextStep = () => {
+      step++;
+      console.log(`📋 Passo ${step} de 3`);
+      
+      switch(step) {
+        case 1:
+          // Passo 1: Animar bloco para terminal
+          if (!this.blockUsed) {
+            console.log('1️⃣ Animando bloco para terminal...');
+            this.animateBlockToTerminal();
+            setTimeout(nextStep, 1200);
+          } else {
+            nextStep();
+          }
+          break;
+          
+        case 2:
+          // Passo 2: Executar fluxo elétrico
+          console.log('2️⃣ Iniciando fluxo elétrico...');
+          this.startElectricFlow();
+          setTimeout(nextStep, 4500);
+          break;
+          
+        case 3:
+          // Passo 3: Executar código
+          console.log('3️⃣ Executando código...');
+          this.runCodeFlow();
+          break;
+      }
+    };
+    
+    // Iniciar sequência
+    nextStep();
+    
+    // Restaurar botão após tempo suficiente
+    setTimeout(() => {
+      this.runBothButton.disabled = false;
+      this.runBothButton.innerHTML = originalText;
+      this.isRunningBoth = false;
+      console.log('✅ Sequência de execução concluída');
+    }, 8000);
+  }
+  
   // ===== RESET DO JOGO =====
   resetGameState() {
+    console.log('🔄 Resetando estado do jogo...');
+    
     // Resetar variáveis
     this.electricCompleted = false;
     this.codeCompleted = false;
@@ -1296,10 +1165,9 @@ class DuoFlowGame {
     this.electricRunning = false;
     this.codeRunning = false;
     this.electricActive = false;
-    this.isDragging = false;
-    this.isReadyToDrag = false;
+    this.blockUsed = false;
     
-    // Limpar partículas
+    // Limpar efeitos visuais
     this.clearElectronParticles();
     
     // Resetar elementos elétricos
@@ -1308,10 +1176,7 @@ class DuoFlowGame {
     const electricStatus = document.getElementById('electricStatus');
     
     if (electricWire) electricWire.classList.remove('wire-active');
-    if (electricLamp) {
-      electricLamp.classList.remove('lit');
-      electricLamp.style.animation = '';
-    }
+    if (electricLamp) electricLamp.classList.remove('lit');
     if (electricStatus) {
       electricStatus.textContent = 'Aguardando...';
       electricStatus.style.color = '';
@@ -1329,13 +1194,21 @@ class DuoFlowGame {
     const codeStatus = document.getElementById('codeStatus');
     
     if (this.codeTerminal) this.codeTerminal.classList.remove('terminal-active');
+    
+    // Resetar terminal para estado inicial
     if (terminalOutput) {
-      const lines = terminalOutput.querySelectorAll('.terminal-line');
-      for (let i = 2; i < lines.length; i++) {
-        lines[i].remove();
-      }
+      terminalOutput.innerHTML = `
+        <div class="terminal-line">&gt; Sistema pronto...</div>
+        <div class="terminal-line">&gt; Aguardando comando...</div>
+      `;
     }
-    if (inputText) inputText.textContent = '_';
+    
+    if (inputText) {
+      inputText.textContent = '_';
+      inputText.style.color = '';
+      inputText.style.fontWeight = '';
+    }
+    
     if (codeStatus) {
       codeStatus.textContent = 'Aguardando...';
       codeStatus.style.color = '';
@@ -1349,10 +1222,13 @@ class DuoFlowGame {
     
     // Resetar bloco de código
     if (this.helloBlock) {
-      this.helloBlock.classList.remove('used');
+      this.helloBlock.style.opacity = '1';
+      this.helloBlock.style.visibility = 'visible';
       this.helloBlock.style.cursor = 'pointer';
-      this.resetBlockState();
-      this.saveBlockOriginalPosition();
+      
+      // Remover bloco animado se existir
+      const animatedBlock = document.getElementById('animated-block');
+      if (animatedBlock) animatedBlock.remove();
     }
     
     // Resetar botão Executar Ambos
@@ -1363,25 +1239,27 @@ class DuoFlowGame {
     
     // Resetar progresso
     this.updateProgress(0);
+    
+    console.log('✅ Estado do jogo resetado');
   }
   
   // ===== EVENT LISTENERS =====
   bindEvents() {
-    // Botão "Ver Paralelo" - SCROLL PARA SIMULAÇÕES
+    // Botão "Ver Paralelo"
     if (this.startButton) {
       this.startButton.addEventListener('click', () => {
-        console.log('🎮 Ver Paralelo clicado - indo para jogo');
+        console.log('🎮 Ver Paralelo clicado');
         this.showScreen(this.gameScreen);
         this.resetGameState();
         
         // Scroll automático para simulações
         setTimeout(() => {
           this.scrollToSimulations();
-        }, 300);
+        }, 500);
       });
     }
     
-    // Botão "Reiniciar" - SCROLL PARA SIMULAÇÕES
+    // Botão "Reiniciar"
     if (this.resetButton) {
       this.resetButton.addEventListener('click', () => {
         console.log('🔄 Reiniciar clicado');
@@ -1394,43 +1272,11 @@ class DuoFlowGame {
       });
     }
     
-    // Botão "Executar Ambos" - SCROLL PARA SIMULAÇÕES
+    // Botão "Executar Ambos" - CORRIGIDO
     if (this.runBothButton) {
       this.runBothButton.addEventListener('click', () => {
         console.log('⚡ Executar Ambos clicado');
-        this.isRunningBoth = true;
-        this.runBothButton.disabled = true;
-        const originalText = this.runBothButton.innerHTML;
-        this.runBothButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
-        
-        // Scroll para simulações primeiro
-        this.scrollToSimulations();
-        
-        // Simular drag & drop
-        if (!this.helloBlock.classList.contains('used')) {
-          setTimeout(() => {
-            this.dropBlockIntoTerminal();
-          }, 800);
-        }
-        
-        // Executar fluxos
-        setTimeout(() => {
-          if (!this.electricRunning && !this.electricCompleted) {
-            this.startElectricFlow();
-          }
-          
-          setTimeout(() => {
-            if (!this.codeRunning && !this.codeCompleted) {
-              this.runCodeFlow();
-            }
-          }, 1500);
-        }, 1200);
-        
-        setTimeout(() => {
-          this.runBothButton.disabled = false;
-          this.runBothButton.innerHTML = originalText;
-          this.isRunningBoth = false;
-        }, 4000);
+        this.runBothFlows();
       });
     }
     
@@ -1446,7 +1292,7 @@ class DuoFlowGame {
     // Botão "Executar Código"
     if (this.runCodeButton) {
       this.runCodeButton.addEventListener('click', () => {
-        if (!this.codeRunning && !this.codeCompleted) {
+        if (!this.codeRunning && !this.codeCompleted && this.blockUsed) {
           this.runCodeFlow();
         }
       });
@@ -1459,7 +1305,7 @@ class DuoFlowGame {
       });
     }
     
-    // Botão "Aprender Mais"
+    // Botões "Aprender Mais"
     document.getElementById('learnMore')?.addEventListener('click', () => {
       document.getElementById('learnModal').classList.add('active');
     });
@@ -1473,10 +1319,34 @@ class DuoFlowGame {
     });
   }
   
-  // ===== ESTILOS CSS ADICIONAIS =====
+  // ===== ESTILOS CSS =====
   addCustomStyles() {
     const style = document.createElement('style');
     style.textContent = `
+      /* Animações do elétron */
+      @keyframes electronTravel {
+        0% { left: -20px; opacity: 0.8; }
+        70% { opacity: 0.7; }
+        100% { left: calc(100% + 10px); opacity: 0; }
+      }
+      
+      /* Bloco com efeito de clique */
+      .code-block-duo {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .code-block-duo:hover:not(.used) {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(54, 209, 220, 0.4) !important;
+      }
+      
+      .code-block-duo.used {
+        opacity: 0.5;
+        cursor: default;
+      }
+      
+      /* Cursor piscante */
       .blinking-cursor {
         display: inline-block;
         width: 2px;
@@ -1488,42 +1358,6 @@ class DuoFlowGame {
       @keyframes blink {
         0%, 50% { opacity: 1; }
         51%, 100% { opacity: 0; }
-      }
-      
-      .drop-hover {
-        border-color: #36d1dc !important;
-        box-shadow: 0 0 20px rgba(54, 209, 220, 0.4) !important;
-        transition: all 0.3s ease !important;
-      }
-      
-      .code-block-duo.dragging {
-        cursor: grabbing !important;
-        user-select: none !important;
-      }
-      
-      .code-block-duo.holding {
-        cursor: move !important;
-        user-select: none !important;
-        transition: transform 0.2s, box-shadow 0.2s !important;
-      }
-      
-      .electron-particle {
-        position: absolute;
-        font-size: 0.9rem;
-        filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.8));
-        z-index: 5;
-        pointer-events: none;
-      }
-      
-      /* Pulse animation for hold feedback */
-      @keyframes pulse-hold {
-        0% { transform: scale(1); }
-        50% { transform: scale(0.98); }
-        100% { transform: scale(1); }
-      }
-      
-      .code-block-duo.holding {
-        animation: pulse-hold 0.5s ease-in-out infinite;
       }
     `;
     document.head.appendChild(style);
