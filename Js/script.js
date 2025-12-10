@@ -12,7 +12,6 @@ const config = {
 
 // Dados dos projetos
 const projetos = {
-
   cultivamais: {
     titulo: "CultivaMais - E-commerce Agrícola",
     descricao: "Plataforma de e-commerce especializada para pequenos agricultores venderem seus produtos diretamente aos consumidores.",
@@ -643,7 +642,7 @@ class ProjectModal {
 }
 
 // ==============================================
-// DUOFLOW GAME - VERSÃO SIMPLIFICADA E CORRIGIDA
+// DUOFLOW GAME - VERSÃO COM CORREÇÃO PARA CLIQUES ACIDENTAIS
 // ==============================================
 class DuoFlowGame {
   constructor() {
@@ -678,6 +677,16 @@ class DuoFlowGame {
     this.electronInterval = null;
     this.electronParticles = [];
     
+    // Detecção de scroll vs clique
+    this.blockTouchStartY = 0;
+    this.blockTouchStartX = 0;
+    this.blockTouchEndY = 0;
+    this.blockTouchEndX = 0;
+    this.blockTouchStartTime = 0;
+    this.blockIsScrolling = false;
+    this.SCROLL_THRESHOLD = 10; // pixels de movimento para considerar como scroll
+    this.TIME_THRESHOLD = 200; // ms máximo para considerar como clique
+    
     this.initialize();
   }
   
@@ -687,7 +696,7 @@ class DuoFlowGame {
     // Mostrar tela inicial
     this.showScreen(this.startScreen);
     
-    // Configurar clique no bloco (simples)
+    // Configurar clique no bloco (com proteção contra cliques acidentais)
     this.setupBlockClick();
     
     // Adicionar estilos CSS
@@ -752,7 +761,7 @@ class DuoFlowGame {
     }, 50);
   }
   
-  // ===== BLOCO SIMPLES - APENAS CLIQUE =====
+  // ===== BLOCO COM DETECÇÃO DE SCROLL VS CLIQUE (CORRIGIDO) =====
   setupBlockClick() {
     if (!this.helloBlock || !this.codeTerminal) return;
     
@@ -760,133 +769,246 @@ class DuoFlowGame {
     this.helloBlock.removeAttribute('draggable');
     this.helloBlock.style.cursor = 'pointer';
     
-    // Clique simples para animar para o terminal
+    // Eventos de mouse (desktop)
     this.helloBlock.addEventListener('click', (e) => {
-      if (this.blockUsed) return;
+      if (this.blockUsed || this.blockIsScrolling) return;
       
       e.preventDefault();
       e.stopPropagation();
       
-      console.log('🎯 Bloco clicado - animando para terminal');
+      console.log('🎯 Bloco clicado (desktop) - animando para terminal');
       this.animateBlockToTerminal();
     });
     
-    // Touch para mobile
+    // Eventos de touch (mobile) - com detecção de scroll
     this.helloBlock.addEventListener('touchstart', (e) => {
       if (this.blockUsed) return;
       
-      e.preventDefault();
-      e.stopPropagation();
+      const touch = e.touches[0] || e.changedTouches[0];
+      this.blockTouchStartY = touch.clientY;
+      this.blockTouchStartX = touch.clientX;
+      this.blockTouchStartTime = Date.now();
+      this.blockIsScrolling = false;
       
-      console.log('📱 Bloco tocado - animando para terminal');
-      this.animateBlockToTerminal();
+      // Adicionar feedback visual
+      this.helloBlock.style.transform = 'scale(0.98)';
+      this.helloBlock.style.transition = 'transform 0.1s';
+      
+    }, { passive: true });
+    
+    this.helloBlock.addEventListener('touchmove', (e) => {
+      if (this.blockUsed) return;
+      
+      const touch = e.touches[0] || e.changedTouches[0];
+      const currentY = touch.clientY;
+      const currentX = touch.clientX;
+      
+      // Calcular distância do movimento
+      const deltaY = Math.abs(currentY - this.blockTouchStartY);
+      const deltaX = Math.abs(currentX - this.blockTouchStartX);
+      
+      // Se o movimento for significativo, é um scroll
+      if (deltaY > this.SCROLL_THRESHOLD || deltaX > this.SCROLL_THRESHOLD) {
+        this.blockIsScrolling = true;
+      }
+      
+    }, { passive: true });
+    
+    this.helloBlock.addEventListener('touchend', (e) => {
+      if (this.blockUsed || this.blockIsScrolling) {
+        // Restaurar estilo normal
+        this.helloBlock.style.transform = '';
+        return;
+      }
+      
+      const touch = e.changedTouches[0];
+      this.blockTouchEndY = touch.clientY;
+      this.blockTouchEndX = touch.clientX;
+      const touchEndTime = Date.now();
+      
+      // Calcular distância e tempo
+      const deltaY = Math.abs(this.blockTouchEndY - this.blockTouchStartY);
+      const deltaX = Math.abs(this.blockTouchEndX - this.blockTouchStartX);
+      const touchDuration = touchEndTime - this.blockTouchStartTime;
+      
+      // Verificar se é um clique válido
+      const isClick = deltaY <= this.SCROLL_THRESHOLD && 
+                      deltaX <= this.SCROLL_THRESHOLD && 
+                      touchDuration <= this.TIME_THRESHOLD;
+      
+      if (isClick) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('📱 Bloco tocado (clique válido) - animando para terminal');
+        this.animateBlockToTerminal();
+      }
+      
+      // Restaurar estilo normal
+      this.helloBlock.style.transform = '';
+      
     }, { passive: false });
+    
+    // Adicionar feedback visual para desktop
+    this.helloBlock.addEventListener('mousedown', () => {
+      if (this.blockUsed) return;
+      this.helloBlock.style.transform = 'scale(0.98)';
+    });
+    
+    this.helloBlock.addEventListener('mouseup', () => {
+      this.helloBlock.style.transform = '';
+    });
+    
+    this.helloBlock.addEventListener('mouseleave', () => {
+      this.helloBlock.style.transform = '';
+    });
+    
+    // Prevenir arrastar acidental no mobile
+    this.helloBlock.addEventListener('dragstart', (e) => {
+      e.preventDefault();
+    });
   }
   
-  // ===== ANIMAÇÃO DO BLOCO PARA TERMINAL  =====
-animateBlockToTerminal() {
-  if (!this.helloBlock || !this.codeTerminal || this.blockUsed) return;
-  
-  const terminalRect = this.codeTerminal.getBoundingClientRect();
-  const blockRect = this.helloBlock.getBoundingClientRect();
-  
-  // Posição final (centro do terminal)
-  const terminalCenterX = terminalRect.left + (terminalRect.width / 2);
-  const terminalCenterY = terminalRect.top + (terminalRect.height / 2);
-  
-  // Posição inicial (centro do bloco)
-  const blockCenterX = blockRect.left + (blockRect.width / 2);
-  const blockCenterY = blockRect.top + (blockRect.height / 2);
-  
-  // Criar bloco animado
-  const animatedBlock = this.helloBlock.cloneNode(true);
-  animatedBlock.id = 'animated-block';
-  animatedBlock.style.cssText = `
-    position: fixed;
-    left: ${blockCenterX}px;
-    top: ${blockCenterY}px;
-    transform: translate(-50%, -50%);
-    z-index: 10000;
-    pointer-events: none;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-    width: ${blockRect.width}px;
-    height: ${blockRect.height}px;
-  `;
-  
-  document.body.appendChild(animatedBlock);
-  
-  // Esconder bloco original
-  this.helloBlock.style.visibility = 'hidden';
-  
-  // Animar para o terminal
-  setTimeout(() => {
-    animatedBlock.style.left = `${terminalCenterX}px`;
-    animatedBlock.style.top = `${terminalCenterY}px`;
-    animatedBlock.style.transform = 'translate(-50%, -50%) scale(0.8)';
-    animatedBlock.style.opacity = '0.8';
+  // ===== ANIMAÇÃO DO BLOCO PARA TERMINAL =====
+  animateBlockToTerminal() {
+    if (!this.helloBlock || !this.codeTerminal || this.blockUsed) return;
     
-    // Efeito de brilho no terminal
-    this.codeTerminal.classList.add('terminal-active');
-    
-    // Efeito de digitação no terminal
-    const inputText = document.getElementById('inputText');
-    if (inputText) {
-      this.simulateTyping(inputText, 'print("Hello World")');
+    // Verificar se está rolando (prevenção extra)
+    if (this.isUserScrolling()) {
+      console.log('🔄 Detectado scroll - ignorando clique no bloco');
+      return;
     }
     
+    const terminalRect = this.codeTerminal.getBoundingClientRect();
+    const blockRect = this.helloBlock.getBoundingClientRect();
+    
+    // Verificar se os elementos estão visíveis na tela
+    if (
+      terminalRect.top < 0 || 
+      terminalRect.bottom > window.innerHeight ||
+      blockRect.top < 0 || 
+      blockRect.bottom > window.innerHeight
+    ) {
+      console.log('⚠️ Elementos fora da viewport - scrollando primeiro...');
+      
+      // Scroll para garantir que os elementos estejam visíveis
+      this.codeTerminal.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center'
+      });
+      
+      // Tentar novamente após scroll
+      setTimeout(() => this.animateBlockToTerminal(), 800);
+      return;
+    }
+    
+    // Posição final (centro do terminal)
+    const terminalCenterX = terminalRect.left + (terminalRect.width / 2);
+    const terminalCenterY = terminalRect.top + (terminalRect.height / 2);
+    
+    // Posição inicial (centro do bloco)
+    const blockCenterX = blockRect.left + (blockRect.width / 2);
+    const blockCenterY = blockRect.top + (blockRect.height / 2);
+    
+    // Criar bloco animado
+    const animatedBlock = this.helloBlock.cloneNode(true);
+    animatedBlock.id = 'animated-block';
+    animatedBlock.style.cssText = `
+      position: fixed;
+      left: ${blockCenterX}px;
+      top: ${blockCenterY}px;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      pointer-events: none;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+      width: ${blockRect.width}px;
+      height: ${blockRect.height}px;
+    `;
+    
+    document.body.appendChild(animatedBlock);
+    
+    // Esconder bloco original
+    this.helloBlock.style.visibility = 'hidden';
+    
+    // Animar para o terminal
     setTimeout(() => {
-      // Finalizar animação
-      animatedBlock.style.opacity = '0';
-      animatedBlock.style.transform = 'translate(-50%, -50%) scale(0.5)';
+      animatedBlock.style.left = `${terminalCenterX}px`;
+      animatedBlock.style.top = `${terminalCenterY}px`;
+      animatedBlock.style.transform = 'translate(-50%, -50%) scale(0.8)';
+      animatedBlock.style.opacity = '0.8';
+      
+      // Efeito de brilho no terminal
+      this.codeTerminal.classList.add('terminal-active');
+      
+      // Efeito de digitação no terminal
+      const inputText = document.getElementById('inputText');
+      if (inputText) {
+        this.simulateTyping(inputText, 'print("Hello World")');
+      }
       
       setTimeout(() => {
-        // Remover bloco animado
-        animatedBlock.remove();
+        // Finalizar animação
+        animatedBlock.style.opacity = '0';
+        animatedBlock.style.transform = 'translate(-50%, -50%) scale(0.5)';
         
-        // Mostrar bloco original como usado
-        this.helloBlock.style.visibility = 'visible';
-        this.helloBlock.style.opacity = '0.3';
-        this.helloBlock.style.cursor = 'default';
-        
-        // Ativar botão Executar
-        this.runCodeButton.disabled = false;
-        this.blockUsed = true;
-        
-        // Atualizar status
-        const codeStatus = document.getElementById('codeStatus');
-        if (codeStatus) {
-          codeStatus.textContent = 'Código carregado!';
-          codeStatus.style.color = '#4CAF50';
-        }
-        
-        console.log('✅ Bloco movido para terminal com sucesso!');
-      }, 300);
-    }, 600);
-  }, 50);
-}
-
-// ===== SIMULAÇÃO DE DIGITAÇÃO =====
-simulateTyping(element, text) {
-  element.textContent = '';
-  let i = 0;
+        setTimeout(() => {
+          // Remover bloco animado
+          animatedBlock.remove();
+          
+          // Mostrar bloco original como usado
+          this.helloBlock.style.visibility = 'visible';
+          this.helloBlock.style.opacity = '0.3';
+          this.helloBlock.style.cursor = 'default';
+          
+          // Ativar botão Executar
+          this.runCodeButton.disabled = false;
+          this.blockUsed = true;
+          
+          // Atualizar status
+          const codeStatus = document.getElementById('codeStatus');
+          if (codeStatus) {
+            codeStatus.textContent = 'Código carregado!';
+            codeStatus.style.color = '#4CAF50';
+          }
+          
+          console.log('✅ Bloco movido para terminal com sucesso!');
+        }, 300);
+      }, 600);
+    }, 50);
+  }
   
-  const typeChar = () => {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeChar, 50);
-    } else {
-      // Cursor piscante
-      const cursor = document.createElement('span');
-      cursor.className = 'blinking-cursor';
-      cursor.textContent = '|';
-      element.parentNode.appendChild(cursor);
-    }
-  };
+  // ===== DETECÇÃO DE SCROLL (FUNÇÃO AUXILIAR) =====
+  isUserScrolling() {
+    // Verifica se o usuário está atualmente rolando
+    const blockElement = this.helloBlock;
+    if (!blockElement) return false;
+    
+    // Método simples: verificar se há movimento recente
+    return blockElement.hasAttribute('data-scrolling-check');
+  }
   
-  typeChar();
-}
+  // ===== SIMULAÇÃO DE DIGITAÇÃO =====
+  simulateTyping(element, text) {
+    element.textContent = '';
+    let i = 0;
+    
+    const typeChar = () => {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeChar, 50);
+      } else {
+        // Cursor piscante
+        const cursor = document.createElement('span');
+        cursor.className = 'blinking-cursor';
+        cursor.textContent = '|';
+        element.parentNode.appendChild(cursor);
+      }
+    };
+    
+    typeChar();
+  }
   
   // ===== FLUXO ELÉTRICO =====
   startElectricFlow() {
@@ -1166,6 +1288,7 @@ simulateTyping(element, text) {
     this.codeRunning = false;
     this.electricActive = false;
     this.blockUsed = false;
+    this.blockIsScrolling = false;
     
     // Limpar efeitos visuais
     this.clearElectronParticles();
@@ -1225,6 +1348,7 @@ simulateTyping(element, text) {
       this.helloBlock.style.opacity = '1';
       this.helloBlock.style.visibility = 'visible';
       this.helloBlock.style.cursor = 'pointer';
+      this.helloBlock.style.transform = '';
       
       // Remover bloco animado se existir
       const animatedBlock = document.getElementById('animated-block');
@@ -1334,6 +1458,11 @@ simulateTyping(element, text) {
       .code-block-duo {
         cursor: pointer;
         transition: all 0.3s ease;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-tap-highlight-color: transparent;
       }
       
       .code-block-duo:hover:not(.used) {
@@ -1341,9 +1470,15 @@ simulateTyping(element, text) {
         box-shadow: 0 15px 35px rgba(54, 209, 220, 0.4) !important;
       }
       
+      .code-block-duo:active:not(.used) {
+        transform: scale(0.98) !important;
+        transition: transform 0.1s ease !important;
+      }
+      
       .code-block-duo.used {
         opacity: 0.5;
         cursor: default;
+        pointer-events: none;
       }
       
       /* Cursor piscante */
@@ -1358,6 +1493,18 @@ simulateTyping(element, text) {
       @keyframes blink {
         0%, 50% { opacity: 1; }
         51%, 100% { opacity: 0; }
+      }
+      
+      /* Melhorar acessibilidade para mobile */
+      @media (max-width: 768px) {
+        .code-block-duo {
+          min-height: 80px;
+          padding: 1rem !important;
+        }
+        
+        .code-block-duo:active {
+          background: rgba(54, 209, 220, 0.1) !important;
+        }
       }
     `;
     document.head.appendChild(style);
