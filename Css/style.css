@@ -6540,3 +6540,66 @@ body.modal-open {
     padding-right: max(1rem, env(safe-area-inset-right));
   }
 }
+
+/* ===== ANIMAÇÕES PARA A TELA DE CONCLUSÃO ===== */
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(100vh + 20px)) rotate(720deg);
+  }
+}
+
+@keyframes victoryGlow {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Garantir que a tela de conclusão ocupe espaço */
+#duoflowComplete {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#duoflowComplete.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajuste para o container DuoFlow */
+.duoflow-container {
+  position: relative;
+  overflow: visible;
+}
+
+/* Efeito de destaque na seção quando completa */
+.duoflow-game.completed {
+  animation: sectionHighlight 2s ease;
+}
+
+/* @keyframes sectionHighlight {
+  0%, 100% { 
+    background-color: transparent; 
+  }
+  50% { 
+    background-color: rgba(var(--primary-rgb), 0.05);
+  }
+} */

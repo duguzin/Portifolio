@@ -759,7 +759,129 @@ class DuoFlowGame {
     setTimeout(() => {
       screen.classList.add('active');
     }, 50);
+
+    if (screen.id === 'duoflowComplete') {
+      this.scrollToCompleteScreen();
+    }
   }
+
+  // ===== SCROLL PARA TELA DE CONCLUSÃO =====
+scrollToCompleteScreen() {
+  console.log('⬆️ Scrollando para tela de conclusão...');
+  
+  const completeScreen = document.getElementById('duoflowComplete');
+  const duoFlowSection = document.getElementById('duoFlow');
+  
+  if (!completeScreen || !duoFlowSection) return;
+  
+  // Calcular posição
+  const headerHeight = document.querySelector('.nav-bar')?.offsetHeight || 0;
+  const sectionTop = duoFlowSection.offsetTop;
+  
+  // Primeiro, garante que a seção DuoFlow está visível
+  setTimeout(() => {
+    window.scrollTo({
+      top: sectionTop - headerHeight,
+      behavior: 'smooth'
+    });
+    
+    // Depois, anima a tela de conclusão
+    setTimeout(() => {
+      completeScreen.style.opacity = '0';
+      completeScreen.style.transform = 'translateY(20px)';
+      completeScreen.style.transition = 'none';
+      
+      // Anima a entrada
+      setTimeout(() => {
+        completeScreen.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        completeScreen.style.opacity = '1';
+        completeScreen.style.transform = 'translateY(0)';
+        
+        // Efeito de confetes ou celebração
+        this.createCelebrationEffects();
+      }, 50);
+    }, 500);
+  }, 100);
+}
+
+// ===== EFEITOS DE CELEBRAÇÃO =====
+createCelebrationEffects() {
+  const completeContent = document.querySelector('#duoflowComplete .complete-content');
+  if (!completeContent) return;
+  
+  // Efeito de confetes
+  this.createConfetti();
+  
+
+  
+  // Animações nos elementos
+  const trophy = document.querySelector('.trophy, .fa-trophy');
+  if (trophy) {
+    trophy.style.animation = 'trophyBounce 1s ease 0.5s 3';
+  }
+  
+  const successIcons = document.querySelectorAll('.success-icon');
+  successIcons.forEach((icon, index) => {
+    icon.style.animationDelay = `${index * 0.2}s`;
+    icon.style.animation = 'successPulse 2s ease infinite';
+  });
+}
+
+// ===== CONFETES =====
+createConfetti() {
+  const container = document.getElementById('duoflowComplete');
+  if (!container) return;
+  
+  // Limpar confetes anteriores
+  const existingConfetti = container.querySelectorAll('.confetti-particle');
+  existingConfetti.forEach(confetti => confetti.remove());
+  
+  // Criar novos confetes
+  const colors = [
+    'var(--primary-color)',
+    'var(--secondary-color)',
+    'var(--accent-color)',
+    'var(--highlight-color)',
+    '#4CAF50',
+    '#2196F3',
+    '#FF9800'
+  ];
+  
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti-particle';
+    
+    const size = 5 + Math.random() * 10;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const left = Math.random() * 100;
+    const delay = Math.random() * 1;
+    const duration = 1 + Math.random() * 2;
+    
+    confetti.style.cssText = `
+      position: absolute;
+      top: -20px;
+      left: ${left}%;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${color};
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      opacity: 0;
+      transform: rotate(${Math.random() * 360}deg);
+      animation: confettiFall ${duration}s ease-out ${delay}s forwards;
+      z-index: 1000;
+      pointer-events: none;
+    `;
+    
+    container.appendChild(confetti);
+    
+    // Remover após animação
+    setTimeout(() => {
+      if (confetti.parentNode) {
+        confetti.remove();
+      }
+    }, (duration + delay) * 1000);
+  }
+}
   
   // ===== BLOCO COM DETECÇÃO DE SCROLL VS CLIQUE (CORRIGIDO) =====
   setupBlockClick() {
@@ -1191,21 +1313,36 @@ class DuoFlowGame {
     }
   }
   
-  checkBothCompleted() {
-    console.log('🔍 Verificando conclusão:', {
-      electric: this.electricCompleted,
-      code: this.codeCompleted
-    });
+checkBothCompleted() {
+  console.log('🔍 Verificando conclusão:', {
+    electric: this.electricCompleted,
+    code: this.codeCompleted
+  });
+  
+  if (this.electricCompleted && this.codeCompleted) {
+    console.log('🎉 AMBOS COMPLETOS! Mostrando tela de conclusão...');
+    this.updateProgress(3);
     
-    if (this.electricCompleted && this.codeCompleted) {
-      console.log('🎉 AMBOS COMPLETOS! Mostrando tela de conclusão...');
-      this.updateProgress(3);
+    // Pequeno delay antes de mostrar a conclusão
+    setTimeout(() => {
+      this.showScreen(this.completeScreen);
       
+      // Scroll automático para o topo da seção
       setTimeout(() => {
-        this.showScreen(this.completeScreen);
-      }, 1500);
-    }
+        const duoFlowSection = document.getElementById('duoFlow');
+        if (duoFlowSection) {
+          const headerHeight = document.querySelector('.nav-bar')?.offsetHeight || 0;
+          const targetPosition = duoFlowSection.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    }, 1500);
   }
+}
   
   // ===== EXECUTAR AMBOS - FUNÇÃO CORRIGIDA =====
   runBothFlows() {
@@ -1363,6 +1500,21 @@ class DuoFlowGame {
     
     // Resetar progresso
     this.updateProgress(0);
+
+    // Limpar efeitos de celebração
+  const victoryGlow = document.querySelector('.victory-glow');
+  if (victoryGlow) victoryGlow.remove();
+  
+  const confettiParticles = document.querySelectorAll('.confetti-particle');
+  confettiParticles.forEach(particle => particle.remove());
+  
+  // Remover classe de destaque da seção
+  const duoFlowSection = document.querySelector('.duoflow-game');
+  if (duoFlowSection) {
+    duoFlowSection.classList.remove('completed');
+  }
+  
+
     
     console.log('✅ Estado do jogo resetado');
   }
