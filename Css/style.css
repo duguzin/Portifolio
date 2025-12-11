@@ -1782,15 +1782,20 @@ body.modal-open {
   height: 100%;
 }
 
-/* Adicionar estas variáveis RGB se não existirem */
-:root {
-  --card-bg-rgb: 255, 255, 255;
-}
 
 body.tema-escuro {
   --card-bg-rgb: 26, 26, 46;
 }
-/* Adicione cores para os novos ícones */
+
+/* Icones Cards*/
+.fa-seedling {
+  color: #2E7D32;
+}
+
+#fa-graduation-cap {
+  color: #0D47A1
+}
+
 .fa-dragon {
   color: #ff6b6b;
 }
