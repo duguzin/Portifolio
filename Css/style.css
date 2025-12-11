@@ -862,7 +862,7 @@ section {
   padding: 2px 5px;
   border-radius: 5px;
   font-weight: bold;
-  color: #fff;
+  color: #000;
 }
 
 .about-card p {
@@ -6084,4 +6084,5 @@ body.modal-open {
   .swiper-slide img:active {
     opacity: 0.9;
   }
+
 }
