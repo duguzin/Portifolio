@@ -388,12 +388,12 @@ class ProjectModal {
       }
     });
     
-    this.modal.addEventListener('wheel', (e) => {
-      if (this.modal.classList.contains('show')) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    }, { passive: false });
+    // this.modal.addEventListener('wheel', (e) => {
+    //   if (this.modal.classList.contains('show')) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //   }
+    // }, { passive: false });
     
     this.modal.addEventListener('touchmove', (e) => {
       if (this.modal.classList.contains('show')) {

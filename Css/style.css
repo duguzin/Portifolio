@@ -144,15 +144,11 @@ body.modal-open {
 }
 
 /* Prevenir seleção de texto no modal */
-.modal-content {
+/* .modal-content {
   -webkit-user-select: none;
   user-select: none;
-}
+} */
 
-/* Garantir que o modal overlay não tenha scroll */
-.modal {
-  overflow: hidden;
-}
 
 /* Formas de fundo animadas - RESPONSIVO */
 .bg-shapes {
@@ -1269,10 +1265,10 @@ section {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 2000;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   padding: 20px;
-  touch-action: none; /* Prevenir scroll do background no mobile */
-  -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+  overflow-y: auto; 
+  touch-action: pan-y;
 }
 
 .modal.show {
@@ -1292,12 +1288,15 @@ section {
   width: 100%;
   max-width: min(800px, 90vw);
   max-height: min(90vh, 800px);
-  overflow-y: auto;
+  overflow-y: auto; 
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   position: relative;
-  touch-action: pan-y; /* Permitir apenas scroll vertical */
-  -webkit-user-select: none; /* Prevenir seleção de texto no iOS */
-  user-select: none;
+  margin: auto;
+  pointer-events: auto;
+  
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   
   /* Estilização personalizada do scroll */
   scrollbar-width: thin;
@@ -1369,6 +1368,8 @@ section {
 .modal-body {
   padding: clamp(1.5rem, 3vw, 2rem);
   display: block;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 /* Carrossel no Modal - RESPONSIVO */
@@ -1774,12 +1775,9 @@ body.tema-escuro .swiper-button-prev {
   }
 }
 
-/* Prevenir scroll do body quando modal aberto */
+
 body.modal-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
 }
 
 
@@ -5610,18 +5608,15 @@ body.modal-open {
   right: 0;
   bottom: 0;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
 .modal-content {
   margin: 20px auto;
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
-/* Prevenir bounce no iOS */
-.modal {
-  overscroll-behavior: contain;
-}
+
 
 /* Melhorias para drag & drop do DuoFlow */
 .code-block-duo.dragging {
@@ -5748,3 +5743,86 @@ body.modal-open {
     background-color: rgba(var(--primary-rgb), 0.05);
   }
 } */
+
+@media (hover: hover) and (pointer: fine) {
+  .modal-content {
+    scrollbar-width: auto;
+  }
+  
+  .modal-content::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .modal-content::-webkit-scrollbar-track {
+    background: rgba(var(--primary-rgb), 0.05);
+    border-radius: 10px;
+  }
+  
+  .modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    border: 3px solid var(--card-bg);
+  }
+  
+  .modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
+}
+
+/* Para melhor experiência em touchpad */
+.modal-content {
+  /* Adicione momentum scrolling para touchpad */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevenir que elementos dentro do modal bloqueiem o scroll */
+.modal * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Permitir seleção de texto em todo o modal-body */
+.modal-body *:not(.swiper-slide):not(.thumbnail):not(.swiper-button-next):not(.swiper-button-prev):not(.swiper-pagination) {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  cursor: text;
+}
+
+/* Elementos específicos que NÃO devem permitir seleção */
+.swiper-slide,
+.thumbnail,
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination,
+.modal-header,
+.modal-footer {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* Para touchpad com dois dedos (gesture scrolling) */
+@media (pointer: fine) {
+  .modal {
+    overscroll-behavior-y: contain;
+  }
+  
+  .modal-content {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+}
+
+/* Para melhorar o scroll no Windows com touchpad */
+.modal-content {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Garantir que o modal não tenha scroll horizontal */
+.modal {
+  overflow-x: hidden;
+}
+
+.modal-content {
+  overflow-x: hidden;
+}
