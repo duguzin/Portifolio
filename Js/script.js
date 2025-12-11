@@ -90,8 +90,8 @@ const projetos = {
     ],
     tecnologias: ["JavaScript", "HTML5 Canvas", "CSS3", "Bootstrap", "Web Speech API"],
     links: [
-      { type: 'github', url: 'https://github.com/duguzin/milkmoo', text: 'Ver código no GitHub' },
-      { type: 'demo', url: 'https://milkmoo.demo.com', text: 'Testar demonstração' }
+      { type: 'github', url: 'https://github.com/duguzin/MilMoo', text: 'Ver código no GitHub' },
+      { type: 'demo', url: 'https://duguzin.github.io/MilkMoo/Painel', text: 'Testar demonstração' }
     ],
     features: [
       "Geração de senhas pelo cliente",

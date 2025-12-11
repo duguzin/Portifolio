@@ -1583,6 +1583,7 @@ body.tema-escuro .swiper-button-prev {
   transition: all 0.3s;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
+  cursor: pointer !important;
 }
 
 .project-link:hover {
