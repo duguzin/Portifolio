@@ -8,22 +8,30 @@
   --accent: #36d1dc;
   --highlight: #ffde59;
 
- /* Sombras e efeitos*/
-  --shadow-light: 8px 8px 16px #d9dbe6, -8px -8px 16px #ffffff,
-                  -1px 0px 5px rgba(0, 0, 0, 0.05), 1px 0px 5px rgba(0, 0, 0, 0.05);
-  
-  --shadow-light-hover: 5px 5px 12px #d9dbe6, -5px -5px 12px #ffffff,
-                        -0.5px 0px 3px rgba(0, 0, 0, 0.03), 0.5px 0px 3px rgba(0, 0, 0, 0.03);
-  
-  --shadow-inset: inset 5px 5px 10px #d9dbe6, inset -5px -5px 10px #ffffff;
-  
-  --shadow-dark: 8px 8px 16px #0a0a15, -8px -8px 16px #1a1a2e,
-                 -1px 0px 6px rgba(0, 0, 0, 0.3), 1px 0px 6px rgba(0, 0, 0, 0.3);
-  
-  --shadow-dark-hover: 5px 5px 12px #0a0a15, -5px -5px 12px #1a1a2e,
-                       -0.5px 0px 4px rgba(0, 0, 0, 0.2), 0.5px 0px 4px rgba(0, 0, 0, 0.2);
-  
-  --shadow-inset-dark: inset 5px 5px 10px #0a0a15, inset -5px -5px 10px #1a1a2e;
+ /* Sombras e efeitos */
+--shadow-light: 8px 8px 16px #d9dbe6, -8px -8px 16px #ffffff,
+                -4px 0px 10px rgba(0, 0, 0, 0.08), /* Sombra esquerda mais suave */
+                4px 0px 15px rgba(0, 0, 0, 0.12);  /* Sombra direita mais destacada */
+
+--shadow-light-hover: 5px 5px 12px #d9dbe6, -5px -5px 12px #ffffff,
+                      -3px 0px 8px rgba(0, 0, 0, 0.06), /* Esquerda hover */
+                      3px 0px 10px rgba(0, 0, 0, 0.09); /* Direita hover */
+
+--shadow-inset: inset 5px 5px 10px #d9dbe6, inset -5px -5px 10px #ffffff,
+                inset -2px 0px 5px rgba(0, 0, 0, 0.03),
+                inset 2px 0px 8px rgba(0, 0, 0, 0.05);
+
+--shadow-dark: 8px 8px 16px #0a0a15, -8px -8px 16px #1a1a2e,
+               -3px 0px 12px rgba(0, 0, 0, 0.4), /* Esquerda escura */
+               3px 0px 18px rgba(0, 0, 0, 0.5);  /* Direita mais intensa */
+
+--shadow-dark-hover: 5px 5px 12px #0a0a15, -5px -5px 12px #1a1a2e,
+                     -2px 0px 8px rgba(0, 0, 0, 0.3), /* Esquerda hover */
+                     2px 0px 12px rgba(0, 0, 0, 0.4); /* Direita hover */
+
+--shadow-inset-dark: inset 5px 5px 10px #0a0a15, inset -5px -5px 10px #1a1a2e,
+                     inset -2px 0px 8px rgba(0, 0, 0, 0.25),
+                     inset 2px 0px 10px rgba(0, 0, 0, 0.3);
   
   /* Cores escuras */
   --bg-dark: #0f0f23;
@@ -6094,6 +6102,7 @@ body.modal-open {
   }
 
 }
+
 
 
 
