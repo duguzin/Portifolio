@@ -9,8 +9,9 @@
   --highlight: #ffde59;
 
  /* Sombras e efeitos */
---shadow-light: 8px 8px 16px #d9dbe6, -8px -8px 16px #ffffff,
-                -4px 0px 10px rgba(0, 0, 0, 0.08), /* Sombra esquerda mais suave */
+--shadow-light: 8px 8px 16px #d9dbe6, 
+/* -8px -8px 16px #ffffff, */
+                -4px 0px 15px rgba(0, 0, 0, 0.12), /* Sombra esquerda mais suave */
                 4px 0px 15px rgba(0, 0, 0, 0.12);  /* Sombra direita mais destacada */
 
 --shadow-light-hover: 5px 5px 12px #d9dbe6, -5px -5px 12px #ffffff,
@@ -2323,6 +2324,9 @@ footer {
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(var(--primary-rgb), 0.2);
 }
 
 .footer-column::before {
