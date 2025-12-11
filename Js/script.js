@@ -56,7 +56,7 @@ const projetos = {
     ],
     tecnologias: ["Flutter", "Dart", "Firebase", "Firestore", "Firebase Auth"],
     links: [
-      { type: 'github', url: '', text: 'Ver código no GitHub' },
+      { type: 'github', url: 'https://github.com/duguzin/FitBattle/', text: 'Ver código no GitHub' },
       { type: 'demo', url: '', text: 'Em breve na Play Store' }
     ],
     features: ["Desafios diários e semanais", "Sistema de batalhas", "Sistema de conquistas e recompensas", "Ranking global e entre amigos", "Modo offline para treinos"]
