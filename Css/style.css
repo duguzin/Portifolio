@@ -5826,3 +5826,262 @@ body.modal-open {
 .modal-content {
   overflow-x: hidden;
 }
+
+/* ===== ZOOM DE IMAGENS NO MODAL ===== */
+.swiper-slide {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide img {
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide.zoomed {
+  cursor: zoom-out;
+  z-index: 10000 !important;
+}
+
+.swiper-slide.zoomed img {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+/* Overlay para zoom */
+.image-zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+.image-zoom-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.image-zoom-container {
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+}
+
+.image-zoom-container img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.zoom-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.zoom-close:hover {
+  background: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.zoom-controls {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+.zoom-control-btn {
+  background: var(--card-bg);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.zoom-control-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.zoom-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* Melhorias para mobile */
+@media (max-width: 768px) {
+  .image-zoom-container {
+    width: 95vw;
+    height: auto;
+  }
+  
+  .zoom-controls {
+    bottom: -60px;
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .zoom-control-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  
+  .zoom-info {
+    font-size: 0.8rem;
+    bottom: 10px;
+    left: 10px;
+    padding: 4px 8px;
+  }
+  
+  .zoom-close {
+    top: -50px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Feedback visual para toque */
+.swiper-slide img {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swiper-slide:active img:not(.zoomed-image) {
+  transform: scale(0.98);
+  transition: transform 0.1s;
+}
+
+/* Indicador de zoom */
+.swiper-slide img::after {
+  content: '🔍';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.swiper-slide:hover img::after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .swiper-slide img::after {
+    opacity: 0.5;
+    font-size: 12px;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Cursor pointer para todas as imagens do modal */
+.swiper-slide img {
+  cursor: pointer !important;
+}
+
+/* Cursor zoom-in quando o mouse está sobre a imagem */
+.swiper-slide img:hover {
+  cursor: zoom-in !important;
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Feedback visual ao clicar */
+.swiper-slide img:active {
+  transform: scale(0.98);
+}
+
+/* Quando no overlay de zoom */
+.zoomed-image {
+  cursor: zoom-out !important;
+}
+
+/* Efeito visual ao clicar na imagem */
+@keyframes clickPulse {
+  0% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0); }
+}
+
+.swiper-slide img.zooming {
+  animation: clickPulse 0.5s ease;
+}
+
+/* Para imagens dentro dos thumbnails também */
+.thumbnail img {
+  cursor: pointer !important;
+}
+
+/* Garantir que todas as imagens clicáveis tenham pointer */
+.zoomable-image {
+  cursor: pointer !important;
+}
+
+/* Melhorar acessibilidade para mobile */
+@media (max-width: 768px) {
+  .swiper-slide img {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: rgba(var(--primary-rgb), 0.3);
+  }
+  
+  .swiper-slide img:active {
+    opacity: 0.9;
+  }
+}

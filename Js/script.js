@@ -470,6 +470,13 @@ class ProjectModal {
       this.swiperInstance.destroy(true, true);
       this.swiperInstance = null;
     }
+
+    // Fechar overlay de zoom se estiver aberto
+    const zoomOverlay = document.getElementById('imageZoomOverlay');
+    if (zoomOverlay && zoomOverlay.classList.contains('active')) {
+      zoomOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
     
     setTimeout(() => {
       window.scrollTo({
@@ -480,65 +487,285 @@ class ProjectModal {
   }
   
   static setupMedia(mediaItems) {
-    const mediaContainer = document.getElementById("modal-media");
-    const thumbnailsContainer = document.getElementById("modal-thumbnails");
+  const mediaContainer = document.getElementById("modal-media");
+  const thumbnailsContainer = document.getElementById("modal-thumbnails");
+  
+  mediaContainer.innerHTML = "";
+  thumbnailsContainer.innerHTML = "";
+  
+  mediaItems.forEach((item, index) => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
     
-    mediaContainer.innerHTML = "";
-    thumbnailsContainer.innerHTML = "";
+    if (item.type === 'image') {
+      // ADICIONE A CLASE zoomable-image AQUI
+      slide.innerHTML = `<img src="${item.src}" alt="${item.alt}" loading="lazy" class="zoomable-image" data-index="${index}">`;
+    } else if (item.type === 'youtube') {
+      slide.innerHTML = `
+        <div class="youtube-container">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="${item.src}?rel=0&showinfo=0&modestbranding=1" 
+            title="${item.alt}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+    }
     
-    mediaItems.forEach((item, index) => {
-      const slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-      
-      if (item.type === 'image') {
-        slide.innerHTML = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
-      } else if (item.type === 'youtube') {
-        slide.innerHTML = `
-          <div class="youtube-container">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src="${item.src}?rel=0&showinfo=0&modestbranding=1" 
-              title="${item.alt}" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+    mediaContainer.appendChild(slide);
+    
+    const thumbnail = document.createElement('div');
+    thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+    thumbnail.dataset.index = index;
+    thumbnail.setAttribute('role', 'button');
+    thumbnail.setAttribute('tabindex', '0');
+    thumbnail.setAttribute('aria-label', `Ver ${item.alt || 'imagem'}`);
+    
+    let thumbnailContent = '';
+    
+    if (item.type === 'image') {
+      thumbnailContent = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
+    } else if (item.type === 'youtube') {
+      const thumbSrc = item.thumbnail || '';
+      if (thumbSrc) {
+        thumbnailContent = `<img src="${thumbSrc}" alt="Thumbnail: ${item.alt}" loading="lazy">`;
+      } else {
+        thumbnailContent = `
+          <div class="video-thumbnail">
+            <i class="fas fa-play"></i>
+            <span>Vídeo</span>
           </div>
         `;
       }
-      
-      mediaContainer.appendChild(slide);
-      
-      const thumbnail = document.createElement('div');
-      thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-      thumbnail.dataset.index = index;
-      thumbnail.setAttribute('role', 'button');
-      thumbnail.setAttribute('tabindex', '0');
-      thumbnail.setAttribute('aria-label', `Ver ${item.alt || 'imagem'}`);
-      
-      let thumbnailContent = '';
-      
-      if (item.type === 'image') {
-        thumbnailContent = `<img src="${item.src}" alt="${item.alt}" loading="lazy">`;
-      } else if (item.type === 'youtube') {
-        const thumbSrc = item.thumbnail || '';
-        if (thumbSrc) {
-          thumbnailContent = `<img src="${thumbSrc}" alt="Thumbnail: ${item.alt}" loading="lazy">`;
-        } else {
-          thumbnailContent = `
-            <div class="video-thumbnail">
-              <i class="fas fa-play"></i>
-              <span>Vídeo</span>
-            </div>
-          `;
-        }
-      }
-      
-      thumbnail.innerHTML = thumbnailContent;
-      thumbnailsContainer.appendChild(thumbnail);
-    });
+    }
+    
+    thumbnail.innerHTML = thumbnailContent;
+    thumbnailsContainer.appendChild(thumbnail);
+  });
+  
+  this.setupImageZoom();
+}
+
+  //Função ZOOM
+
+  static setupImageZoom() {
+  const zoomableImages = document.querySelectorAll('.zoomable-image');
+  const modal = this.modal;
+  
+  // Criar overlay de zoom se não existir
+  if (!document.getElementById('imageZoomOverlay')) {
+    const zoomOverlay = document.createElement('div');
+    zoomOverlay.id = 'imageZoomOverlay';
+    zoomOverlay.className = 'image-zoom-overlay';
+    zoomOverlay.innerHTML = `
+      <div class="image-zoom-container">
+        <button class="zoom-close" aria-label="Fechar zoom">
+          <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="" class="zoomed-image">
+        <div class="zoom-info">Use a roda do mouse ou os botões +/- para zoom</div>
+        <div class="zoom-controls">
+          <button class="zoom-control-btn zoom-out" aria-label="Reduzir zoom">
+            <i class="fas fa-search-minus"></i>
+          </button>
+          <button class="zoom-control-btn zoom-reset" aria-label="Redefinir zoom">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </button>
+          <button class="zoom-control-btn zoom-in" aria-label="Aumentar zoom">
+            <i class="fas fa-search-plus"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(zoomOverlay);
   }
+  
+  const zoomOverlay = document.getElementById('imageZoomOverlay');
+  const zoomedImage = zoomOverlay.querySelector('.zoomed-image');
+  const zoomClose = zoomOverlay.querySelector('.zoom-close');
+  const zoomInBtn = zoomOverlay.querySelector('.zoom-in');
+  const zoomOutBtn = zoomOverlay.querySelector('.zoom-out');
+  const zoomResetBtn = zoomOverlay.querySelector('.zoom-reset');
+  
+  let currentScale = 1;
+  const SCALE_STEP = 0.2;
+  const MIN_SCALE = 0.5;
+  const MAX_SCALE = 3;
+  
+  // Função para aplicar zoom
+  const applyZoom = () => {
+    zoomedImage.style.transform = `scale(${currentScale})`;
+  };
+  
+  // Reset zoom
+  const resetZoom = () => {
+    currentScale = 1;
+    applyZoom();
+  };
+  
+  // Função para abrir zoom
+  const openZoom = (imgSrc, imgAlt) => {
+    if (modal.classList.contains('show')) {
+      // Pausar vídeos do YouTube se houver
+      document.querySelectorAll('#modal-media iframe').forEach(iframe => {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      });
+      
+      zoomedImage.src = imgSrc;
+      zoomedImage.alt = imgAlt;
+      zoomOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      resetZoom();
+    }
+  };
+  
+  // Fechar zoom
+  const closeZoom = () => {
+    zoomOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    resetZoom();
+  };
+  
+  // Event listeners para imagens clicáveis
+  zoomableImages.forEach(img => {
+    // Clique simples
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openZoom(img.src, img.alt);
+    });
+    
+    // Duplo clique para zoom rápido
+    img.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      currentScale = currentScale === 1 ? 2 : 1;
+      applyZoom();
+    });
+    
+    // Zoom com roda do mouse (quando no overlay)
+    img.addEventListener('wheel', (e) => {
+      if (zoomOverlay.classList.contains('active')) {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+        } else {
+          currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+        }
+        applyZoom();
+      }
+    }, { passive: false });
+  });
+  
+  // Controles do overlay
+  zoomClose.addEventListener('click', closeZoom);
+  zoomOverlay.addEventListener('click', (e) => {
+    if (e.target === zoomOverlay) {
+      closeZoom();
+    }
+  });
+  
+  // Botões de controle
+  zoomInBtn.addEventListener('click', () => {
+    currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+    applyZoom();
+  });
+  
+  zoomOutBtn.addEventListener('click', () => {
+    currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+    applyZoom();
+  });
+  
+  zoomResetBtn.addEventListener('click', resetZoom);
+  
+  // Controles de teclado
+  document.addEventListener('keydown', (e) => {
+    if (!zoomOverlay.classList.contains('active')) return;
+    
+    e.preventDefault();
+    
+    switch(e.key) {
+      case 'Escape':
+        closeZoom();
+        break;
+      case '+':
+      case '=':
+        currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+        applyZoom();
+        break;
+      case '-':
+        currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+        applyZoom();
+        break;
+      case '0':
+        resetZoom();
+        break;
+      case 'ArrowLeft':
+        if (this.swiperInstance && !this.swiperInstance.destroyed) {
+          this.swiperInstance.slidePrev();
+          const activeIndex = this.swiperInstance.activeIndex;
+          const activeImage = document.querySelectorAll('.zoomable-image')[activeIndex];
+          if (activeImage) {
+            openZoom(activeImage.src, activeImage.alt);
+          }
+        }
+        break;
+      case 'ArrowRight':
+        if (this.swiperInstance && !this.swiperInstance.destroyed) {
+          this.swiperInstance.slideNext();
+          const activeIndex = this.swiperInstance.activeIndex;
+          const activeImage = document.querySelectorAll('.zoomable-image')[activeIndex];
+          if (activeImage) {
+            openZoom(activeImage.src, activeImage.alt);
+          }
+        }
+        break;
+    }
+  });
+  
+  // Zoom com gestos de toque (pinch)
+  let initialDistance = null;
+  
+  zoomOverlay.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      initialDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  }, { passive: true });
+  
+  zoomOverlay.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2 && initialDistance) {
+      e.preventDefault();
+      const currentDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      
+      const scaleChange = currentDistance / initialDistance;
+      currentScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, currentScale * scaleChange));
+      applyZoom();
+      
+      initialDistance = currentDistance;
+    }
+  }, { passive: false });
+  
+  zoomOverlay.addEventListener('touchend', () => {
+    initialDistance = null;
+  }, { passive: true });
+  
+  // Fechar zoom quando fechar o modal
+  const closeModalHandler = () => {
+    closeZoom();
+  };
+  
+  // Adicionar event listeners para fechar zoom
+  this.closeModal?.addEventListener('click', closeModalHandler);
+  this.closeModalBtn?.addEventListener('click', closeModalHandler);
+}
   
   static setupTechnologies(technologies) {
     const techTags = document.getElementById("modal-tech-tags");
